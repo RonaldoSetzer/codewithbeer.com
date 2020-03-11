@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -17,7 +17,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, main {
   margin: 0;
   padding: 0;
   border: 0;
@@ -27,7 +27,7 @@ time, mark, audio, video {
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section, main {
   display: block;
 }
 body {
@@ -47,4 +47,6 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}`
+}`;
+
+export default GlobalStyles;
