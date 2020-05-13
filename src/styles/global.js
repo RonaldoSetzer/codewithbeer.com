@@ -31,7 +31,19 @@ footer, header, hgroup, menu, nav, section, main {
   display: block;
 }
 body {
+  background: var(--background-dark);
   line-height: 1;
+  font-family:  Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  --background-darkest: #131511;
+  --background-dark: #201a10;
+  --background: #342716;
+  --background-light: #453c2f;
+  --background-lightest: #625344;
+  --icons: #665642;
+  --icons-highlight: #bea081;
 }
 ol, ul {
   list-style: none;
