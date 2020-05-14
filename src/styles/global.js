@@ -44,6 +44,7 @@ body {
   --background-lightest: #625344;
   --icons: #665642;
   --icons-highlight: #bea081;
+  --links-highlight: #77502b;
 }
 ol, ul {
   list-style: none;
