@@ -2,6 +2,7 @@ import React from 'react';
 
 import SocialLinks from '../SocialLinks';
 import FolderLinks from '../FolderLinks';
+import Logo from '../Logo';
 import { Container, Content, Chevron, Title, Link } from './styles';
 import { pages, series, categories } from './content';
 
@@ -10,18 +11,14 @@ function SideMenu() {
     <Container>
       <SocialLinks />
       <Content>
-        <Title>
-          <Chevron />
-          PROFILE
-        </Title>
+        <Logo />
         <Link to="/about">
-          RONALDO SANTIAGO
-          <br />
-          Senior Developer
+          Ronaldo Santiago
+          <span>Developer</span>
         </Link>
         <Title>
           <Chevron />
-          CODE • WITH • BEER
+          EXPLORE
         </Title>
         <FolderLinks title={pages.title} links={pages.links} />
         <FolderLinks title={series.title} links={series.links} />

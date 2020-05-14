@@ -13,7 +13,15 @@ export const Chevron = styled(ChevronDown)`
 export const Link = styled(GLink)`
   color: #ccc;
   text-decoration: none;
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  span {
+    font-size: 12px;
+  }
 
   &:hover {
     background-color: var(--links-highlight);
@@ -26,6 +34,9 @@ export const Title = styled.h2`
   text-transform: uppercase;
   display: flex;
   align-items: center;
+  font-weight: bold;
+  width: 100%;
+  font-size: 14px;
 `;
 
 export const Container = styled.aside`
@@ -39,4 +50,5 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 `;
