@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import GlobalStyles from '../styles/global';
+import PostItem from '../components/PostItem';
 
 function IndexPage() {
   const { allMarkdownRemark } = useStaticQuery(
@@ -33,19 +34,18 @@ function IndexPage() {
     <Layout>
       <GlobalStyles />
       <SEO title="Home" />
-      <h1>Code With Beer</h1>
       {postList.map(
         ({
           node: {
             frontmatter: { category, date, description, title },
           },
         }) => (
-          <div>
-            <title>{title}</title>
-            {date}
-            {description}
-            {category}
-          </div>
+          <PostItem
+            title={title}
+            date={date}
+            description={description}
+            category={category}
+          />
         )
       )}
     </Layout>

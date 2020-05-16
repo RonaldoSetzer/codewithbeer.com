@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import GlobalStyles from '../styles/global';
 import SEO from '../components/SEO';
+import { PostWrapper, MainContent } from '../components/Post/styles';
 
 function BlogPost({ data }) {
   const { frontmatter, html } = data.markdownRemark;
@@ -12,8 +13,11 @@ function BlogPost({ data }) {
     <Layout>
       <GlobalStyles />
       <SEO title={frontmatter.title} />
-      <h1>{frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <PostWrapper>
+        <MainContent>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </MainContent>
+      </PostWrapper>
     </Layout>
   );
 }
