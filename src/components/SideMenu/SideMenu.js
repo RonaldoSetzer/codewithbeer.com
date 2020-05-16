@@ -1,6 +1,5 @@
 import React from 'react';
 
-import SocialLinks from '../SocialLinks';
 import FolderLinks from '../FolderLinks';
 import Logo from '../Logo';
 import { Container, Content, Chevron, Title, Link } from './styles';
@@ -9,7 +8,6 @@ import { pages, series, categories } from './content';
 function SideMenu() {
   return (
     <Container>
-      <SocialLinks />
       <Content>
         <Logo />
         <Link to="/about">
