@@ -1,17 +1,30 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.nav`
   display: flex;
-  flex-direction: column;
   background-color: var(--background-dark);
+  position: fixed;
   height: 100vh;
-  width: 55px;
+  z-index: 1200;
+
+  ${media.lessThan('large')`
+    width: 100vw;
+    height: auto;
+    bottom: 0;
+  `};
 `;
 
 export const List = styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;
+
+  ${media.lessThan('large')`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+  `};
 `;
 
 export const ListItem = styled.li``;
