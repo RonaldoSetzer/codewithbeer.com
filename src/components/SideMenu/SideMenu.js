@@ -2,18 +2,26 @@ import React from 'react';
 
 import FolderLinks from '../FolderLinks';
 import Logo from '../Logo';
-import { Container, Content, Chevron, Title, Link } from './styles';
+import { Container, Explore, Chevron, Title, Header, Link } from './styles';
 import { pages, series, categories } from './content';
+import Icons from '../Icons/ListIcons';
 
 function SideMenu() {
+  const { Menu } = Icons;
   return (
     <Container>
-      <Content>
+      <Header>
         <Logo />
-        <Link to="/about">
-          Ronaldo Santiago
-          <span>Developer</span>
-        </Link>
+        <div>
+          <h1>Code With Beer</h1>
+          <Link to="/about">
+            Ronaldo Santiago
+            <span>(Developer)</span>
+          </Link>
+        </div>
+        <Menu />
+      </Header>
+      <Explore>
         <Title>
           <Chevron />
           EXPLORE
@@ -21,7 +29,7 @@ function SideMenu() {
         <FolderLinks title={pages.title} links={pages.links} />
         <FolderLinks title={series.title} links={series.links} />
         <FolderLinks title={categories.title} links={categories.links} />
-      </Content>
+      </Explore>
     </Container>
   );
 }
