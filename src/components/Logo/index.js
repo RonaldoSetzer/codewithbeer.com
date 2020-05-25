@@ -3,6 +3,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 const Container = styled.div`
   background-color: var(--background-light);
@@ -12,6 +13,11 @@ const Container = styled.div`
   border: 6px solid orange;
   box-sizing: border-box;
   margin: 1rem;
+
+  ${media.lessThan('large')`
+    width: 3rem;
+    height: 3rem;
+  `}
 `;
 
 function Logo() {
