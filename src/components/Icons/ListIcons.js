@@ -9,11 +9,13 @@ import {
   FaFile,
   FaRegFile,
   FaChevronDown,
+  FaBars,
 } from 'react-icons/fa';
 
 const ListIcons = {
   Folder: FaFolderOpen,
   Home: FaHome,
+  Menu: FaBars,
   Search: FaSearch,
   Spotify: FaSpotify,
   Twitter: FaTwitter,
