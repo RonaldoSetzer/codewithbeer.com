@@ -6,11 +6,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Container = styled.div`
-  background-color: var(--background-light);
-  width: 6rem;
-  height: 6rem;
-  border-radius: 90px;
-  border: 6px solid orange;
+  width: 10rem;
+  height: 10rem;
   box-sizing: border-box;
   margin: 1rem;
 
@@ -21,12 +18,19 @@ const Container = styled.div`
 `;
 
 function Logo() {
-  const { logo } = useStaticQuery(
+  const { mobile, desktop } = useStaticQuery(
     graphql`
       query {
-        logo: file(relativePath: { eq: "beer-logo.png" }) {
+        mobile: file(relativePath: { eq: "beer-mobile.png" }) {
           childImageSharp {
-            fluid(maxWidth: 60, maxHeight: 60) {
+            fluid(maxWidth: 200, maxHeight: 200, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        desktop: file(relativePath: { eq: "beer-desktop.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 200, maxHeight: 200, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -35,9 +39,17 @@ function Logo() {
     `
   );
 
+  const source = [
+    mobile.childImageSharp.fluid,
+    {
+      ...desktop.childImageSharp.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ];
+
   return (
     <Container>
-      <Img fluid={logo.childImageSharp.fluid} />
+      <Img fluid={source} />
     </Container>
   );
 }
