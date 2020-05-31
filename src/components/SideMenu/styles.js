@@ -17,13 +17,18 @@ export const Container = styled.aside`
   height: 100vh;
 
   ${media.lessThan('large')`
-    height: auto;
+    padding-top: 5rem;
     width: 100vw;
     padding-left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: 0.3s ease;
+    transform: ${props =>
+      props.isMenuOpen ? 'translateX(0)' : 'translateX(-100vw)'};
   `};
 `;
 
-export const Header = styled.div`
+export const Profile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,13 +46,7 @@ export const Header = styled.div`
   }
 
   ${media.lessThan('large')`
-    background-color: var(--background-darkest);
-    flex-direction: row;
-    width: 100vw;
-
-    h1, svg {
-      display: block;
-    }
+    display: none;
   `}
 `;
 
@@ -72,11 +71,6 @@ export const Explore = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-
-  ${media.lessThan('large')`
-    width: 100vw;
-    display: none;
-  `}
 `;
 
 export const Link = styled(GLink)`

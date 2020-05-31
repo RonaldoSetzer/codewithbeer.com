@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FolderLinks from '../FolderLinks';
 import Logo from '../Logo';
-import { Container, Explore, Chevron, Title, Header, Link } from './styles';
+import { Container, Explore, Chevron, Title, Profile, Link } from './styles';
 import { pages, series, categories } from './content';
-import Icons from '../Icons/ListIcons';
 
-function SideMenu() {
-  const { Menu } = Icons;
+function SideMenu({ isMenuOpen }) {
   return (
-    <Container>
-      <Header>
+    <Container isMenuOpen={isMenuOpen}>
+      <Profile>
         <Logo />
         <div>
           <h1>Code With Beer</h1>
@@ -19,8 +18,7 @@ function SideMenu() {
             <span>(Developer)</span>
           </Link>
         </div>
-        <Menu />
-      </Header>
+      </Profile>
       <Explore>
         <Title>
           <Chevron />
@@ -33,5 +31,9 @@ function SideMenu() {
     </Container>
   );
 }
+
+SideMenu.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+};
 
 export default SideMenu;
