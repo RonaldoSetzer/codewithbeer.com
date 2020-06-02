@@ -10,7 +10,6 @@ function SocialLinks() {
       <List>
         {Links.map(({ label, url }) => {
           const Icon = Icons[label];
-          console.log(Icon);
           return (
             <ListItem key={label}>
               <Link

@@ -15,7 +15,7 @@ function Folderlinks({ title, links = [] }) {
         {title}
       </h1>
       {links.map(({ url, label }) => (
-        <Link to={url}>
+        <Link to={url} key={label}>
           <div>
             <FileOutline />
           </div>
