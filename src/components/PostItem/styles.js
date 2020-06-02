@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as GLink } from 'gatsby';
 
 export const Container = styled.div`
   color: #ccc;
@@ -58,4 +59,8 @@ export const Footer = styled.div`
   span {
     color: orange;
   }
+`;
+
+export const Link = styled(GLink)`
+  text-decoration: none;
 `;
