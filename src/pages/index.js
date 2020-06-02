@@ -1,33 +1,14 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import GlobalStyles from '../styles/global';
 import PostItem from '../components/PostItem';
 
-function IndexPage() {
-  const { allMarkdownRemark } = useStaticQuery(
-    graphql`
-      query PostList {
-        allMarkdownRemark {
-          edges {
-            node {
-              id
-              frontmatter {
-                title
-                date(locale: "en-us", formatString: "MMMM Do YYYY, h:mm a'")
-                description
-                category
-              }
-              timeToRead
-            }
-          }
-        }
-      }
-    `
-  );
-
+function IndexPage({ data }) {
+  const { allMarkdownRemark } = data;
   const postList = allMarkdownRemark.edges;
 
   return (
@@ -38,18 +19,45 @@ function IndexPage() {
         ({
           node: {
             frontmatter: { category, date, description, title },
+            timeToRead,
+            fields: { slug },
           },
         }) => (
           <PostItem
+            key={slug}
+            slug={slug}
             title={title}
             date={date}
             description={description}
             category={category}
+            timeToRead={timeToRead}
           />
         )
       )}
     </Layout>
   );
 }
+
+export const query = graphql`
+  query PostList {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          timeToRead
+          frontmatter {
+            title
+            date(locale: "en-us", formatString: "D MMMM YYYY")
+            description
+            category
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;
