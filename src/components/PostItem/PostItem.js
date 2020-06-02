@@ -1,16 +1,22 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import { Container } from './styles';
+import { Container, Header, Tag, Footer, Content } from './styles';
 
-function PostItem({ title, date, description, category }) {
+function PostItem({ title, date, description, category, timeToRead }) {
   return (
     <Container>
-      <ul>
-        <li>{title}</li>
-        <li>{date}</li>
-        <li>{description}</li>
-        <li>{category}</li>
-      </ul>
+      <Header>
+        <time>{date}</time>
+        <h1>{title}</h1>
+      </Header>
+      <Content>
+        <p>{description}</p>
+        <p>{`${timeToRead} min read`}</p>
+      </Content>
+      <Footer>
+        <Tag>{category}</Tag>
+        <span>Read more...</span>
+      </Footer>
     </Container>
   );
 }
