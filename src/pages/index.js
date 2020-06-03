@@ -47,7 +47,7 @@ export const query = graphql`
           timeToRead
           frontmatter {
             title
-            date(locale: "en-us", formatString: "D MMMM YYYY")
+            date(locale: "en-us", formatString: "DD MMM YYYY")
             description
             category
           }
