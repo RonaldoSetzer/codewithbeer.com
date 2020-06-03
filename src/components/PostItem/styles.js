@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Link as GLink } from 'gatsby';
 
 export const Container = styled.div`
@@ -9,55 +10,91 @@ export const Container = styled.div`
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid orange;
+  max-width: 960px;
+  width: 100%;
+`;
+
+export const Content = styled.div`
+  line-height: 1.2rem;
 
   p {
     padding: 0.5rem 0;
   }
 `;
 
-export const Content = styled.div`
-  line-height: 1.2rem;
-`;
-
 export const Header = styled.div`
   background-color: orange;
   color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 1rem;
   height: auto;
-  min-height: 9rem;
+  min-height: 5rem;
   font-weight: bold;
 
   h1 {
-    padding: 1rem;
+    padding: 0 0 0 1rem;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
   }
 
-  time {
-    background-color: #fff;
-    text-transform: uppercase;
-    max-width: 10rem;
-    color: orange;
-    margin-top: 1rem;
-    padding: 0.5rem;
+  ${media.lessThan('large')`
+    flex-direction: column;
+    min-height: 9rem;
+    
+    h1 {
+      padding: 1rem;
+    }
+  `}
+`;
+
+export const Time = styled.time`
+  background-color: #fff;
+  text-transform: uppercase;
+  margin: 0px;
+  color: orange;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 4rem;
   }
+
+  p {
+    padding-left: 0.4rem;
+  }
+
+  ${media.lessThan('large')`
+    margin: 1rem auto 0 0;
+    justify-content: flex-start;
+
+    span {
+      font-size: 1rem;
+    }
+
+    div {
+      display: flex;
+    }
+  `}
 `;
 
 export const Tag = styled.div`
   background-color: orange;
-  padding: 0.2rem;
+  padding: 0.5rem;
   color: #ccc;
 `;
 
 export const Footer = styled.div`
-  padding-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   span {
     color: orange;
+    font-weight: bold;
   }
 `;
 
