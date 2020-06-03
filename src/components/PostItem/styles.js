@@ -10,8 +10,12 @@ export const Container = styled.div`
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid orange;
-  max-width: 960px;
-  width: 100%;
+  width: 960px;
+
+  ${media.lessThan('large')`
+    margin: 1rem;
+    width: auto;
+  `}
 `;
 
 export const Content = styled.div`

@@ -15,10 +15,13 @@ export const Container = styled.main`
 export const Main = styled.main`
   background: var(--background-dark);
   min-height: 100vh;
-  padding: 0 3.75rem 0 20rem;
+  margin-left: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 
   ${media.lessThan('large')`
-    padding: 0 0 3rem 0;
+    margin: 6rem 0;
   `}
 `;
