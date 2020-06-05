@@ -10,7 +10,9 @@ function SideMenu({ isMenuOpen }) {
   return (
     <Container isMenuOpen={isMenuOpen}>
       <Profile>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <div>
           <h1>Code With Beer</h1>
           <Link to="/about">
