@@ -4,20 +4,30 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import GlobalStyles from '../styles/global';
+import { MainContent, MainContainer } from '../styles/base';
 import SEO from '../components/SEO';
-import { PostWrapper, MainContent } from '../components/Post/styles';
+import PostTitle from '../components/PostTitle';
 
 function BlogPost({ data }) {
-  const { frontmatter, html } = data.markdownRemark;
+  const {
+    frontmatter: { title, date },
+    timeToRead,
+    html,
+  } = data.markdownRemark;
   return (
     <Layout>
       <GlobalStyles />
-      <SEO title={frontmatter.title} />
-      <PostWrapper>
+      <SEO title={title} />
+      <MainContainer>
+        <PostTitle date={date} title={title} />
+        <p>
+          <strong>Ronaldo Santiago</strong>
+          {` - ${timeToRead} min read`}
+        </p>
         <MainContent>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </MainContent>
-      </PostWrapper>
+      </MainContainer>
     </Layout>
   );
 }
@@ -26,8 +36,10 @@ export const query = graphql`
   query Post($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      timeToRead
       frontmatter {
         title
+        date(locale: "en-us", formatString: "DD MMM YYYY")
       }
     }
   }
