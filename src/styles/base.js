@@ -173,4 +173,9 @@ export const MainContent = styled.section`
       opacity: 0.8;
     }
   }
+  pre {
+    ${media.lessThan('large')`
+      width: 85vw;
+    `}
+  }
 `;
