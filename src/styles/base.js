@@ -5,8 +5,7 @@ export const MainContainer = styled.div`
   padding: 1rem;
   color: #ccc;
   ${media.lessThan('large')`
-    margin-bottom: 4reml
-    width: 100vw;
+    margin-bottom: 4rem;
   `}
 `;
 
