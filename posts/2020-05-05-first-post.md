@@ -2,10 +2,10 @@
 date: 2020-01-03 0:00:00
 title: First post
 description: Bla bla bla bla
-category: Misc
+category: [Misc]
 ---
 
-# Blabla saosidas 
+# Blabla saosidas
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius enim nec diam fermentum volutpat. Fusce at magna nec ex rutrum euismod convallis quis lacus. Nam gravida condimentum velit, ut luctus elit molestie vitae. Mauris in consectetur justo. Integer tortor sem, elementum a sem ut, bibendum hendrerit tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc facilisis purus et aliquam egestas. Sed eu est vehicula, pellentesque erat non, porttitor leo. Sed placerat pharetra velit et rhoncus. Suspendisse sapien tellus, ultricies vitae mi et, ultrices gravida orci.
 
