@@ -23,11 +23,5 @@ collections:
           widget: 'datetime',
           format: 'YYYY-MM-DD hh:mm:ss',
         }
-      - { label: 'image', name: 'thumbnail', widget: 'image' }
-      - {
-          label: 'Category',
-          name: 'category',
-          widget: 'select',
-          options: ['js', 'vim', 'react'],
-        }
+      - { label: 'Category', name: 'category', widget: 'list' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
