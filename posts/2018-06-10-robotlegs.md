@@ -1,8 +1,11 @@
 ---
-date: 2018-06-10 0:00:00
 title: Creating
 description: RobotlegsJS is
-category: [TypeScript, JavaScript]
+date: 2018-06-10T00:00:00.000Z
+category:
+  - TypeScript
+  - JavaScript
+  - vim
 ---
 
 # RobotlegsJS <img src="https://raw.githubusercontent.com/RobotlegsJS/RobotlegsJS/master/media/robotlegs.png" width="30" height="30" />
