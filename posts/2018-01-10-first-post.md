@@ -1,7 +1,7 @@
 ---
 date: 2018-06-10 0:00:00
-title: Creating
-description: RobotlegsJS is
+title: First Post
+description: First Post about nothing just creating some unuseful content
 category: [TypeScript, JavaScript]
 ---
 

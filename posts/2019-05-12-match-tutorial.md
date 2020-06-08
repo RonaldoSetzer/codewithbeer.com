@@ -1,7 +1,7 @@
 ---
 date: 2018-06-10 0:00:00
-title: Creating amazing
-description: RobotlegsJS is a architecture
+title: Match Tutorial
+description: Let's learn how to create a game
 category: [TypeScript]
 ---
 

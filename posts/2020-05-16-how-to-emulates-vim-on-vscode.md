@@ -1,7 +1,7 @@
 ---
 date: 2020-01-06 0:00:00
-title: Second post
-description: Bla bla bla bla
+title: How to emulates vim on vscode
+description: VSCode is a pretty good damm IDE, but with vim it's the best of both worlds
 category: [Misc, JavaScript, vim]
 ---
 
