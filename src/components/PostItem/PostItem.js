@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import { Container, Tag, Footer, Content, Link } from './styles';
+import { Container, Tag, Tags, Footer, Content, Link } from './styles';
 import PostTitle from '../PostTitle/PostTitle';
 
 function PostItem({ title, date, description, category, timeToRead, slug }) {
@@ -14,7 +14,11 @@ function PostItem({ title, date, description, category, timeToRead, slug }) {
         <p>{`${timeToRead} min read`}</p>
       </Content>
       <Footer>
-        <Tag>{category}</Tag>
+        <Tags>
+          {category.map(label => (
+            <Tag>{label}</Tag>
+          ))}
+        </Tags>
         <Link to={slug}>
           <span>Read more...</span>
         </Link>

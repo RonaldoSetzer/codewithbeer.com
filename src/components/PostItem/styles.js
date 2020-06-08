@@ -26,10 +26,16 @@ export const Content = styled.div`
   }
 `;
 
+export const Tags = styled.div`
+  display: flex;
+`;
+
 export const Tag = styled.div`
   background-color: orange;
   padding: 0.5rem;
-  color: #ccc;
+  margin-right: 0.2rem;
+  font-size: 1rem;
+  color: #fff;
 `;
 
 export const Footer = styled.div`
