@@ -16,7 +16,7 @@ const List = styled.div`
   `}
 `;
 
-function IndexPage({ data }) {
+function BlogList({ data }) {
   const { allMarkdownRemark } = data;
   const postList = allMarkdownRemark.edges;
 
@@ -50,8 +50,12 @@ function IndexPage({ data }) {
 }
 
 export const query = graphql`
-  query PostList {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+  query PostList($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       edges {
         node {
           id
@@ -71,4 +75,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default BlogList;
