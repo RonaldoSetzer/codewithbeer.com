@@ -7,6 +7,7 @@ const Links = [
     label: 'Search',
     url: 'https://codewithbeer.com',
   },
+  { label: '---' },
   {
     label: 'Github',
     url: 'https://github.com/RonaldoSetzer/',

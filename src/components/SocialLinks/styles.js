@@ -29,6 +29,18 @@ export const List = styled.ul`
 
 export const ListItem = styled.li``;
 
+export const Separator = styled.div`
+  border-bottom: 2px solid var(--background);
+  width: 70%;
+
+  ${media.lessThan('large')`
+    border-right: 2px solid var(--background);
+    border-bottom: none;
+    height: 70%;
+    width:0;
+  `};
+`;
+
 export const Link = styled.a`
   color: var(--icons);
   text-decoration: none;
