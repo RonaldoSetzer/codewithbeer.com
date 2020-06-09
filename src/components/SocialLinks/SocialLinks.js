@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icons from '../Icons/ListIcons';
 import Links from './content';
-import { Container, Link, List, ListItem, Separator } from './styles';
+import { Container, ALink, GLink, List, ListItem, Separator } from './styles';
 
 function SocialLinks() {
   return (
@@ -13,6 +13,8 @@ function SocialLinks() {
             return <Separator />;
           }
           const Icon = Icons[label];
+          const Link = url.charAt(0) === '/' ? GLink : ALink;
+
           return (
             <ListItem key={label}>
               <Link

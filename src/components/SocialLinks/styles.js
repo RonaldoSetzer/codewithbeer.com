@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
+import { Link } from 'gatsby';
 
 export const Container = styled.nav`
   display: flex;
@@ -36,12 +37,12 @@ export const Separator = styled.div`
   ${media.lessThan('large')`
     border-right: 2px solid var(--background);
     border-bottom: none;
-    height: 70%;
+    height: 50%;
     width:0;
   `};
 `;
 
-export const Link = styled.a`
+const link = css`
   color: var(--icons);
   text-decoration: none;
   transition: color 0.5s;
@@ -55,4 +56,12 @@ export const Link = styled.a`
     height: 1.5rem;
     padding: 0.8rem;
   }
+`;
+
+export const ALink = styled.a`
+  ${link}
+`;
+
+export const GLink = styled(Link)`
+  ${link}
 `;
