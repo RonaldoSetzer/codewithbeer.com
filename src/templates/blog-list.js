@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import GlobalStyles from '../styles/global';
 import PostItem from '../components/PostItem';
+import Pagination from '../components/Pagination/Pagination';
 
 const List = styled.div`
   ${media.lessThan('large')`
@@ -16,7 +17,7 @@ const List = styled.div`
   `}
 `;
 
-function BlogList({ data }) {
+function BlogList({ data, pageContext: { currentPage, numPages } }) {
   const { allMarkdownRemark } = data;
   const postList = allMarkdownRemark.edges;
 
@@ -44,6 +45,7 @@ function BlogList({ data }) {
             />
           )
         )}
+        <Pagination numPages={numPages} currentPage={currentPage} />
       </List>
     </Layout>
   );
