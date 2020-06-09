@@ -1,11 +1,11 @@
 const Links = [
   {
     label: 'Home',
-    url: 'https://codewithbeer.com',
+    url: '/',
   },
   {
     label: 'Search',
-    url: 'https://codewithbeer.com',
+    url: '/search',
   },
   { label: '---' },
   {
@@ -14,15 +14,15 @@ const Links = [
   },
   {
     label: 'Linkedin',
-    url: 'https://codewithbeer.com',
+    url: 'https://www.linkedin.com/in/ronaldo-santiago/',
   },
   {
     label: 'Twitter',
-    url: 'https://codewithbeer.com',
+    url: 'https://twitter.com/RonaldoSetzer',
   },
   {
     label: 'Spotify',
-    url: 'https://codewithbeer.com',
+    url: 'https://open.spotify.com/user/ae5nqq9bgvgwhnyb3ikcaadps',
   },
 ];
 
