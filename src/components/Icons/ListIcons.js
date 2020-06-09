@@ -10,6 +10,8 @@ import {
   FaRegFile,
   FaChevronDown,
   FaBars,
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
 } from 'react-icons/fa';
 
 const ListIcons = {
@@ -24,6 +26,8 @@ const ListIcons = {
   FileOutline: FaRegFile,
   File: FaFile,
   ChevronDown: FaChevronDown,
+  ArrowDoubleLeft: FaAngleDoubleLeft,
+  ArrowDoubleRight: FaAngleDoubleRight,
 };
 
 export default ListIcons;
