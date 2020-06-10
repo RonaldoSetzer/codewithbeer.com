@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 export const Container = styled.div`
-  color: #ccc;
+  color: var(--font-default);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     padding: 0.2rem;
     width: 1.1rem;
     height: 1.1rem;
-    color: orange;
+    color: var(--font-colorful);
   }
 
   h1 {
@@ -26,7 +26,7 @@ export const Link = styled(GatsbyLink)`
   padding: 0.1rem 1.8rem;
   transition: color: 0.5s;
   text-decoration: none;
-  color: #ccc;
+  color: var(--font-default);
   align-items: center;
 
   div {
@@ -35,10 +35,11 @@ export const Link = styled(GatsbyLink)`
   }
   
   &:visited {
-    color: #ccc;
+    color: var(--font-default);
   }
 
   &:hover {
-    background-color: var(--links-highlight);
+    background-color: var(--background-default);
+    color: var(--font-highlight);
   }
 `;

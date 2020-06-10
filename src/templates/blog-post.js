@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import GlobalStyles from '../styles/global';
-import { MainContent, MainContainer } from '../styles/base';
+import { MainContent, MainContainer, Highlight } from '../styles/base';
 import SEO from '../components/SEO';
 import PostTitle from '../components/PostTitle';
 
@@ -21,8 +21,10 @@ function BlogPost({ data }) {
       <MainContainer>
         <PostTitle date={date} title={title} />
         <p>
-          <strong>Ronaldo Santiago</strong>
-          {` - ${timeToRead} min read`}
+          <Highlight>
+            <strong>Ronaldo Santiago</strong>
+            {` - ${timeToRead} min read`}
+          </Highlight>
         </p>
         <MainContent>
           <div dangerouslySetInnerHTML={{ __html: html }} />

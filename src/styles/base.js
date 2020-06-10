@@ -3,10 +3,14 @@ import media from 'styled-media-query';
 
 export const MainContainer = styled.div`
   padding: 1rem;
-  color: #ccc;
+
   ${media.lessThan('large')`
     margin-bottom: 4rem;
   `}
+`;
+
+export const Highlight = styled.span`
+  color: var(--font-highlight);
 `;
 
 export const MainContent = styled.section`
@@ -27,7 +31,7 @@ export const MainContent = styled.section`
   ul,
   ol,
   iframe {
-    color: #ccc;
+    color: var(--font-default);
     font-size: 1.25rem;
     font-weight: 300;
     line-height: 1.7;
@@ -160,18 +164,17 @@ export const MainContent = styled.section`
   }
 
   a {
-    color: orange;
+    color: var(--font-colorful);
     text-decoration: none;
     transition: opacity 0.5s;
 
-    svg {
-    }
-
-    &:hover {
-      background: var(--background-light);
+    :hover {
+      color: var(--font-highlight);
+      background: var(--background-default-darken);
       opacity: 0.8;
     }
   }
+
   pre {
     ${media.lessThan('large')`
       width: 85vw;

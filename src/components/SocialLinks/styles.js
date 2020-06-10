@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 export const Container = styled.nav`
   display: flex;
-  background-color: var(--background-dark);
+  background-color: var(--background-default);
   position: fixed;
   height: 100vh;
   z-index: 1200;
@@ -13,6 +13,7 @@ export const Container = styled.nav`
     width: 100vw;
     height: auto;
     bottom: 0;
+    background-color: var(--background-default-darken);
   `};
 `;
 
@@ -31,11 +32,11 @@ export const List = styled.ul`
 export const ListItem = styled.li``;
 
 export const Separator = styled.div`
-  border-bottom: 2px solid var(--background);
+  border-bottom: 2px solid var(--background-menu);
   width: 70%;
 
   ${media.lessThan('large')`
-    border-right: 2px solid var(--background);
+    border-right: 2px solid var(--background-menu);
     border-bottom: none;
     height: 50%;
     width:0;
@@ -43,19 +44,22 @@ export const Separator = styled.div`
 `;
 
 const link = css`
-  color: var(--icons);
+  color: var(--social-links);
   text-decoration: none;
-  transition: color 0.5s;
-
-  &:hover {
-    color: var(--icons-highlight);
-  }
 
   svg {
     width: 1.5rem;
     height: 1.5rem;
     padding: 0.8rem;
   }
+
+  ${media.greaterThan('large')`
+    transition: color 0.5s;
+
+    svg:hover {
+      color: var(--social-links-highlight);
+    }
+  `}
 `;
 
 export const ALink = styled.a`

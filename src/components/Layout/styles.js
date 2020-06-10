@@ -13,7 +13,6 @@ export const Container = styled.main`
 `;
 
 export const Main = styled.main`
-  background: var(--background-dark);
   min-height: 100vh;
   margin-left: 22rem;
   display: flex;

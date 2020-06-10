@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const Container = styled.div`
-  background-color: orange;
-  color: #fff;
+  background-color: var(--background-colorful);
+  color: var(--font-light);
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
@@ -29,10 +29,10 @@ export const Container = styled.div`
 `;
 
 export const Time = styled.time`
-  background-color: #fff;
+  background-color: var(--background-light);
   text-transform: uppercase;
   margin: 0px;
-  color: orange;
+  color: var(--font-colorful);
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;

@@ -10,8 +10,7 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   width: 300px;
-  background-color: var(--background);
-  color: #ccc;
+  background-color: var(--background-menu);
   padding-left: 3rem;
   position: fixed;
   height: 100vh;
@@ -51,13 +50,13 @@ export const Profile = styled.div`
 `;
 
 export const Chevron = styled(ChevronDown)`
-  color: #ccc;
+  color: var(--font-default);
   padding: 0.5rem;
 `;
 
 export const Title = styled.h2`
-  background-color: var(--background-light);
-  color: #ccc;
+  background-color: var(--background-menu-title);
+  color: var(--font-default);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -74,25 +73,15 @@ export const Explore = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: #ccc;
+  color: var(--font-highlight);
   text-decoration: none;
   padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 
   span {
     font-size: 12px;
     padding: 0 0.2rem;
   }
-
-  &:hover {
-    background-color: var(--links-highlight);
-  }
-
-  ${media.lessThan('large')`
-    flex-direction: row;
-    font-size: 12px;
-  `}
 `;

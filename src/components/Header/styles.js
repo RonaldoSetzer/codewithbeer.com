@@ -7,22 +7,31 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 0.1rem solid var(--background-light);
-  background-color: var(--background-darkest);
+  border-bottom: 1px solid var(--background-menu-title);
+  background-color: var(--background-default-darken);
   width: 100vw;
-  color: #ccc;
+  color: var(--font-default);
   z-index: 1200;
   position: fixed;
 
   h1 {
     font-size: 18px;
     font-weight: bold;
+    color: var(--font-colorful);
   }
 
   svg {
     width: 2rem;
     height: 2rem;
     padding: 1rem;
+    color: var(--social-links);
+  }
+
+  svg:active {
+    width: 1.8rem;
+    height: 1.8rem;
+    padding: 1.1rem;
+    color: var(--social-links-highlight);
   }
 
   ${media.greaterThan('large')`
@@ -31,7 +40,7 @@ export const Container = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: #ccc;
+  color: var(--font-highlight);
   text-decoration: none;
   display: flex;
   font-size: 12px;
