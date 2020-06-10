@@ -26,6 +26,7 @@
     "gatsby-transformer-sharp": "^2.3.13",
     "lazysizes": "^5.2.2",
     "netlify-cms-app": "^2.12.14",
+    "polished": "^3.6.4",
     "prismjs": "^1.20.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
