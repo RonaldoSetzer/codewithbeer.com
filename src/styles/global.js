@@ -1,5 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const colors = {
+  cream: '#ffefce',
+  orange: '#e79d02',
+  brown: '#342716',
+  darkBrown: '#201a10',
+  coldBrown: '#665642',
+  white: '#fff',
+  gray: '#ccc',
+};
+
 const GlobalStyles = createGlobalStyle`/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
