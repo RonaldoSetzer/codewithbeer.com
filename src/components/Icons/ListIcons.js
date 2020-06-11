@@ -9,6 +9,7 @@ import {
   FaFile,
   FaRegFile,
   FaChevronDown,
+  FaChevronRight,
   FaBars,
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
@@ -26,6 +27,7 @@ const ListIcons = {
   FileOutline: FaRegFile,
   File: FaFile,
   ChevronDown: FaChevronDown,
+  ChevronRight: FaChevronRight,
   ArrowDoubleLeft: FaAngleDoubleLeft,
   ArrowDoubleRight: FaAngleDoubleRight,
 };
