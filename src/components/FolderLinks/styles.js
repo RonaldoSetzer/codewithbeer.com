@@ -13,12 +13,26 @@ export const Container = styled.div`
     height: 1.1rem;
     color: var(--font-colorful);
   }
+`;
 
-  h1 {
-    display: flex;
-    align-items: center;
-    padding: 0.2rem 1rem;
+export const Button = styled.a`
+  cursor: pointer;
+  color: var(--font-default);
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 1rem;
+  font-size: 100%;
+
+  &:hover {
+    background-color: var(--background-default);
+    color: var(--font-highlight);
   }
+`;
+
+export const Content = styled.div`
+  display: ${props => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const Link = styled(GatsbyLink)`
