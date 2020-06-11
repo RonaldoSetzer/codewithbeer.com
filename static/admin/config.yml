@@ -2,7 +2,7 @@ backend:
   name: github
   repo: RonaldoSetzer/codewithbeer.com
   branch: master
-  site_domain: https://codewithbeer.netlify.com/
+  site_domain: https://codewithbeer.com/
 
 publish_mode: editorial_workflow
 media_folder: 'static/assets/img'
