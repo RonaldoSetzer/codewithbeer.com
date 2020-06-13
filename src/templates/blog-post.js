@@ -7,10 +7,12 @@ import GlobalStyles from '../styles/global';
 import { MainContent, MainContainer, Highlight } from '../styles/base';
 import SEO from '../components/SEO';
 import PostTitle from '../components/PostTitle';
+import Comments from '../components/Comments/Comments';
 
 function BlogPost({ data }) {
   const {
     frontmatter: { title, date },
+    fields: { slug },
     timeToRead,
     html,
   } = data.markdownRemark;
@@ -29,6 +31,7 @@ function BlogPost({ data }) {
         <MainContent>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </MainContent>
+        <Comments title={title} url={slug} />
       </MainContainer>
     </Layout>
   );
@@ -39,6 +42,9 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(locale: "en-us", formatString: "DD MMM YYYY")
