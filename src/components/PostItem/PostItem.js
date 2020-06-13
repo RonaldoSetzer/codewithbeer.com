@@ -11,7 +11,7 @@ function PostItem({ title, date, description, category, timeToRead, slug }) {
       </Link>
       <Content>
         <p>{description}</p>
-        <span>{`${timeToRead} min read`}</span>
+        {timeToRead && <span>{`${timeToRead} min read`}</span>}
       </Content>
       <Footer>
         <Tags>{category && category.map(label => <Tag>{label}</Tag>)}</Tags>
