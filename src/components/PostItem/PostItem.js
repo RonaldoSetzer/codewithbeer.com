@@ -1,5 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
+import kebab from 'lodash';
+
 import { Container, Tag, Tags, Footer, Content, Link } from './styles';
 import PostTitle from '../PostTitle/PostTitle';
 
@@ -14,7 +16,12 @@ function PostItem({ title, date, description, category, timeToRead, slug }) {
         {timeToRead && <span>{`${timeToRead} min read`}</span>}
       </Content>
       <Footer>
-        <Tags>{category && category.map(label => <Tag>{label}</Tag>)}</Tags>
+        <Tags>
+          {category &&
+            category.map(label => (
+              <Tag to={`/tags/${kebab(label.toLowerCase())}`}>{label}</Tag>
+            ))}
+        </Tags>
         <Link to={slug}>read more...</Link>
       </Footer>
     </Container>

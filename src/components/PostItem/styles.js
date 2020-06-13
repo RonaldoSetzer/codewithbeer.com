@@ -40,14 +40,21 @@ export const Tags = styled.div`
   display: flex;
 `;
 
-export const Tag = styled.div`
+export const Tag = styled(GLink)`
   background-color: var(--background-menu-title);
+  text-decoration: none;
   padding: 0.5rem;
   margin-right: 0.2rem;
   font-size: 1rem;
   color: var(--font-light);
   border: 0;
   border-radius: 5px;
+
+  transition: opacity 0.5s;
+
+  :hover {
+    background: var(--background-colorful);
+  }
 
   ${media.lessThan('large')`
     padding: 0.3rem;
