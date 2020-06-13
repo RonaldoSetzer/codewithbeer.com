@@ -33,29 +33,3 @@ export const series = {
     },
   ],
 };
-
-export const categories = {
-  title: 'Categories',
-  links: [
-    {
-      label: 'react',
-      url: '/',
-    },
-    {
-      label: 'node',
-      url: '/',
-    },
-    {
-      label: 'backend',
-      url: '/',
-    },
-    {
-      label: 'frontend',
-      url: '/',
-    },
-    {
-      label: 'random',
-      url: '/',
-    },
-  ],
-};
