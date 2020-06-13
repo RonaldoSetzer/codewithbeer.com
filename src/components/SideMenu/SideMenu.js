@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
+import { kebabCase } from 'lodash';
 
 import FolderLinks from '../FolderLinks';
 import Logo from '../Logo';
@@ -23,7 +24,10 @@ function SideMenu({ isMenuOpen }) {
       }
     `
   );
-  const tags = group.map(({ tag }) => ({ label: tag, url: `/tags/${tag}/` }));
+  const tags = group.map(({ tag }) => ({
+    label: tag,
+    url: `/tags/${kebabCase(tag.toLowerCase())}/`,
+  }));
 
   return (
     <Container isMenuOpen={isMenuOpen}>
