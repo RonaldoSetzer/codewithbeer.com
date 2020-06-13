@@ -19,6 +19,7 @@ function SocialLinks() {
             <ListItem key={label}>
               <Link
                 href={url}
+                to={url}
                 title={label}
                 target="_blank"
                 rel="noopener noreferrer"
