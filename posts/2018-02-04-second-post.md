@@ -3,6 +3,7 @@ date: 2018-06-10 0:00:00
 title: Second Post
 description: I have no idea what a hell i've been writing
 tags: [TypeScript, JavaScript]
+category: React 4 Noobs
 ---
 
 # RobotlegsJS <img src="https://raw.githubusercontent.com/RobotlegsJS/RobotlegsJS/master/media/robotlegs.png" width="30" height="30" />

@@ -3,6 +3,7 @@ date: 2018-06-10 0:00:00
 title: Match Tutorial
 description: Let's learn how to create a game
 tags: [TypeScript]
+category: Vim 4 Noobs
 ---
 
 ![cover](/assets/img/code-with-beer.png)

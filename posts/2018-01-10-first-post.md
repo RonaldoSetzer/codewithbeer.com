@@ -3,6 +3,7 @@ date: 2018-06-10 0:00:00
 title: First Post
 description: First Post about nothing just creating some unuseful content
 tags: [TypeScript, JavaScript]
+category: Vim 4 Noobs
 ---
 
 # RobotlegsJS <img src="https://raw.githubusercontent.com/RobotlegsJS/RobotlegsJS/master/media/robotlegs.png" width="30" height="30" />
