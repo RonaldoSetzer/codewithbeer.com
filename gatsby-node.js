@@ -1,4 +1,5 @@
 const path = require('path');
+const _ = require('lodash');
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
@@ -22,10 +23,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
+  const pageTemplate = path.resolve('./src/templates/blog-post.js');
+  const listTemplate = path.resolve(`./src/templates/blog-list.js`);
+  const tagTemplate = path.resolve(`./src/templates/blog-tags.js`);
 
   return graphql(`
     {
-      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      postsRemark: allMarkdownRemark(
+        sort: { fields: frontmatter___date, order: DESC }
+      ) {
         edges {
           node {
             id
@@ -42,13 +48,18 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: frontmatter___category) {
+          fieldValue
+        }
+      }
     }
   `).then(result => {
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.postsRemark.edges;
     posts.forEach(({ node }) => {
       createPage({
         path: node.fields.slug,
-        component: path.resolve('./src/templates/blog-post.js'),
+        component: pageTemplate,
         context: {
           slug: node.fields.slug,
         },
@@ -58,15 +69,27 @@ exports.createPages = ({ graphql, actions }) => {
     const postsPerPage = 6;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
-    Array.from({ length: numPages }).forEach((_, index) => {
+    Array.from({ length: numPages }).forEach(($, index) => {
       createPage({
         path: index === 0 ? `/` : `/page/${index + 1}`,
-        component: path.resolve(`./src/templates/blog-list.js`),
+        component: listTemplate,
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,
           numPages,
           currentPage: index + 1,
+        },
+      });
+    });
+
+    const tags = result.data.tagsGroup.group;
+
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag.fieldValue.toLowerCase())}`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue,
         },
       });
     });
