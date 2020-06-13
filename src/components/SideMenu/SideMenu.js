@@ -7,26 +7,38 @@ import { kebabCase } from 'lodash';
 import FolderLinks from '../FolderLinks';
 import Logo from '../Logo';
 import { Container, Explore, Chevron, Title, Profile, Link } from './styles';
-import { pages, series } from './content';
+import { pages } from './content';
 
 function SideMenu({ isMenuOpen }) {
   const {
-    tags: { group },
+    tags: { group: tagsGroup },
+    categories: { group: categoriesGroup },
   } = useStaticQuery(
     graphql`
       query {
         tags: allMarkdownRemark {
           group(field: frontmatter___tags) {
-            tag: fieldValue
+            label: fieldValue
+            totalCount
+          }
+        }
+        categories: allMarkdownRemark {
+          group(field: frontmatter___category) {
+            label: fieldValue
             totalCount
           }
         }
       }
     `
   );
-  const tags = group.map(({ tag }) => ({
-    label: tag,
-    url: `/tags/${kebabCase(tag.toLowerCase())}/`,
+  const tags = tagsGroup.map(({ label }) => ({
+    label,
+    url: `/tags/${kebabCase(label.toLowerCase())}/`,
+  }));
+
+  const categories = categoriesGroup.map(({ label }) => ({
+    label,
+    url: `/category/${kebabCase(label.toLowerCase())}/`,
   }));
 
   return (
@@ -49,7 +61,7 @@ function SideMenu({ isMenuOpen }) {
           EXPLORE
         </Title>
         <FolderLinks title={pages.title} links={pages.links} />
-        <FolderLinks title={series.title} links={series.links} />
+        <FolderLinks title="Series" links={categories} />
         <FolderLinks title="Categories" links={tags} />
       </Explore>
     </Container>

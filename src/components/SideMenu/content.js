@@ -15,21 +15,3 @@ export const pages = {
     },
   ],
 };
-
-export const series = {
-  title: 'Series',
-  links: [
-    {
-      label: 'React for noobs',
-      url: '/',
-    },
-    {
-      label: 'Vim for noobs',
-      url: '/',
-    },
-    {
-      label: 'Git for noobs',
-      url: '/',
-    },
-  ],
-};
