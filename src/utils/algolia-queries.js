@@ -10,7 +10,7 @@ const postQuery = `{
             date(locale: "en-us", formatString: "DD MMM YYYY")
             date_timestamp: date
             description
-            category
+            tags
           }
           fields {
             slug

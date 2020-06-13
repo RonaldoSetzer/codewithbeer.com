@@ -2,7 +2,7 @@
 date: 2020-01-03 0:00:00
 title: Happy Birthday
 description: Today is my day
-category: [Misc]
+tags: [Misc]
 ---
 
 # Blabla saosidas

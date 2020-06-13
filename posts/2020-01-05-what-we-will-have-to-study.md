@@ -2,7 +2,7 @@
 date: 2020-01-03 0:00:00
 title: What we will hae to study
 description: Finally we are in 2020 and we have a lot of things to study
-category: [Misc]
+tags: [Misc]
 ---
 
 # Blabla saosidas

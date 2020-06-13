@@ -5,7 +5,7 @@ import kebab from 'lodash';
 import { Container, Tag, Tags, Footer, Content, Link } from './styles';
 import PostTitle from '../PostTitle/PostTitle';
 
-function PostItem({ title, date, description, category, timeToRead, slug }) {
+function PostItem({ title, date, description, tags, timeToRead, slug }) {
   return (
     <Container>
       <Link to={slug}>
@@ -17,8 +17,8 @@ function PostItem({ title, date, description, category, timeToRead, slug }) {
       </Content>
       <Footer>
         <Tags>
-          {category &&
-            category.map(label => (
+          {tags &&
+            tags.map(label => (
               <Tag to={`/tags/${kebab(label.toLowerCase())}`}>{label}</Tag>
             ))}
         </Tags>

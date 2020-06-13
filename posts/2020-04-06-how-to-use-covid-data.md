@@ -2,7 +2,7 @@
 date: 2020-01-06 0:00:00
 title: How to use Covid data api
 description: Let's create a real app to show info about covid
-category: [Misc, JavaScript, vim]
+tags: [Misc, JavaScript, vim]
 ---
 
 # Blabla saosidas

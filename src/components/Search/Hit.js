@@ -9,7 +9,7 @@ function Hit({ hit }) {
     title,
     date,
     description,
-    category,
+    tags,
   } = hit;
   return (
     <PostItem
@@ -18,7 +18,7 @@ function Hit({ hit }) {
       title={title}
       date={date}
       description={description}
-      category={category}
+      tags={tags}
     />
   );
 }

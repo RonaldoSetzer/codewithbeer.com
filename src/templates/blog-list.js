@@ -29,7 +29,7 @@ function BlogList({ data, pageContext: { currentPage, numPages } }) {
         {postList.map(
           ({
             node: {
-              frontmatter: { category, date, description, title },
+              frontmatter: { tags, date, description, title },
               timeToRead,
               fields: { slug },
             },
@@ -40,7 +40,7 @@ function BlogList({ data, pageContext: { currentPage, numPages } }) {
               title={title}
               date={date}
               description={description}
-              category={category}
+              tags={tags}
               timeToRead={timeToRead}
             />
           )
@@ -66,7 +66,7 @@ export const query = graphql`
             title
             date(locale: "en-us", formatString: "DD MMM YYYY")
             description
-            category
+            tags
           }
           fields {
             slug

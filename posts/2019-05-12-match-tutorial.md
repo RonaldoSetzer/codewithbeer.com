@@ -2,7 +2,7 @@
 date: 2018-06-10 0:00:00
 title: Match Tutorial
 description: Let's learn how to create a game
-category: [TypeScript]
+tags: [TypeScript]
 ---
 
 ![cover](/assets/img/code-with-beer.png)

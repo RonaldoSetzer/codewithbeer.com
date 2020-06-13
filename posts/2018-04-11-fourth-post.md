@@ -2,7 +2,7 @@
 date: 2018-06-10 0:00:00
 title: Fourt Post
 description: This will be the last post of 2018, se you in the next year
-category: [TypeScript]
+tags: [TypeScript]
 ---
 
 ![cover](/assets/img/code-with-beer.png)

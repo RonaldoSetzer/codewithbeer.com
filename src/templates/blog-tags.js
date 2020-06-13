@@ -37,7 +37,7 @@ function BlogTags({ data, pageContext: { tag } }) {
         {postList.map(
           ({
             node: {
-              frontmatter: { category, date, description, title },
+              frontmatter: { tags, date, description, title },
               timeToRead,
               fields: { slug },
             },
@@ -48,7 +48,7 @@ function BlogTags({ data, pageContext: { tag } }) {
               title={title}
               date={date}
               description={description}
-              category={category}
+              tags={tags}
               timeToRead={timeToRead}
             />
           )
@@ -62,7 +62,7 @@ export const query = graphql`
   query($tag: String) {
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { category: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
       limit: 2000
     ) {
       edges {
@@ -73,7 +73,7 @@ export const query = graphql`
             title
             date(locale: "en-us", formatString: "DD MMM YYYY")
             description
-            category
+            tags
           }
           fields {
             slug

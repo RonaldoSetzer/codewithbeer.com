@@ -16,7 +16,7 @@ function SideMenu({ isMenuOpen }) {
     graphql`
       query {
         tags: allMarkdownRemark {
-          group(field: frontmatter___category) {
+          group(field: frontmatter___tags) {
             tag: fieldValue
             totalCount
           }

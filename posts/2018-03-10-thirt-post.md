@@ -2,7 +2,7 @@
 date: 2018-06-10 0:00:00
 title: Thirt Post
 description: I not sure if my english is well
-category: [TypeScript, JavaScript]
+tags: [TypeScript, JavaScript]
 ---
 
 # RobotlegsJS <img src="https://raw.githubusercontent.com/RobotlegsJS/RobotlegsJS/master/media/robotlegs.png" width="30" height="30" />

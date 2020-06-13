@@ -40,7 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
               title
               date(locale: "en-us", formatString: "DD MMM YYYY")
               description
-              category
+              tags
             }
             fields {
               slug
@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
       tagsGroup: allMarkdownRemark(limit: 2000) {
-        group(field: frontmatter___category) {
+        group(field: frontmatter___tags) {
           fieldValue
         }
       }
