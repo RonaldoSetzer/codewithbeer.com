@@ -57,7 +57,7 @@ export const Chevron = styled(ChevronDown)`
 
 export const Title = styled.h2`
   background-color: var(--side-background-cold);
-  color: var(--main-font);
+  color: var(--side-font);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -94,7 +94,7 @@ export const Explore = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: var(--font-highlight);
+  color: var(--side-font-highlight);
   text-decoration: none;
   padding: 0.5rem 0;
   display: flex;

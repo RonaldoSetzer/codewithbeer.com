@@ -19,6 +19,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  margin-top: 1rem;
   line-height: 1.2rem;
 
   p {
@@ -71,7 +72,7 @@ export const Footer = styled.div`
 
 export const Link = styled(GLink)`
   text-decoration: none;
-  color: var(--main-font-colorful);
+  color: var(--main-links);
   font-weight: bold;
 
   transition: opacity 0.5s;

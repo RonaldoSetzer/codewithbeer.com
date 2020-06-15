@@ -9,7 +9,8 @@ export const MainContainer = styled.div`
   `}
 `;
 
-export const Highlight = styled.span`
+export const Highlight = styled.p`
+  margin-top: 1rem;
   color: var(--main-font-highlight);
 `;
 

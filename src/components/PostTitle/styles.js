@@ -6,7 +6,6 @@ export const Container = styled.div`
   color: var(--main-font-light);
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
   height: auto;
   min-height: 5rem;
   font-weight: bold;

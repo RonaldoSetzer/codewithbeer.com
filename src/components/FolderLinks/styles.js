@@ -52,7 +52,7 @@ export const Link = styled(GatsbyLink)`
   }
 
   &:hover {
-    background-color: var(---side-links-background);
+    background-color: var(--side-links-background);
     color: var(--side-font-highlight);
   }
 `;

@@ -22,12 +22,10 @@ function BlogPost({ data }) {
       <SEO title={title} />
       <MainContainer>
         <PostTitle date={date} title={title} />
-        <p>
-          <Highlight>
-            <strong>Ronaldo Santiago</strong>
-            {` - ${timeToRead} min read`}
-          </Highlight>
-        </p>
+        <Highlight>
+          <strong>Ronaldo Santiago</strong>
+          {` - ${timeToRead} min read`}
+        </Highlight>
         <MainContent>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </MainContent>
