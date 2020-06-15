@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Icon from '../Icons/ListIcons';
@@ -18,19 +19,19 @@ export const Button = styled.a`
   }
 `;
 
-function Toggle() {
-  const [toggle, setToggle] = useState(true);
+function Toggle({ handleToggle, mode }) {
   const { ToggleOn, ToggleOff } = Icon;
-  const handleToggle = e => {
-    e.preventDefault();
-    setToggle(!toggle);
-  };
 
   return (
     <Button onClick={handleToggle}>
-      {toggle ? <ToggleOn /> : <ToggleOff />}
+      {mode ? <ToggleOn /> : <ToggleOff />}
     </Button>
   );
 }
+
+Toggle.propTypes = {
+  mode: PropTypes.bool.isRequired,
+  handleToggle: PropTypes.func.isRequired,
+};
 
 export default Toggle;
