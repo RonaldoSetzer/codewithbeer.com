@@ -3,13 +3,13 @@ import media from 'styled-media-query';
 import { Link as GLink } from 'gatsby';
 
 export const Container = styled.div`
-  color: var(--font-default);
+  color: var(--main-font);
   display: flex;
   flex-direction: column;
   margin: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid var(--background-colorful);
+  border-bottom: 1px solid var(--main-background-colorful);
   width: 960px;
 
   ${media.lessThan('large')`
@@ -26,7 +26,7 @@ export const Content = styled.div`
   }
 
   span {
-    color: var(--font-highlight);
+    color: var(--main-font-highlight);
   }
 
   ${media.lessThan('large')`
@@ -41,19 +41,19 @@ export const Tags = styled.div`
 `;
 
 export const Tag = styled(GLink)`
-  background-color: var(--background-menu-title);
+  background-color: var(--main-background-cold);
   text-decoration: none;
   padding: 0.5rem;
   margin-right: 0.2rem;
   font-size: 1rem;
-  color: var(--font-light);
+  color: var(--main-font-light);
   border: 0;
   border-radius: 5px;
 
   transition: opacity 0.5s;
 
   :hover {
-    background: var(--background-colorful);
+    background: var(--main-links);
   }
 
   ${media.lessThan('large')`
@@ -71,14 +71,14 @@ export const Footer = styled.div`
 
 export const Link = styled(GLink)`
   text-decoration: none;
-  color: var(--font-colorful);
+  color: var(--main-font-colorful);
   font-weight: bold;
 
   transition: opacity 0.5s;
 
   :hover {
-    color: var(--font-highlight);
-    background: var(--background-default-darken);
+    color: var(--main-font-highlight);
+    background: var(--main-links-background);
     opacity: 0.8;
   }
 

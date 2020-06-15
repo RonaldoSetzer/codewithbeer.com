@@ -6,7 +6,7 @@ import Icons from '../Icons/ListIcons';
 const { ChevronRight } = Icons;
 
 export const Chevron = styled(ChevronRight)`
-  color: var(--font-colorful);
+  color: var(--main-font-colorful);
   height: 1rem;
   padding-right: 0.5rem;
 `;
@@ -20,7 +20,7 @@ export const Container = styled.section`
 `;
 
 export const Content = styled.main`
-  background: var(--background-default);
+  background: var(--main-background);
   display: flex;
   flex-direction: column;
   margin-top: 0.5rem;
@@ -32,14 +32,14 @@ export const Content = styled.main`
 
   .ais-SearchBox {
     flex-grow: 2;
-    background: var(--background-default-darken);
+    background: var(--main-links-background);
   }
 
   .ais-SearchBox-input {
     width: 100%;
-    border: 2px solid var(--background-menu-title);
-    background-color: var(--background-menu);
-    color: var(--background-menu-title);
+    border: 2px solid var(--main-background-cold);
+    background-color: var(--side-background);
+    color: var(--main-background-cold);
     font-size: 1.2rem;
     padding: 0.2rem 0.5rem;
     outline: none;
@@ -52,17 +52,17 @@ export const Content = styled.main`
     }
 
     &::placeholder {
-      color: var(--background-menu-title);
+      color: var(--main-background-cold);
     }
 
     &:focus {
-      border-color: var(--background-colorful);
-      color: var(--background-colorful);
+      border-color: var(--main-background-colorful);
+      color: var(--main-font-colorful);
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 
       &::placeholder {
-        color: var(--font-colorful);
+        color: var(--main-font-colorful);
       }
     }
   }
@@ -86,16 +86,16 @@ export const Content = styled.main`
 
   .ais-Stats {
     padding: 0.2rem 2.5rem 1rem;
-    color: var(--font-highlight);
+    color: var(--main-font-highlight);
   }
 
   ${media.lessThan('large')`
     .ais-SearchBox-input {
-      border: 2px solid var(--background-colorful);
-      color: var(--background-colorful);
+      border: 2px solid var(--main-background-colorful);
+      color: var(--main-font-colorful);
 
       &::placeholder {
-        color: var(--background-colorful);
+        color: var(--main-font-colorful);
       }
     }
 

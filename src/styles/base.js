@@ -10,7 +10,7 @@ export const MainContainer = styled.div`
 `;
 
 export const Highlight = styled.span`
-  color: var(--font-highlight);
+  color: var(--main-font-highlight);
 `;
 
 export const MainContent = styled.section`
@@ -31,7 +31,7 @@ export const MainContent = styled.section`
   ul,
   ol,
   iframe {
-    color: var(--font-default);
+    color: var(--main-font);
     font-size: 1.25rem;
     font-weight: 300;
     line-height: 1.7;
@@ -164,13 +164,13 @@ export const MainContent = styled.section`
   }
 
   a {
-    color: var(--font-colorful);
+    color: var(--main-font-colorful);
     text-decoration: none;
     transition: opacity 0.5s;
 
     :hover {
-      color: var(--font-highlight);
-      background: var(--background-default-darken);
+      color: var(--side-font-highlight);
+      background: var(--main-links-background);
       opacity: 0.8;
     }
   }

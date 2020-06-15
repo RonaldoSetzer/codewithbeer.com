@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 export const Container = styled.div`
-  color: var(--font-default);
+  color: var(--side-font);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -11,21 +11,21 @@ export const Container = styled.div`
     padding: 0.2rem;
     width: 1.1rem;
     height: 1.1rem;
-    color: var(--font-colorful);
+    color: var(--side-icons);
   }
 `;
 
 export const Button = styled.a`
   cursor: pointer;
-  color: var(--font-default);
+  color: var(--side-font);
   display: flex;
   align-items: center;
   padding: 0.2rem 1rem;
   font-size: 100%;
 
   &:hover {
-    background-color: var(--background-default);
-    color: var(--font-highlight);
+    background-color: var(--side-background);
+    color: var(--side-font-highlight);
   }
 `;
 
@@ -40,20 +40,19 @@ export const Link = styled(GatsbyLink)`
   padding: 0.1rem 1.8rem;
   transition: color: 0.5s;
   text-decoration: none;
-  color: var(--font-default);
   align-items: center;
 
   div {
-    border-left:1px solid #888;
+    border-left:1px solid var(--side-background-cold);
     padding-left: 1rem;
   }
   
   &:visited {
-    color: var(--font-default);
+    color: var(--side-font);
   }
 
   &:hover {
-    background-color: var(--background-default);
-    color: var(--font-highlight);
+    background-color: var(---side-links-background);
+    color: var(--side-font-highlight);
   }
 `;

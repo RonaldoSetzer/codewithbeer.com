@@ -17,11 +17,11 @@ const List = styled.div`
 `;
 
 const Title = styled.h2`
-  color: var(--font-colorful);
+  color: var(--main-font-colorful);
   font-size: 2.1rem;
   font-weight: 700;
   margin: 2rem 1rem 3rem;
-  border-bottom: 2px solid var(--background-colorful);
+  border-bottom: 2px solid var(--main-background-colorful);
 `;
 
 function BlogCategories({ data, pageContext: { category } }) {

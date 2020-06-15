@@ -6,7 +6,7 @@ import Icon from '../Icons/ListIcons';
 
 export const Button = styled.a`
   cursor: pointer;
-  color: var(--font-default);
+  color: var(--main-font);
   font-size: 100%;
 
   svg {
@@ -15,7 +15,7 @@ export const Button = styled.a`
     height: 1.5rem;
     border: 1px;
 
-    color: var(--font-colorful);
+    color: var(--main-font-colorful);
   }
 `;
 

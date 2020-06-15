@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 export const Container = styled.nav`
   display: flex;
-  background-color: var(--background-default);
+  background-color: var(--social-background);
   position: fixed;
   height: 100vh;
   z-index: 1200;
@@ -13,7 +13,7 @@ export const Container = styled.nav`
     width: 100vw;
     height: auto;
     bottom: 0;
-    background-color: var(--background-default-darken);
+    background-color: var(--social-background);
   `};
 `;
 
@@ -32,11 +32,11 @@ export const List = styled.ul`
 export const ListItem = styled.li``;
 
 export const Separator = styled.div`
-  border-bottom: 2px solid var(--background-menu);
+  border-bottom: 2px solid var(--side-background);
   width: 70%;
 
   ${media.lessThan('large')`
-    border-right: 2px solid var(--background-menu);
+    border-right: 2px solid var(--side-background);
     border-bottom: none;
     height: 50%;
     width:0;

@@ -6,9 +6,9 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 1rem 0.5rem;
   margin: 2rem 1rem;
-  border-top: 1px solid var(--background-colorful);
-  border-bottom: 3px solid var(--background-colorful);
-  color: var(--font-colorful);
+  border-top: 1px solid var(--main-background-colorful);
+  border-bottom: 3px solid var(--main-background-colorful);
+  color: var(--main-font-colorful);
   font-weight: bold;
 
   svg,
@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: var(--font-colorful);
+  color: var(--main-font-colorful);
   text-decoration: none;
   display: flex;
   align-items: center;

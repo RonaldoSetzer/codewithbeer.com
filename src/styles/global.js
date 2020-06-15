@@ -39,43 +39,69 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${colors.secondaryDark};
     line-height: 1;
     font-family:  Roboto, Helvetica, Arial, sans-serif;
   }
 
   body.dark {
-    --background-default: ${colors.secondaryDark};
-    --background-default-darken: ${darken(0.05, colors.secondaryDark)};
-    --background-light: ${colors.white};
-    --background-menu: ${colors.secondary};
-    --background-menu-title: ${colors.secondaryCold};
-    --background-colorful: ${colors.primary};
+    // Main
+    --main-background: #221a0e;
+    --main-background-colorful: #e79d02;
+    --main-background-cold: #665642;
+    --main-background-light: #fff;
+    --main-font: #ccc;
+    --main-font-light: #fff;
+    --main-font-highlight: #ffefce;
+    --main-font-colorful: #e79d02;
+    --main-links: #e79d02;
+    --main-links-background: #100c07;
 
-    --font-default: ${colors.gray};
-    --font-light: ${colors.white};
-    --font-highlight: ${colors.primaryCold};
-    --font-colorful: ${colors.primary};
+    // Side
+    --side-background: #342716;
+    --side-background-cold: #665642;
+    --side-links-background: #100c07;
+    --side-icons: #e79d02;
+    --side-font: #fff;
+    --side-font-highlight: #ffefce;
+    
+    // Social
+    --social-background: #100c07;
+    --social-links: #665642;
+    --social-links-highlight: #825801;
+    --social-font-highlight: #ffefce;
+    --social-font-colorful: #e79d02;
 
-    --social-links: ${colors.secondaryCold};
-    --social-links-highlight: ${darken(0.2, colors.primary)};
+    background: var(--main-background);
   }
 
   body.light {
-    --background-default: ${colors.white};
-    --background-default-darken: ${darken(0.05, colors.secondaryDark)};
-    --background-light: ${colors.white};
-    --background-menu: ${colors.secondary};
-    --background-menu-title: ${colors.secondaryCold};
-    --background-colorful: ${colors.primary};
+    --main-background: #221a0e;
+    --main-background-colorful: #e79d02;
+    --main-background-cold: #665642;
+    --main-background-light: #fff;
+    --main-font: #ccc;
+    --main-font-light: #fff;
+    --main-font-highlight: #ffefce;
+    --main-font-colorful: #e79d02;
+    --main-links: #e79d02;
+    --main-links-background: #100c07;
 
-    --font-default: ${colors.gray};
-    --font-light: ${colors.white};
-    --font-highlight: ${colors.primaryCold};
-    --font-colorful: ${colors.primary};
+    // Side
+    --side-background: #342716;
+    --side-background-cold: #665642;
+    --side-links-background: #100c07;
+    --side-icons: #e79d02;
+    --side-font: #fff;
+    --side-font-highlight: #ffefce;
+    
+    // Social
+    --social-background: #100c07;
+    --social-links: #665642;
+    --social-links-highlight: #825801;
+    --social-font-highlight: #ffefce;
+    --social-font-colorful: #e79d02;
 
-    --social-links: ${colors.secondaryCold};
-    --social-links-highlight: ${darken(0.2, colors.primary)};
+    background: var(--main-background);
   }
 
   ol, ul {

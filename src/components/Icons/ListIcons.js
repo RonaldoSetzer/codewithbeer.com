@@ -13,6 +13,7 @@ import {
   FaBars,
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
+  FaLightbulb,
 } from 'react-icons/fa';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
@@ -21,6 +22,7 @@ const ListIcons = {
   Home: FaHome,
   Menu: FaBars,
   Search: FaSearch,
+  Color: FaLightbulb,
   Spotify: FaSpotify,
   Twitter: FaTwitter,
   Github: FaGithub,

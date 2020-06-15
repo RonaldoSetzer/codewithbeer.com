@@ -10,11 +10,11 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   width: 300px;
-  background-color: var(--background-menu);
+  background-color: var(--side-background);
   padding-left: 3rem;
   position: fixed;
   height: 100vh;
-  color: var(--font-light);
+  color: var(--side-font);
 
   ${media.lessThan('large')`
     padding-top: 5rem;
@@ -51,13 +51,13 @@ export const Profile = styled.div`
 `;
 
 export const Chevron = styled(ChevronDown)`
-  color: var(--font-default);
+  color: var(--side-font);
   padding: 0.5rem;
 `;
 
 export const Title = styled.h2`
-  background-color: var(--background-menu-title);
-  color: var(--font-default);
+  background-color: var(--side-background-cold);
+  color: var(--main-font);
   text-transform: uppercase;
   display: flex;
   align-items: center;
