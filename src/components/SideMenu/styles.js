@@ -14,6 +14,7 @@ export const Container = styled.aside`
   padding-left: 3rem;
   position: fixed;
   height: 100vh;
+  color: var(--font-light);
 
   ${media.lessThan('large')`
     padding-top: 5rem;
@@ -63,6 +64,26 @@ export const Title = styled.h2`
   font-weight: bold;
   width: 100%;
   font-size: 14px;
+`;
+
+export const Config = styled.div`
+  margin-top: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  ${media.lessThan('large')`
+    margin-top: 0;
+  `}
+`;
+
+export const ConfigItem = styled.div`
+  width: 90%;
+  padding-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const Explore = styled.div`

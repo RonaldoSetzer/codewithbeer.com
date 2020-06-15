@@ -5,8 +5,18 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
 import FolderLinks from '../FolderLinks';
+import Toggle from '../Toggle';
 import Logo from '../Logo';
-import { Container, Explore, Chevron, Title, Profile, Link } from './styles';
+import {
+  Container,
+  Explore,
+  Chevron,
+  Title,
+  Profile,
+  ConfigItem,
+  Config,
+  Link,
+} from './styles';
 import { pages } from './content';
 
 function SideMenu({ isMenuOpen }) {
@@ -55,6 +65,7 @@ function SideMenu({ isMenuOpen }) {
           </Link>
         </div>
       </Profile>
+
       <Explore>
         <Title>
           <Chevron />
@@ -64,6 +75,17 @@ function SideMenu({ isMenuOpen }) {
         <FolderLinks title="Series" links={categories} />
         <FolderLinks title="Categories" links={tags} />
       </Explore>
+
+      <Config>
+        <Title>
+          <Chevron />
+          CONFIG
+        </Title>
+        <ConfigItem>
+          Dark Mode:
+          <Toggle />
+        </ConfigItem>
+      </Config>
     </Container>
   );
 }
