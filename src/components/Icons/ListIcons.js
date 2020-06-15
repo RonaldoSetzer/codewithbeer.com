@@ -14,6 +14,7 @@ import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
 } from 'react-icons/fa';
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
 const ListIcons = {
   Folder: FaFolderOpen,
@@ -30,6 +31,8 @@ const ListIcons = {
   ChevronRight: FaChevronRight,
   ArrowDoubleLeft: FaAngleDoubleLeft,
   ArrowDoubleRight: FaAngleDoubleRight,
+  ToggleOn: BsToggleOn,
+  ToggleOff: BsToggleOff,
 };
 
 export default ListIcons;
