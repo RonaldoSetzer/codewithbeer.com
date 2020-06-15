@@ -44,8 +44,25 @@ const GlobalStyles = createGlobalStyle`
     font-family:  Roboto, Helvetica, Arial, sans-serif;
   }
 
-  body {
+  body.dark {
     --background-default: ${colors.secondaryDark};
+    --background-default-darken: ${darken(0.05, colors.secondaryDark)};
+    --background-light: ${colors.white};
+    --background-menu: ${colors.secondary};
+    --background-menu-title: ${colors.secondaryCold};
+    --background-colorful: ${colors.primary};
+
+    --font-default: ${colors.gray};
+    --font-light: ${colors.white};
+    --font-highlight: ${colors.primaryCold};
+    --font-colorful: ${colors.primary};
+
+    --social-links: ${colors.secondaryCold};
+    --social-links-highlight: ${darken(0.2, colors.primary)};
+  }
+
+  body.light {
+    --background-default: ${colors.white};
     --background-default-darken: ${darken(0.05, colors.secondaryDark)};
     --background-light: ${colors.white};
     --background-menu: ${colors.secondary};

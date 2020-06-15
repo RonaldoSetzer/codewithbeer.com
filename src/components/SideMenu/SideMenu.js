@@ -1,5 +1,6 @@
+/* eslint no-underscore-dangle: 0 */
 /* eslint react/prop-types: 0 */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
@@ -20,6 +21,18 @@ import {
 import { pages } from './content';
 
 function SideMenu({ isMenuOpen }) {
+  const [theme, setTheme] = useState(null);
+  const isDarkMode = theme === 'dark';
+
+  useEffect(() => {
+    setTheme(window.__theme);
+    window.__onThemeChange = () => setTheme(window.__theme);
+  }, []);
+
+  const handleToggle = () => {
+    window.__setPreferredTheme(isDarkMode ? 'light' : 'dark');
+  };
+
   const {
     tags: { group: tagsGroup },
     categories: { group: categoriesGroup },
@@ -83,7 +96,7 @@ function SideMenu({ isMenuOpen }) {
         </Title>
         <ConfigItem>
           Dark Mode:
-          <Toggle />
+          <Toggle handleToggle={handleToggle} mode={isDarkMode} />
         </ConfigItem>
       </Config>
     </Container>
