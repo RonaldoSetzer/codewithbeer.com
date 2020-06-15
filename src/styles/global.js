@@ -75,23 +75,23 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body.light {
-    --main-background: #221a0e;
-    --main-background-colorful: #e79d02;
+    --main-background: #ffefdb;
+    --main-background-colorful: #342716;
     --main-background-cold: #665642;
     --main-background-light: #fff;
-    --main-font: #ccc;
+    --main-font: #333;
     --main-font-light: #fff;
-    --main-font-highlight: #ffefce;
-    --main-font-colorful: #e79d02;
+    --main-font-highlight: #100c07;
+    --main-font-colorful: #342716;
     --main-links: #e79d02;
-    --main-links-background: #100c07;
+    --main-links-background: #e79d02;
 
     // Side
-    --side-background: #342716;
-    --side-background-cold: #665642;
+    --side-background: #665642;
+    --side-background-cold: #342716;
     --side-links-background: #100c07;
     --side-icons: #e79d02;
-    --side-font: #fff;
+    --side-font: #ffefce;
     --side-font-highlight: #ffefce;
     
     // Social
