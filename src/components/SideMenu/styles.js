@@ -33,9 +33,13 @@ export const Profile = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  padding-bottom: 0.5rem;
 
-  h1 {
-    display: none;
+  p {
+    color: var(--side-font-highlight);
+    padding: 0rem 2.5rem 0.5rem;
+    text-align: center;
+    white-space: pre-wrap;
   }
 
   svg {

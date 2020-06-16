@@ -13,6 +13,9 @@ function SideMenu({ isMenuOpen }) {
   const {
     tags: { group: tagsGroup },
     categories: { group: categoriesGroup },
+    site: {
+      siteMetadata: { description, author },
+    },
   } = useStaticQuery(
     graphql`
       query {
@@ -26,6 +29,12 @@ function SideMenu({ isMenuOpen }) {
           group(field: frontmatter___category) {
             label: fieldValue
             totalCount
+          }
+        }
+        site {
+          siteMetadata {
+            description
+            author
           }
         }
       }
@@ -48,9 +57,9 @@ function SideMenu({ isMenuOpen }) {
           <Logo />
         </Link>
         <div>
-          <h1>Code With Beer</h1>
+          <p>{description.replace(/\.\s/g, '.\n')}</p>
           <Link to="/about">
-            Ronaldo Santiago
+            {author}
             <span>(Developer)</span>
           </Link>
         </div>
