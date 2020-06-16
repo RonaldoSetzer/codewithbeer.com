@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import media from 'styled-media-query';
-import { Link } from 'gatsby';
 
 export const Container = styled.nav`
   display: flex;
@@ -21,15 +20,40 @@ export const List = styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;
+  color: var(--social-links);
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--social-links);
+  }
+
+  ${media.greaterThan('large')`
+    transition: color 0.5s;
+
+    svg:hover {
+      color: var(--social-links-highlight);
+    }
+  `}
 
   ${media.lessThan('large')`
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     width: 100vw;
+    height: 3.5rem;
+
+    svg {
+      padding: 0;
+    }
   `};
 `;
-
-export const ListItem = styled.li``;
 
 export const Separator = styled.div`
   border-bottom: 2px solid var(--side-background);
@@ -43,29 +67,4 @@ export const Separator = styled.div`
   `};
 `;
 
-const link = css`
-  color: var(--social-links);
-  text-decoration: none;
-
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: 0.8rem;
-  }
-
-  ${media.greaterThan('large')`
-    transition: color 0.5s;
-
-    svg:hover {
-      color: var(--social-links-highlight);
-    }
-  `}
-`;
-
-export const ALink = styled.a`
-  ${link}
-`;
-
-export const GLink = styled(Link)`
-  ${link}
-`;
+export const ListItem = styled.li``;

@@ -1,14 +1,5 @@
 const Links = [
   {
-    label: 'Home',
-    url: '/',
-  },
-  {
-    label: 'Search',
-    url: '/search',
-  },
-  { label: '---' },
-  {
     label: 'Github',
     url: 'https://github.com/RonaldoSetzer/',
   },

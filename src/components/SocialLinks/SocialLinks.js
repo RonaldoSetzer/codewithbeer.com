@@ -1,31 +1,32 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import Icons from '../Icons/ListIcons';
 import Links from './content';
-import { Container, ALink, GLink, List, ListItem, Separator } from './styles';
+import ToggleTheme from '../ToggleTheme';
+import { Container, List, ListItem, Separator } from './styles';
 
 function SocialLinks() {
+  const { Home, Search } = Icons;
   return (
     <Container>
       <List>
+        <Link to="/">
+          <Home />
+        </Link>
+        <Link to="/search">
+          <Search />
+        </Link>
+        <ToggleTheme />
+        <Separator />
         {Links.map(({ label, url }) => {
-          if (label === '---') {
-            return <Separator />;
-          }
           const Icon = Icons[label];
-          const Link = url.charAt(0) === '/' ? GLink : ALink;
 
           return (
             <ListItem key={label}>
-              <Link
-                href={url}
-                to={url}
-                title={label}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={url} target="_blank" rel="noopener noreferrer">
                 <Icon />
-              </Link>
+              </a>
             </ListItem>
           );
         })}
