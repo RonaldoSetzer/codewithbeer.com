@@ -4,8 +4,9 @@ const queries = require('./src/utils/algolia-queries');
 module.exports = {
   siteMetadata: {
     title: `Code With Beer`,
-    description: `Just an ordinary blog`,
+    description: `Welcome to Code with Beer, just another tech blog. Code without moderation. If you drink, don't drive or deploy to production. ^^`,
     author: `Ronaldo Santiago`,
+    siteUrl: `https://codewithbeer.com`,
   },
   plugins: [
     `gatsby-plugin-eslint`,

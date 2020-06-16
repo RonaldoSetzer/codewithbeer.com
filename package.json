@@ -1,7 +1,7 @@
 {
   "name": "codewithbeer.com",
   "private": true,
-  "description": "Just a simple and ordinary blog",
+  "description": "Welcome to Code with Beer, just another tech blog. Code without moderation. If you drink, don't drive or deploy to production. ^^",
   "version": "0.1.0",
   "author": "Ronaldo Santiago",
   "dependencies": {
