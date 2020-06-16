@@ -11,7 +11,7 @@ import Comments from '../components/Comments/Comments';
 
 function BlogPost({ data }) {
   const {
-    frontmatter: { title, date },
+    frontmatter: { title, date, cover, description },
     fields: { slug },
     timeToRead,
     html,
@@ -19,7 +19,7 @@ function BlogPost({ data }) {
   return (
     <Layout>
       <GlobalStyles />
-      <SEO title={title} />
+      <SEO title={title} description={description} image={cover} />
       <MainContainer>
         <PostTitle date={date} title={title} />
         <Highlight>
@@ -46,6 +46,8 @@ export const query = graphql`
       frontmatter {
         title
         date(locale: "en-us", formatString: "DD MMM YYYY")
+        cover
+        description
       }
     }
   }

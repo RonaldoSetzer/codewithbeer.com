@@ -31,7 +31,7 @@ function BlogCategories({ data, pageContext: { category } }) {
   return (
     <Layout>
       <GlobalStyles />
-      <SEO title="Category" />
+      <SEO title={category} />
       <List>
         <Title>{`# ${category}`}</Title>
         {postList.map(

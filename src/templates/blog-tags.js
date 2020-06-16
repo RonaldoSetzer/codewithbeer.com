@@ -31,7 +31,7 @@ function BlogTags({ data, pageContext: { tag } }) {
   return (
     <Layout>
       <GlobalStyles />
-      <SEO title="Home" />
+      <SEO title={`${tag} tag page`} />
       <List>
         <Title>{`# ${tag}`}</Title>
         {postList.map(
