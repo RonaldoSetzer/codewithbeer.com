@@ -42,6 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
               date(locale: "en-us", formatString: "DD MMM YYYY")
               description
               tags
+              cover
             }
             fields {
               slug
