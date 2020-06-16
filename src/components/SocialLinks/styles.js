@@ -50,7 +50,7 @@ export const List = styled.ul`
     height: 3.5rem;
 
     svg {
-      padding: 0;
+      padding: 0.5rem;
     }
   `};
 `;

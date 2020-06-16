@@ -1,15 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { darken } from 'polished';
-
-export const colors = {
-  primaryCold: '#ffefce',
-  primary: '#e79d02',
-  secondary: '#342716',
-  secondaryCold: '#665642',
-  secondaryDark: darken(0.05, '#342716'),
-  white: '#fff',
-  gray: '#ccc',
-};
 
 const GlobalStyles = createGlobalStyle`
   html, body, div, span, applet, object, iframe,

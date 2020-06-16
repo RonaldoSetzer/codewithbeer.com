@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   color: var(--side-font);
@@ -21,12 +22,17 @@ export const Button = styled.a`
   display: flex;
   align-items: center;
   padding: 0.2rem 1rem;
-  font-size: 100%;
+  font-size: 1rem;
 
   &:hover {
     background-color: var(--side-background);
     color: var(--side-font-highlight);
   }
+
+  ${media.lessThan('large')`
+    font-size: 0.9rem;
+    padding: 0.1rem 1rem;
+  `}
 `;
 
 export const Content = styled.div`
@@ -41,6 +47,7 @@ export const Link = styled(GatsbyLink)`
   transition: color: 0.5s;
   text-decoration: none;
   align-items: center;
+  color: var(--side-font);
 
   div {
     border-left:1px solid var(--side-background-cold);
@@ -55,4 +62,9 @@ export const Link = styled(GatsbyLink)`
     background-color: var(--side-links-background);
     color: var(--side-font-highlight);
   }
+
+  ${media.lessThan('large')`
+    font-size: 0.9rem;
+    padding: 0 1.8rem;
+  `}
 `;
