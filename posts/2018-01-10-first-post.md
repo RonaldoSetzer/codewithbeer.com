@@ -4,6 +4,7 @@ title: First Post
 description: First Post about nothing just creating some unuseful content
 tags: [TypeScript, JavaScript]
 category: Vim 4 Noobs
+cover: '/assets/img/cover.png'
 ---
 
 # RobotlegsJS <img src="https://raw.githubusercontent.com/RobotlegsJS/RobotlegsJS/master/media/robotlegs.png" width="30" height="30" />
