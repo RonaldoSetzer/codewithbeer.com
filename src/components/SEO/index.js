@@ -23,7 +23,9 @@ function SEO({ description, lang, meta, title, image }) {
   const metaDescription = description || site.siteMetadata.description;
 
   const url = site.siteMetadata.siteUrl;
-  const ogImage = `${url}${image || '/assets/img/cover.png'}`;
+  const ogImage = image
+    ? `${url}${image}`
+    : 'https://raw.githubusercontent.com/RonaldoSetzer/codewithbeer.com/master/static/assets/img/cover.png';
 
   return (
     <Helmet
