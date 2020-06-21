@@ -23,7 +23,7 @@ collections:
           widget: 'datetime',
           format: 'YYYY-MM-DD hh:mm:ss',
         }
-      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Category', name: 'category', widget: 'string', required: false }
       - { label: 'Tags', name: 'tags', widget: 'list' }
-      - { label: 'Cover', name: 'cover', widget: 'image' }
+      - { label: 'Cover', name: 'cover', widget: 'image', required: false }
       - { label: 'Body', name: 'body', widget: 'markdown' }
