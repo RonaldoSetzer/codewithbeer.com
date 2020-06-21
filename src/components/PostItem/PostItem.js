@@ -19,7 +19,7 @@ function PostItem({ title, date, description, tags, timeToRead, slug }) {
         <Tags>
           {tags &&
             tags.map(label => (
-              <Tag to={`/tags/${kebab(label.toLowerCase())}`}>{label}</Tag>
+              <Tag to={`/tag/${kebab(label.toLowerCase())}`}>{label}</Tag>
             ))}
         </Tags>
         <Link to={slug}>read more...</Link>

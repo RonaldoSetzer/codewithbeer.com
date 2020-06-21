@@ -42,7 +42,7 @@ function SideMenu({ isMenuOpen }) {
   );
   const tags = tagsGroup.map(({ label }) => ({
     label,
-    url: `/tags/${kebabCase(label.toLowerCase())}/`,
+    url: `/tag/${kebabCase(label.toLowerCase())}/`,
   }));
 
   const categories = categoriesGroup.map(({ label }) => ({

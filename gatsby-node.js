@@ -93,7 +93,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     tags.forEach(({ label }) => {
       createPage({
-        path: `/tags/${_.kebabCase(label.toLowerCase())}`,
+        path: `/tag/${_.kebabCase(label.toLowerCase())}`,
         component: tagTemplate,
         context: {
           tag: label,
