@@ -11,6 +11,7 @@ export const MainContainer = styled.div`
 
 export const Highlight = styled.p`
   margin-top: 1rem;
+  margin-bottom: 3rem;
   color: var(--main-font-highlight);
 `;
 
@@ -35,8 +36,8 @@ export const MainContent = styled.section`
     color: var(--main-font);
     font-size: 1.25rem;
     font-weight: 300;
-    line-height: 1.7;
-    letter-spacing: 0.069rem;
+    line-height: 2rem;
+    letter-spacing: 0.003rem;
 
     ${media.lessThan('large')`
       word-break: break-word;

@@ -38,6 +38,7 @@ export const Profile = styled.div`
   p {
     color: var(--side-font-highlight);
     padding: 0rem 2.5rem 0.5rem;
+    line-height: 1.25rem;
     text-align: center;
     white-space: pre-wrap;
   }

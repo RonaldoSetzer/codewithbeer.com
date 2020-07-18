@@ -20,7 +20,9 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   margin-top: 1rem;
-  line-height: 1.2rem;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  letter-spacing: 0.003rem;
 
   p {
     padding: 0.5rem 0 1.5rem;
