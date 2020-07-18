@@ -40,15 +40,20 @@ function SideMenu({ isMenuOpen }) {
       }
     `
   );
-  const tags = tagsGroup.map(({ label }) => ({
-    label,
-    url: `/tag/${kebabCase(label.toLowerCase())}/`,
-  }));
 
-  const categories = categoriesGroup.map(({ label }) => ({
-    label,
-    url: `/category/${kebabCase(label.toLowerCase())}/`,
-  }));
+  const tags = tagsGroup
+    .filter(({ label }) => label)
+    .map(({ label }) => ({
+      label,
+      url: `/tag/${kebabCase(label.toLowerCase())}/`,
+    }));
+
+  const categories = categoriesGroup
+    .filter(({ label }) => label)
+    .map(({ label }) => ({
+      label,
+      url: `/category/${kebabCase(label.toLowerCase())}/`,
+    }));
 
   return (
     <Container isMenuOpen={isMenuOpen}>
