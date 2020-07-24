@@ -15,6 +15,11 @@ export const Highlight = styled.p`
   color: var(--main-font-highlight);
 `;
 
+export const Line = styled.hr`
+  height: 0;
+  border: 1px solid var(--main-background-colorful);
+`;
+
 export const MainContent = styled.section`
   margin: auto;
   max-width: 60rem;
