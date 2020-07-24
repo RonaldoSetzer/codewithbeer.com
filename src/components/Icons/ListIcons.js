@@ -15,6 +15,8 @@ import {
   FaAngleDoubleRight,
   FaLightbulb,
   FaRegLightbulb,
+  FaSteam,
+  FaDiscord,
 } from 'react-icons/fa';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
@@ -29,6 +31,8 @@ const ListIcons = {
   Twitter: FaTwitter,
   Github: FaGithub,
   Linkedin: FaLinkedin,
+  Steam: FaSteam,
+  Discord: FaDiscord,
   FileOutline: FaRegFile,
   File: FaFile,
   ChevronDown: FaChevronDown,
