@@ -1,17 +1,30 @@
 ---
-date: 2020-07-20 0:00:00
 title: Hello World !!!
-description: Hello World!! and welcome to Code with Beer my brand new blog, by the way, who am I? I'm nobody special, just an ordinary software engineer who wants an excuse to write. but let' me introduce myself ...
-cover: ''
-category: ''
-tags: [random]
+description: Hello World!! and welcome to Code with Beer my brand new blog, by
+  the way, who am I? I'm nobody special, just an ordinary software engineer who
+  wants an excuse to write. but let' me introduce myself ...
+date: 2020-07-20T00:00:00.000Z
+category: ""
+tags:
+  - random
+cover: assets/img/cover-hello-world.png
 ---
-
 # Hello World!!!
+
+![Hello World](assets/img/cover-hello-world.png)
 
 Hello World!! and welcome to Code with Beer my brand new blog, by the way, who am I? I'm nobody special, just an ordinary software engineer who wants an excuse to write. but let' me introduce myself
 
-[my cartoon with beer]
+```js
+const me = {
+  "name": "Ronaldo",
+  "lastName": "Santiago",
+  "address": {
+    "country": "Brazil",
+    "city": "Rio de Janeiro",
+  }
+}
+```
 
 My name is Ronaldo Santiago, just someone who loves to stay hours in front of a computer like anyone else, writing several lines of code, killing bugs creating some bugs ^^, sometimes playing some games, sometimes coding some games, and believes me I've been doing this professionally for a long time.
 
@@ -23,5 +36,4 @@ About the content, well, I don't want to be too technical, writing long posts wi
 
 I like to learn things, a new stack, framework, paradigm, frontend, backend, mobile, and also I've become a Vim (ide / terminal text editor) evangelist, so, we have a lot of subjects to talk about. Another thing that probably I will share here in the future is about my experience as a mentor, how I'm been to helping people who have decided to switch careers and want to become a developer, in other words, a total beginner. I will show their progress, frustrations, achievements, how I've been guiding them without losing my sanity.
 
-Considering an intro post, I'm impressed, I have written more than I expect, but don't worry, I promise that into the next post the content will be more interesting. Please, have a seat, and enjoy the blog. Code without moderation. If you drink, don't drive or deploy to production. Wish me luck!
-^^
+Considering an intro post, I'm impressed, I have written more than I expect, but don't worry, I promise that into the next post the content will be more interesting. Please, have a seat, and enjoy the blog. Code without moderation. If you drink, don't drive or deploy to production. Wish me luck! ^^
