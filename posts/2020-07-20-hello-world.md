@@ -1,9 +1,9 @@
 ---
 title: Hello World !!!
-description: Hello World!! and welcome to Code with Beer my brand new blog, by
-  the way, who am I? I'm nobody special, just an ordinary software engineer who
-  wants an excuse to write. but let' me introduce myself ...
-date: 2020-08-11 10:23:34
+description: Hello World!! and welcome to Code with Beer, My name Ronaldo
+  Santiago, just an ordinary software engineer who loves to stay hours in front
+  of a computer, like anyone else...
+date: 2020-08-11T10:23:34.000Z
 category: ""
 tags:
   - random
@@ -13,7 +13,7 @@ cover: assets/img/cover-hello-world.png
 
 ![Hello World](assets/img/cover-hello-world.png)
 
-Hello World!! and welcome to Code with Beer, My name Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, like anyone else, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games. That is me,  so welcome to my blog.
+Hello World!! and welcome to Code with Beer, My name Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, like anyone else, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games. That is me, so welcome to my blog.
 
 ```javascript
 console.log("Hello World !!!");
@@ -28,6 +28,10 @@ const me = {
   },
 }
 ```
+
+On a random day, I was drinking a beer and seizing the triumph moment after spending the whole day reconfiguring my Vim (terminal text editor / my current IDE) I had the uncontrollable desire to share my experiences, how I had created my Vim setup, which plugins I have installed, which the keymaps I have created, and then, I could control my mind, that little spark starts to burn and the answer at the question that no one asked me rises.
+
+> *I should start to write about it. I'm going to create a tech blog.*
 
 **Why create a blog instead of using a popular platform such as Medium or LinkedIn?**
 
