@@ -9,8 +9,6 @@ tags:
   - random
 cover: assets/img/cover-hello-world.png
 ---
-# Hello World!!!
-
 ![Hello World](assets/img/cover-hello-world.png)
 
 Hello World!! and welcome to Code with Beer, My name Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, like anyone else, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games. That is me, so welcome to my blog.
