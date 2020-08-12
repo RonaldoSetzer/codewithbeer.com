@@ -3,7 +3,7 @@ title: Hello World !!!
 description: Hello World!! and welcome to Code with Beer my brand new blog, by
   the way, who am I? I'm nobody special, just an ordinary software engineer who
   wants an excuse to write. but let' me introduce myself ...
-date: 2020-07-20T00:00:00.000Z
+date: 2020-08-11 10:23:34
 category: ""
 tags:
   - random
