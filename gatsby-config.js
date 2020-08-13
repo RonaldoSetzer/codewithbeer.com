@@ -4,7 +4,7 @@ const queries = require('./src/utils/algolia-queries');
 module.exports = {
   siteMetadata: {
     title: `Code With Beer`,
-    description: `Welcome to Code with Beer, just another tech blog. Code without moderation. If you drink, don't drive or deploy to production. ^^`,
+    description: `Welcome to Code with Beer, just another tech blog. Code without moderation.`,
     author: `Ronaldo Santiago`,
     siteUrl: `https://codewithbeer.com`,
   },
