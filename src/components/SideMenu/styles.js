@@ -33,7 +33,7 @@ export const Profile = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 
   p {
     color: var(--side-font-highlight);
@@ -81,10 +81,13 @@ export const Explore = styled.div`
 export const Link = styled(GLink)`
   color: var(--side-font-highlight);
   text-decoration: none;
-  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  strong {
+    font-weight: bold;
+  }
 
   span {
     font-size: 12px;

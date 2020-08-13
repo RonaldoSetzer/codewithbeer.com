@@ -62,9 +62,9 @@ function SideMenu({ isMenuOpen }) {
           <Logo />
         </Link>
         <div>
-          <p>{description.replace(/\.\s/g, '.\n')}</p>
+          <p>{description.replace(/\.\s/g, '. ')}</p>
           <Link to="/about">
-            {author}
+            <strong>{author}</strong>
             <span>(Software Engineer)</span>
           </Link>
         </div>
