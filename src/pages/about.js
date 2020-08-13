@@ -1,6 +1,7 @@
 /* eslint react/no-unescaped-entities: 0 */
 /* eslint react/jsx-one-expression-per-line: 0 */
-import React from 'react';
+import React, { useEffect } from 'react';
+import Prism from 'prismjs';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
@@ -9,8 +10,46 @@ import { MainContainer, MainContent, Line } from '../styles/base';
 import PostTitle from '../components/PostTitle';
 import Contacts from '../components/Contacts';
 
+const code = `
+  const me = {
+    "name": "Ronaldo",
+    "lastName": "Santiago",
+    "nationality": "Brazilian",
+    "address": {
+      "country": "Brazil",
+      "city": "Rio de Janeiro"
+    },
+    "favorite things": {
+      "hobbies": [
+        "ride a bike", "play guitar", "drawing/painting", "study languages",
+        "longboard", "RPG", "Board Games", "Video Games", "watch Formula 1", "Animes"
+      ],
+      "games": [
+        "Final Fantasy VI",
+        "Chrono Trigger",
+        "Super Mario RPG",
+        "Legend of Zelda - A link to the past"
+        ...
+      ],
+      "songs": [
+        "The Police - Message in a Bottle",
+        "Dire Stratis - Sultans of swring",
+        "Foo Fighters - Everlong",
+      ],
+      "bands": ["Midnight Oil", "The Pillows", "Asian Kung fu Generation", "The Killers" ...]
+      "beers": ["Dunkel", "Potter", "Weissbier"],
+      "IDE": ["vim"],
+    }
+  }
+`;
+
 function AboutPage() {
+  useEffect(() => {
+    Prism.highlightAll();
+  });
+
   const linkedin = 'https://www.linkedin.com/in/ronaldo-santiago/';
+
   return (
     <Layout>
       <GlobalStyles />
@@ -26,32 +65,19 @@ function AboutPage() {
                 Ronaldo Santiago
               </a>
             </strong>
-            , I'm just a Brazilian Software Engineer who wants to spend my free
-            time writing random things about life, the universe, and everything.
+            , I'm just a Software Engineer who wants to spend free time writing
+            random things about life, the universe, and everything.
           </p>
           <p>
-            Seriously, write about yourself is very hard. I have no idea what I
-            have to write here. I became a developer just because of games, I
-            already have worked as a game developer, but I had realized that
-            there are a bunch of cool things beyond games. Today I'm curious, I
-            just want to code anything. I've been working as a
-            full-stack/T-Shaped developer with backend, mobile, frontend (my
-            preference).
-          </p>
-          <p>
-            The key to having a healthy life is keeping some time for hobbies. I
-            love coding, playing games but, always when possible, I dedicate
-            some moments to nontechnology hobbies, such as play the guitar,
-            board games, ride a longboard, hike, drawing, paintings, study
-            languages.
-          </p>
-          <p>
-            Just a silly warning, English is not my native language, probably
-            you will find some grammar mistakes here, don't worry, besides, one
-            of the reasons to try to write this blog in English is because I
-            want to reach more people and also, practice makes perfect.
+            Seriously, I don't feel comfortable writing to about myself, so,
+            Let's code a little :)
           </p>
 
+          <div className="gatsby-highlight" data-language="text">
+            <pre className="language-javascript">
+              <code className="language-javascript">{code}</code>
+            </pre>
+          </div>
           <h4>Highlights Skills</h4>
           <ul>
             <li>Experience as FullStack (Frontend, Backend, Mobile).</li>
@@ -72,14 +98,13 @@ function AboutPage() {
           <h4>Languages</h4>
           <ul>
             <li>Portuguese: Native.</li>
-            <li>English: Advanced?</li>
+            <li>English: Advanced.</li>
             <li>German: Beginner.</li>
           </ul>
           <h4>Contacts</h4>
           <p>
-            You can reach me through these platforms if you want to talk about
-            the life, the universe, and everything, or just challenge me to a
-            game.
+            I'm available to talk on these platforms, just to the reminder,
+            LinkedIn for business, and the others for random things.
           </p>
           <Contacts />
           <Line />
