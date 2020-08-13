@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 const Container = styled.div`
-  width: 9rem;
-  height: 9rem;
+  width: 7rem;
+  height: 7rem;
   box-sizing: border-box;
   margin: 1rem;
 
