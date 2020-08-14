@@ -25,8 +25,8 @@ const Title = styled.h2`
 `;
 
 function BlogTags({ data, pageContext: { tag } }) {
-  const { allMarkdownRemark } = data;
-  const postList = allMarkdownRemark.edges;
+  const { allMdx } = data;
+  const postList = allMdx.edges;
 
   return (
     <Layout>
@@ -60,7 +60,7 @@ function BlogTags({ data, pageContext: { tag } }) {
 
 export const query = graphql`
   query($tag: String) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
       limit: 2000

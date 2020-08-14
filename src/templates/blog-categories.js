@@ -25,8 +25,8 @@ const Title = styled.h2`
 `;
 
 function BlogCategories({ data, pageContext: { category } }) {
-  const { allMarkdownRemark } = data;
-  const postList = allMarkdownRemark.edges;
+  const { allMdx } = data;
+  const postList = allMdx.edges;
 
   return (
     <Layout>
@@ -60,7 +60,7 @@ function BlogCategories({ data, pageContext: { category } }) {
 
 export const query = graphql`
   query($category: String) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { category: { in: [$category] } } }
       limit: 2000

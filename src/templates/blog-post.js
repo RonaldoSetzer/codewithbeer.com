@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/Layout';
 import GlobalStyles from '../styles/global';
@@ -14,8 +15,8 @@ function BlogPost({ data }) {
     frontmatter: { title, date, cover, description },
     fields: { slug },
     timeToRead,
-    html,
-  } = data.markdownRemark;
+    body,
+  } = data.mdx;
   return (
     <Layout>
       <GlobalStyles />
@@ -27,7 +28,7 @@ function BlogPost({ data }) {
           {` - ${timeToRead} min read`}
         </Highlight>
         <MainContent>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <MDXRenderer>{body}</MDXRenderer>
         </MainContent>
         <Comments title={title} url={slug} />
       </MainContainer>
@@ -37,8 +38,8 @@ function BlogPost({ data }) {
 
 export const query = graphql`
   query Post($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       timeToRead
       fields {
         slug

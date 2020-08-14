@@ -6,7 +6,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 // Add Slug Field
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({
       node,
       getNode,
@@ -30,9 +30,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return graphql(`
     {
-      postsRemark: allMarkdownRemark(
-        sort: { fields: frontmatter___date, order: DESC }
-      ) {
+      postsRemark: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         edges {
           node {
             id
@@ -50,12 +48,12 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-      tagsGroup: allMarkdownRemark(limit: 2000) {
+      tagsGroup: allMdx(limit: 2000) {
         group(field: frontmatter___tags) {
           label: fieldValue
         }
       }
-      categories: allMarkdownRemark(limit: 2000) {
+      categories: allMdx(limit: 2000) {
         group(field: frontmatter___category) {
           label: fieldValue
         }

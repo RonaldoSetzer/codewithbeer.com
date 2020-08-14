@@ -19,13 +19,13 @@ function SideMenu({ isMenuOpen }) {
   } = useStaticQuery(
     graphql`
       query {
-        tags: allMarkdownRemark {
+        tags: allMdx {
           group(field: frontmatter___tags) {
             label: fieldValue
             totalCount
           }
         }
-        categories: allMarkdownRemark {
+        categories: allMdx {
           group(field: frontmatter___category) {
             label: fieldValue
             totalCount

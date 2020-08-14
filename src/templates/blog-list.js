@@ -18,8 +18,8 @@ const List = styled.div`
 `;
 
 function BlogList({ data, pageContext: { currentPage, numPages } }) {
-  const { allMarkdownRemark } = data;
-  const postList = allMarkdownRemark.edges;
+  const { allMdx } = data;
+  const postList = allMdx.edges;
 
   return (
     <Layout>
@@ -53,7 +53,7 @@ function BlogList({ data, pageContext: { currentPage, numPages } }) {
 
 export const query = graphql`
   query PostList($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       limit: $limit
       skip: $skip
