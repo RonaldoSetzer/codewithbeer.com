@@ -1,9 +1,9 @@
 ---
 title: Hello World !!!
-description: Hello World!! and welcome to Code with Beer, My name Ronaldo
+description: Hello World!! and welcome to Code with Beer, My name is Ronaldo
   Santiago, just an ordinary software engineer who loves to stay hours in front
-  of a computer, like anyone else...
-date: 2020-08-11T10:23:34.000Z
+  of a computer, writing several lines of code...
+date: 2020-08-17 09:00:00
 category: ""
 tags:
   - random
