@@ -45,4 +45,4 @@ The act of writing is magic and allow us to improve our soft and hard skills. Th
 
 Probably something about technology. I mean, I'm a developer and we are always learning something, a new framework, a programming language, a new stack, a new context, a new paradigm, and you feel so excited that your first impulse is to share everything that you are learning, like me, or I will just seize the place to fulfill my necessity to share ideas, thoughts, projects, the evolution of a hobby, or just write about random things.
 
-To an intro post, I'm impressed, I wrote more than I expect, of course, it was just the beginning, I promise that the next post the content is gonne be more interesting. Please, have a seat and enjoy the blog. Code without moderation. If you drink, don't drive or deploy to production. Wish me luck! ^^
+To an intro post, I'm impressed, I wrote more than I expect, of course, it was just the beginning, I promise that the next post the content is gonna be more interesting. Please, have a seat and enjoy the blog. Code without moderation. If you drink, don't drive or deploy to production. Wish me luck! ^^
