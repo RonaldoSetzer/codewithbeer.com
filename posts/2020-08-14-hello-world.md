@@ -3,13 +3,13 @@ title: Hello World !!!
 description: Hello World!! and welcome to Code with Beer, My name is Ronaldo
   Santiago, just an ordinary software engineer who loves to stay hours in front
   of a computer, writing several lines of code, killing bugs, ...
-date: 2020-08-17 04:05:02
+date: 2020-08-17T04:05:02.000Z
 category: ""
 tags:
   - random
-cover: assets/img/cover-hello-world.png
+cover: /assets/img/cover-hello-world.png
 ---
-![Hello World](assets/img/cover-hello-world.png)
+![Hello World](/assets/img/cover-hello-world.png "Hello World")
 
 Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.
 
@@ -29,7 +29,7 @@ const me = {
 
 On a random day, when I was drinking a beer and seizing the triumph moment after spending the whole day reconfiguring my Vim (terminal text editor / my current IDE) I had the uncontrollable desire to share my experiences, how I had created my Vim setup, which plugins I have installed, which the keymaps I have, and all of sudden, I couldn't control my mind, that little spark started to burn and the answer to the question no one asked me rises.
 
-> _I should start to write about it. I'm going to create a tech blog._
+> *I should start to write about it. I'm going to create a tech blog.*
 
 **Why create a blog instead of using a popular platform such as Medium or LinkedIn?**
 
