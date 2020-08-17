@@ -37,12 +37,12 @@ The answer is quite simple. I'm a developer, a developer who likes coding and is
 
 **What the reason behind the necessity to write?**
 
-In the beginning of my career (a long long time ago, 2007) I had a blog, a laboratory, a place which I used to teach things that I was learning in that period (game development ), the experience was amazing and then I realized that I was retaining more knowledge than usual, improving my skills at each blog post, in other words, I was not only learning fast but also helping others to learn.
+In the beginning of my career (a long long time ago, 2007) I had a blog, a laboratory, a place which I used to teach things that I was learning in that period (game development), the experience was amazing and then I realized that I was retaining more knowledge than usual, improving my skills at each blog post, in other words, I was not only learning fast but also helping others to learn.
 
 The act of writing is magic and allow us to improve our soft and hard skills. Think about it, you don't want to make mistakes so you will dive into the subject until you feel good enough to teach and, at the same time, you are improving your written and communication skills, everyone wins.
 
 **how about the content of this blog?**
 
-Probably something about technology. I mean, I'm a developer and we are always learning something, a new framework, a programming language, a new stack, a new context, a new paradigm, and you feel so excited that your first impulse is to share everything that you are learning, like me, or I will just seize the place to fulfill my necessity to share ideas, thoughts, projects, the evolution of a hobby, or just write about random things.
+I guess something about technology. I mean, It's a little bit obvious, I'm a dev, probably I willseize the place to fulfill my necessity to share ideas, projects, the evolution of a hobby, or just write about random things. A curious thing is that when I'm learning something I feel so excited that my first thought is to share everything.
 
 To an intro post, I'm impressed, I wrote more than I expect, of course, it was just the beginning, I promise that the next post the content is gonna be more interesting. Please, have a seat and enjoy the blog. Code without moderation. If you drink, don't drive or deploy to production. Wish me luck! ^^
