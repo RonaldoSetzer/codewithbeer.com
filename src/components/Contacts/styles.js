@@ -1,8 +1,22 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   display: flex;
   justify-items: flex-start;
+
+  div + div {
+    margin-left: 0.5rem;
+  }
+
+  ${media.lessThan('large')`
+    flex-direction: column;
+
+    div + div {
+      margin-top: 0.5rem;
+      margin-left: 0;
+    }
+  `}
 `;
 
 export const Button = styled.div`
@@ -14,7 +28,6 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  margin-right: 1rem;
 
   svg {
     margin-right: 0.5rem;
