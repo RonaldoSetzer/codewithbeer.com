@@ -91,6 +91,9 @@ export const MainContent = styled.section`
   blockquote {
     padding: 0 1.875rem;
     margin: 3.125rem auto;
+    font-style: italic;
+    border-left: 5px solid var(--main-background-colorful);
+    background-color: var(--main-background-cold);
   }
 
   hr {
