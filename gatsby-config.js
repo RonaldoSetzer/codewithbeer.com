@@ -94,5 +94,11 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify-cms`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-169830049-1`,
+      },
+    },
   ],
 };
