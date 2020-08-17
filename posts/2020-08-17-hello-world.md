@@ -7,9 +7,9 @@ date: 2020-08-17T04:05:02.000Z
 category: ""
 tags:
   - random
-cover: /assets/img/cover-hello-world.png
+cover: /assets/img/hello-world-cover.png
 ---
-![Hello World](/assets/img/cover-hello-world.png "Hello World")
+![Hello World](/assets/img/hello-world-cover.png "Hello World")
 
 Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.
 
