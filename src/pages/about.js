@@ -9,6 +9,7 @@ import GlobalStyles from '../styles/global';
 import { MainContainer, MainContent, Line } from '../styles/base';
 import PostTitle from '../components/PostTitle';
 import Contacts from '../components/Contacts';
+import Avatar from '../components/Avatar';
 
 const code = `
   const me = {
@@ -56,8 +57,9 @@ function AboutPage() {
       <SEO title="About" />
       <MainContainer>
         <PostTitle title="About me" />
+        <Avatar />
+
         <MainContent>
-          <p />
           <p>
             Hello World!! My name is &nbsp;
             <strong>
@@ -68,16 +70,15 @@ function AboutPage() {
             , I'm just a Software Engineer who wants to spend free time writing
             random things about life, the universe, and everything.
           </p>
-          <p>
-            Seriously, I don't feel comfortable writing to about myself, so,
-            Let's code a little :)
-          </p>
+
+          <p>Let's code a little about me :)</p>
 
           <div className="gatsby-highlight" data-language="text">
             <pre className="language-javascript">
               <code className="language-javascript">{code}</code>
             </pre>
           </div>
+
           <h4>Highlights Skills</h4>
           <ul>
             <li>Experience as FullStack (Frontend, Backend, Mobile).</li>
@@ -95,18 +96,22 @@ function AboutPage() {
             </li>
             <li>Currently, studying Functional Paradigm with Clojure.</li>
           </ul>
+
           <h4>Languages</h4>
           <ul>
             <li>Portuguese: Native.</li>
             <li>English: Advanced.</li>
             <li>German: Beginner.</li>
           </ul>
+
           <h4>Contacts</h4>
           <p>
             I'm available to talk on these platforms, just to the reminder,
             LinkedIn for business, and the others for random things.
           </p>
+
           <Contacts />
+
           <Line />
         </MainContent>
       </MainContainer>
