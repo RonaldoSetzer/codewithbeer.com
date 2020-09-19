@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle`
   dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video, main {
     margin: 0;
@@ -22,14 +22,14 @@ const GlobalStyles = createGlobalStyle`
     vertical-align: baseline;
   }
 
-  article, aside, details, figcaption, figure, 
+  article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section, main {
     display: block;
   }
 
   body {
     line-height: 1;
-    font-family:  Roboto, Helvetica, Arial, sans-serif;
+    font-family:  'Baloo 2', Helvetica, Arial, sans-serif;
   }
 
   body.dark {
@@ -52,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
     --side-icons: #e79d02;
     --side-font: #fff;
     --side-font-highlight: #ffefce;
-    
+
     // Social
     --social-background: #100c07;
     --social-links: #665642;
@@ -82,7 +82,7 @@ const GlobalStyles = createGlobalStyle`
     --side-icons: #e79d02;
     --side-font: #ffefce;
     --side-font-highlight: #ffefce;
-    
+
     // Social
     --social-background: #100c07;
     --social-links: #665642;
