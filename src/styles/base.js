@@ -111,7 +111,7 @@ export const MainContent = styled.section`
   }
 
   h1 {
-    font-size: 2.8rem;
+    font-size: 2rem;
 
     ${media.lessThan('large')`
       font-size: 1.875rem;
@@ -119,7 +119,7 @@ export const MainContent = styled.section`
   }
 
   h2 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
 
     ${media.lessThan('large')`
       font-size: 1.375rem;
