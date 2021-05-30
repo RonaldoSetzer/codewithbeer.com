@@ -56,11 +56,11 @@ export const List = styled.ul`
 `;
 
 export const Separator = styled.div`
-  border-bottom: 2px solid var(--side-background);
+  border-bottom: 5px solid var(--side-menu-background);
   width: 70%;
 
   ${media.lessThan('large')`
-    border-right: 2px solid var(--side-background);
+    border-right: 2px solid var(--side-menu-background);
     border-bottom: none;
     height: 50%;
     width:0;

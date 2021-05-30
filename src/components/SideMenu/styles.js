@@ -10,11 +10,10 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   width: 300px;
-  background-color: var(--side-background);
+  background-color: var(--side-menu-background);
   padding-left: 3rem;
   position: fixed;
   height: 100vh;
-  color: var(--side-font);
 
   ${media.lessThan('large')`
     padding-top: 5rem;
@@ -36,7 +35,6 @@ export const Profile = styled.div`
   padding-bottom: 1rem;
 
   p {
-    color: var(--side-font-highlight);
     padding: 0rem 2.5rem 0.5rem;
     line-height: 1.25rem;
     text-align: center;
@@ -56,19 +54,18 @@ export const Profile = styled.div`
 `;
 
 export const Chevron = styled(ChevronDown)`
-  color: var(--side-font);
+  color: var(--side-menu-foreground);
   padding: 0.5rem;
 `;
 
-export const Title = styled.h2`
-  background-color: var(--side-background-cold);
-  color: var(--side-font);
+export const Title = styled.h5`
+  background-color: var(--side-menu-highlight-background);
+  color: var(--side-menu-foreground);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   font-weight: bold;
   width: 100%;
-  font-size: 14px;
 `;
 
 export const Explore = styled.div`
@@ -79,8 +76,6 @@ export const Explore = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: var(--side-font-highlight);
-  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +85,6 @@ export const Link = styled(GLink)`
   }
 
   span {
-    font-size: 12px;
     padding: 0 0.2rem;
   }
 `;

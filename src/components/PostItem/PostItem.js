@@ -2,27 +2,24 @@
 import React from 'react';
 import kebab from 'lodash';
 
-import { Container, Tag, Tags, Footer, Content, Link } from './styles';
+import { Container, Tag, Footer, Description, Link } from './styles';
 import PostTitle from '../PostTitle/PostTitle';
 
 function PostItem({ title, date, description, tags, timeToRead, slug }) {
   return (
     <Container>
       <Link to={slug}>
-        <PostTitle date={date} title={title} />
+        <PostTitle date={date} title={title} timeToRead={timeToRead} />
       </Link>
-      <Content>
-        <p>{description}</p>
-        {timeToRead && <span>{`${timeToRead} min read`}</span>}
-      </Content>
+      <Description>
+        {description}
+        <Link to={slug}>read more.</Link>
+      </Description>
       <Footer>
-        <Tags>
-          {tags &&
-            tags.map(label => (
-              <Tag to={`/tag/${kebab(label.toLowerCase())}`}>{label}</Tag>
-            ))}
-        </Tags>
-        <Link to={slug}>read more...</Link>
+        {tags &&
+          tags.map(label => (
+            <Tag to={`/tag/${kebab(label.toLowerCase())}`}>{`#${label}`}</Tag>
+          ))}
       </Footer>
     </Container>
   );

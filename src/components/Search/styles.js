@@ -6,7 +6,7 @@ import Icons from '../Icons/ListIcons';
 const { ChevronRight } = Icons;
 
 export const Chevron = styled(ChevronRight)`
-  color: var(--main-font-colorful);
+  color: var(--primary);
   height: 1rem;
   padding-right: 0.5rem;
 `;
@@ -32,15 +32,14 @@ export const Content = styled.main`
 
   .ais-SearchBox {
     flex-grow: 2;
-    background: var(--main-links-background);
+    background: var(--hover-background);
   }
 
   .ais-SearchBox-input {
     width: 100%;
     border: 2px solid var(--main-background-cold);
-    background-color: var(--side-background);
+    background-color: var(--side-menu-background);
     color: var(--main-background-cold);
-    font-size: 1.2rem;
     padding: 0.2rem 0.5rem;
     outline: none;
     transition: all 0.5s;
@@ -57,12 +56,12 @@ export const Content = styled.main`
 
     &:focus {
       border-color: var(--main-background-colorful);
-      color: var(--main-font-colorful);
+      color: var(--primary);
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 
       &::placeholder {
-        color: var(--main-font-colorful);
+        color: var(--primary);
       }
     }
   }
@@ -86,21 +85,20 @@ export const Content = styled.main`
 
   .ais-Stats {
     padding: 0.2rem 2.5rem 1rem;
-    color: var(--main-font-highlight);
   }
 
   ${media.lessThan('large')`
     .ais-SearchBox-input {
       border: 2px solid var(--main-background-colorful);
-      color: var(--main-font-colorful);
+      color: var(--primary);
 
       &::placeholder {
-        color: var(--main-font-colorful);
+        color: var(--primary);
       }
     }
 
     li>div {
-      width: 100%; 
+      width: 100%;
     }
   `}
 `;

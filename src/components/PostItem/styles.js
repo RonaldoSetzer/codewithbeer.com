@@ -3,13 +3,12 @@ import media from 'styled-media-query';
 import { Link as GLink } from 'gatsby';
 
 export const Container = styled.div`
-  color: var(--main-font);
   display: flex;
   flex-direction: column;
   margin: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid var(--main-background-colorful);
+  border-bottom: 1px solid var(--primary);
   width: 960px;
 
   ${media.lessThan('large')`
@@ -18,51 +17,25 @@ export const Container = styled.div`
   `}
 `;
 
-export const Content = styled.div`
+export const Description = styled.p`
   margin-top: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 1rem;
   line-height: 2rem;
   letter-spacing: 0.003rem;
 
-  p {
-    padding: 0.5rem 0 1.5rem;
+  a {
+    text-decoration: underline;
   }
-
-  span {
-    color: var(--main-font-highlight);
-  }
-
-  ${media.lessThan('large')`
-    span {
-      font-size: 0.8rem;
-    }
-  `}
-`;
-
-export const Tags = styled.div`
-  display: flex;
 `;
 
 export const Tag = styled(GLink)`
-  background-color: var(--main-background-cold);
-  text-decoration: none;
-  padding: 0.5rem;
   margin-right: 0.2rem;
-  font-size: 1rem;
-  color: var(--main-font-light);
-  border: 0;
-  border-radius: 5px;
 
   transition: opacity 0.5s;
 
   :hover {
-    background: var(--main-links);
+    color: var(--primary);
   }
-
-  ${media.lessThan('large')`
-    padding: 0.3rem;
-    font-size: .8rem;
-  `}
 `;
 
 export const Footer = styled.div`
@@ -74,18 +47,11 @@ export const Footer = styled.div`
 
 export const Link = styled(GLink)`
   text-decoration: none;
-  color: var(--main-links);
-  font-weight: bold;
-
   transition: opacity 0.5s;
 
   :hover {
-    color: var(--main-font-highlight);
-    background: var(--main-links-background);
+    color: var(--primary);
+    background: var(--hover-background);
     opacity: 0.8;
   }
-
-  ${media.lessThan('large')`
-    font-size: .8rem;
-  `}
 `;

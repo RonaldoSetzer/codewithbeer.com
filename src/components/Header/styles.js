@@ -7,17 +7,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid var(--side-background-cold);
+  border-bottom: 1px solid var(--side-menu-highlight-background);
   background-color: var(--social-background);
   width: 100vw;
   z-index: 1200;
   position: fixed;
-
-  h1 {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--social-font-colorful);
-  }
 
   svg {
     width: 2rem;
@@ -36,16 +30,21 @@ export const Container = styled.div`
   ${media.greaterThan('large')`
     display: none;
   `};
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 `;
 
 export const Link = styled(GLink)`
   color: var(--social-font-highlight);
   text-decoration: none;
   display: flex;
-  font-size: 12px;
+  font-size: 0.9rem;
+  text-align: center;
 
   span {
-    font-size: 12px;
     padding: 0 0.2rem;
   }
 `;

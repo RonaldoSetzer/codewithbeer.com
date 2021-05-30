@@ -17,8 +17,7 @@ const List = styled.div`
 `;
 
 const Title = styled.h2`
-  color: var(--main-font-colorful);
-  font-size: 2.1rem;
+  color: var(--primary);
   font-weight: 700;
   margin: 2rem 1rem 3rem;
   border-bottom: 2px solid var(--main-background-colorful);

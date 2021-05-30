@@ -2,20 +2,16 @@
 import React from 'react';
 import { Container, Time } from './styles';
 
-function PostTitle({ date, title }) {
+function PostTitle({ date, title, timeToRead }) {
   const [day, month, year] = date ? date.split(' ') : [0, 0, 0];
+  const time = `${day}-${month}-${year}`;
   return (
     <Container>
-      {date && (
-        <Time>
-          <span>{day}</span>
-          <div>
-            <p>{month}</p>
-            <p>{year}</p>
-          </div>
-        </Time>
-      )}
       <h1>{title}</h1>
+      <div>
+        {date && <Time>{time}</Time>}
+        {timeToRead && <span>{`• ${timeToRead} min read`}</span>}
+      </div>
     </Container>
   );
 }

@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/Layout';
 import GlobalStyles from '../styles/global';
-import { MainContent, MainContainer, Highlight } from '../styles/base';
+import { MainContent, MainContainer } from '../styles/base';
 import SEO from '../components/SEO';
 import PostTitle from '../components/PostTitle';
 import Comments from '../components/Comments/Comments';
@@ -22,11 +22,7 @@ function BlogPost({ data }) {
       <GlobalStyles />
       <SEO title={title} description={description} image={cover} />
       <MainContainer>
-        <PostTitle date={date} title={title} />
-        <Highlight>
-          <strong>Ronaldo Santiago</strong>
-          {` - ${timeToRead} min read`}
-        </Highlight>
+        <PostTitle date={date} title={title} timeToRead={timeToRead} />
         <MainContent>
           <MDXRenderer>{body}</MDXRenderer>
         </MainContent>

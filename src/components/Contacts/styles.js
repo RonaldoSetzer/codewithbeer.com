@@ -21,10 +21,9 @@ export const Container = styled.div`
 
 export const Button = styled.div`
   background-color: var(--main-background-default);
-  color: var(--main-font-colorful);
+  color: var(--primary);
   border: 0.1rem solid var(--main-background-colorful);
   border-radius: 5px;
-  font-size: 1rem;
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;

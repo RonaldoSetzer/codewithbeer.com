@@ -12,7 +12,6 @@ import { pages } from './content';
 function SideMenu({ isMenuOpen }) {
   const {
     tags: { group: tagsGroup },
-    categories: { group: categoriesGroup },
     site: {
       siteMetadata: { description, author },
     },
@@ -48,13 +47,6 @@ function SideMenu({ isMenuOpen }) {
       url: `/tag/${kebabCase(label.toLowerCase())}/`,
     }));
 
-  const categories = categoriesGroup
-    .filter(({ label }) => label)
-    .map(({ label }) => ({
-      label,
-      url: `/category/${kebabCase(label.toLowerCase())}/`,
-    }));
-
   return (
     <Container isMenuOpen={isMenuOpen}>
       <Profile>
@@ -64,7 +56,7 @@ function SideMenu({ isMenuOpen }) {
         <div>
           <p>{description.replace(/\.\s/g, '. ')}</p>
           <Link to="/about">
-            <strong>{author}</strong>
+            <span>{author}</span>
             <span>(Software Engineer)</span>
           </Link>
         </div>
@@ -76,7 +68,6 @@ function SideMenu({ isMenuOpen }) {
           EXPLORE
         </Title>
         <FolderLinks title={pages.title} links={pages.links} />
-        <FolderLinks title="Series" links={categories} />
         <FolderLinks title="Categories" links={tags} />
       </Explore>
     </Container>

@@ -9,12 +9,6 @@ export const MainContainer = styled.div`
   `}
 `;
 
-export const Highlight = styled.p`
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  color: var(--main-font-highlight);
-`;
-
 export const Line = styled.hr`
   height: 0;
   border: 1px solid var(--main-background-colorful);
@@ -30,16 +24,9 @@ export const MainContent = styled.section`
   `}
 
   p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
   ul,
   ol,
   iframe {
-    color: var(--main-font);
-    font-size: 1.25rem;
     font-weight: 300;
     line-height: 2rem;
     letter-spacing: 0.003rem;
@@ -77,6 +64,7 @@ export const MainContent = styled.section`
   p,
   li {
     code {
+      border: 1px solid #fff;
       word-wrap: break-word;
     }
   }
@@ -92,58 +80,12 @@ export const MainContent = styled.section`
     padding: 0 1.875rem;
     margin: 3.125rem auto;
     font-style: italic;
-    border-left: 5px solid var(--main-background-colorful);
-    background-color: var(--main-background-cold);
+    border-left: 0.5rem solid var(--primary);
+    background-color: var(--code-background);
   }
 
   hr {
     margin: 3rem auto;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    font-weight: 800;
-    letter-spacing: 0.069rem;
-    line-height: 1.4;
-  }
-
-  h1 {
-    font-size: 2rem;
-
-    ${media.lessThan('large')`
-      font-size: 1.875rem;
-    `}
-  }
-
-  h2 {
-    font-size: 1.8rem;
-
-    ${media.lessThan('large')`
-      font-size: 1.375rem;
-    `}
-  }
-
-  h3 {
-    font-size: 1.6rem;
-
-    ${media.lessThan('large')`
-      font-size: 1.125rem;
-    `}
-  }
-
-  h4 {
-    font-size: 1.4rem;
-  }
-
-  h5 {
-    font-size: 1.2rem;
-  }
-
-  strong {
-    font-weight: 700;
   }
 
   .gatsby-resp-image-background-image {
@@ -174,13 +116,11 @@ export const MainContent = styled.section`
   }
 
   a {
-    color: var(--main-font-colorful);
-    text-decoration: none;
     transition: opacity 0.5s;
 
     :hover {
-      color: var(--side-font-highlight);
-      background: var(--main-links-background);
+      color: var(--side-menu-foreground-highlight);
+      background: var(--hover-background);
       opacity: 0.8;
     }
   }

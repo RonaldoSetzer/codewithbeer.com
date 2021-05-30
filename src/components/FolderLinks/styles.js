@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import media from 'styled-media-query';
 
 export const Container = styled.div`
-  color: var(--side-font);
+  color: var(--side-menu-foreground);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -12,25 +12,23 @@ export const Container = styled.div`
     padding: 0.2rem;
     width: 1.1rem;
     height: 1.1rem;
-    color: var(--side-icons);
+    color: var(--primary);
   }
 `;
 
 export const Button = styled.a`
   cursor: pointer;
-  color: var(--side-font);
+  color: var(--side-menu-foreground);
   display: flex;
   align-items: center;
   padding: 0.2rem 1rem;
-  font-size: 1rem;
 
   &:hover {
-    background-color: var(--side-background);
-    color: var(--side-font-highlight);
+    background-color: var(--side-menu-background);
+    color: var(--side-menu-foreground-highlight);
   }
 
   ${media.lessThan('large')`
-    font-size: 0.9rem;
     padding: 0.1rem 1rem;
   `}
 `;
@@ -47,24 +45,23 @@ export const Link = styled(GatsbyLink)`
   transition: color: 0.5s;
   text-decoration: none;
   align-items: center;
-  color: var(--side-font);
+  color: var(--side-menu-foreground);
 
   div {
-    border-left:1px solid var(--side-background-cold);
+    border-left:1px solid var(--side-menu-highlight-background);
     padding-left: 1rem;
   }
-  
+
   &:visited {
-    color: var(--side-font);
+    color: var(--side-menu-foreground);
   }
 
   &:hover {
-    background-color: var(--side-links-background);
-    color: var(--side-font-highlight);
+    background-color: var(--hover-background);
+    color: var(--side-menu-foreground-highlight);
   }
 
   ${media.lessThan('large')`
-    font-size: 0.9rem;
     padding: 0 1.8rem;
   `}
 `;

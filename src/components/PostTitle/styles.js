@@ -2,59 +2,30 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 
 export const Container = styled.div`
-  background-color: var(--main-background-colorful);
-  color: var(--main-font-light);
-  display: flex;
-  flex-direction: row;
+  background-color: var(--main-background);
   height: auto;
-  min-height: 5rem;
-  font-weight: bold;
+  min-height: 4rem;
 
-  h1 {
-    padding: 0 0 0 1rem;
-    font-size: 2rem;
+  div {
     display: flex;
-    align-items: center;
+    color: var(--secondary);
+  }
+
+  span {
+    padding-left: 0.5rem;
   }
 
   ${media.lessThan('large')`
     flex-direction: column;
-    min-height: 9rem;
-    
-    h1 {
-      padding: 1rem;
-    }
   `}
 `;
 
 export const Time = styled.time`
-  background-color: var(--main-background-light);
-  text-transform: uppercase;
   margin: 0px;
-  color: var(--main-font-colorful);
-  padding: 0.5rem 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  span {
-    font-size: 4rem;
-  }
-
-  p {
-    padding-left: 0.4rem;
-  }
+  justify-content: left;
 
   ${media.lessThan('large')`
-    margin: 1rem auto 0 0;
     justify-content: flex-start;
-
-    span {
-      font-size: 1rem;
-    }
-
-    div {
-      display: flex;
-    }
   `}
 `;

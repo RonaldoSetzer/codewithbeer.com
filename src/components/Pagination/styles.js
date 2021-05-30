@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin: 2rem 1rem;
   border-top: 1px solid var(--main-background-colorful);
   border-bottom: 3px solid var(--main-background-colorful);
-  color: var(--main-links);
+  color: var(--primary);
   font-weight: bold;
 
   svg,
@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Link = styled(GLink)`
-  color: var(--main-links);
+  color: var(--primary);
   text-decoration: none;
   display: flex;
   align-items: center;
