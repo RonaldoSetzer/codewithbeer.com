@@ -17,6 +17,7 @@ import {
   FaRegLightbulb,
   FaSteam,
   FaDiscord,
+  FaPalette,
 } from 'react-icons/fa';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
@@ -41,6 +42,7 @@ const ListIcons = {
   ArrowDoubleRight: FaAngleDoubleRight,
   ToggleOn: BsToggleOn,
   ToggleOff: BsToggleOff,
+  Palette: FaPalette,
 };
 
 export default ListIcons;

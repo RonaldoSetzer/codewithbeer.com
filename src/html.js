@@ -47,7 +47,7 @@ export default function HTML(props) {
                 } catch (err) {}
               }
 
-              setTheme(preferredTheme || 'dark');
+              setTheme(preferredTheme || 'kaiser');
             })();
           `,
           }}

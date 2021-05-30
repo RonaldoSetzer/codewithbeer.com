@@ -3,7 +3,8 @@ import { Link } from 'gatsby';
 
 import Icons from '../Icons/ListIcons';
 import Links from './content';
-import ToggleTheme from '../ToggleTheme';
+// import ToggleTheme from '../ToggleTheme';
+import ColorTheme from '../ColorTheme';
 import { Container, List, ListItem, Separator } from './styles';
 
 function SocialLinks() {
@@ -17,7 +18,7 @@ function SocialLinks() {
         <Link to="/search">
           <Search />
         </Link>
-        <ToggleTheme />
+        <ColorTheme />
         <Separator />
         {Links.map(({ label, url }) => {
           const Icon = Icons[label];
