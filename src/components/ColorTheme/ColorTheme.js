@@ -11,7 +11,7 @@ function ColorTheme() {
     window.__onThemeChange = () => setTheme(window.__theme);
   }, []);
 
-  const getNextIndex = index => {
+  const getNextIndex = (index) => {
     if (index === -1) return 0;
 
     const nextIndex = index + 1;

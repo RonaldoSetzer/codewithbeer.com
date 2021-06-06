@@ -34,7 +34,7 @@ export const Button = styled.a`
 `;
 
 export const Content = styled.div`
-  display: ${props => (props.isOpen ? 'flex' : 'none')};
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
   flex-direction: column;
   width: 100%;
 `;

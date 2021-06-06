@@ -58,7 +58,7 @@ function BlogTags({ data, pageContext: { tag } }) {
 }
 
 export const query = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

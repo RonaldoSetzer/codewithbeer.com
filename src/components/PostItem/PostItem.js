@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import kebab from 'lodash';
+import { kebabCase } from 'lodash';
 
 import { Container, Tag, Footer, Description, Link } from './styles';
 import PostTitle from '../PostTitle/PostTitle';
@@ -17,9 +17,12 @@ function PostItem({ title, date, description, tags, timeToRead, slug }) {
       </Description>
       <Footer>
         {tags &&
-          tags.map(label => (
-            <Tag to={`/tag/${kebab(label.toLowerCase())}`}>{`#${label}`}</Tag>
-          ))}
+          tags.map((label) => {
+            const lowerCasedLabel = label.toLowerCase();
+            return (
+              <Tag to={`/tag/${kebabCase(lowerCasedLabel)}`}>{`#${label}`}</Tag>
+            );
+          })}
       </Footer>
     </Container>
   );

@@ -58,7 +58,7 @@ function BlogCategories({ data, pageContext: { category } }) {
 }
 
 export const query = graphql`
-  query($category: String) {
+  query ($category: String) {
     allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { category: { in: [$category] } } }

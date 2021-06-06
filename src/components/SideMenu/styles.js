@@ -22,7 +22,7 @@ export const Container = styled.aside`
     width: 100vw;
     height: 100vh;
     transition: 0.3s ease;
-    transform: ${props =>
+    transform: ${(props) =>
       props.isMenuOpen ? 'translateX(0)' : 'translateX(-100vw)'};
   `};
 `;

@@ -8,7 +8,7 @@ import Logo from '../Logo';
 function Header({ isMenuOpen, setIsMenuOpen }) {
   const { Menu } = Icons;
 
-  const handleMenuOpen = e => {
+  const handleMenuOpen = (e) => {
     e.preventDefault();
     setIsMenuOpen(!isMenuOpen);
   };

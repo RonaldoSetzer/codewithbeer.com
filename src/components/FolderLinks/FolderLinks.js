@@ -8,7 +8,7 @@ function Folderlinks({ title, links = [] }) {
   const { Folder, FileOutline, ChevronDown, ChevronRight } = Icons;
 
   const [isOpen, setIsOpen] = useState(true);
-  const handleVisibility = e => {
+  const handleVisibility = (e) => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };
