@@ -1,0 +1,12 @@
+{
+  "name": "lab-vue",
+  "version": "1.0.0",
+  "exports": {
+    "./hello-vue.vue": "./hello-vue.vue",
+  },
+  "types": "./index.d.ts",
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "vue": "^3.5.14"
+  }
+}
