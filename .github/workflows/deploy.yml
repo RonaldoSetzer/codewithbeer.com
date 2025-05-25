@@ -1,15 +1,19 @@
-name: Deploy to GitHub Pages
+name: Deploy Website
 
 on:
+  # Executa em pushes para main
   push:
-    branches: [ main ]
+    branches: [main]
+  # Permite execução manual
   workflow_dispatch:
 
+# Define permissões necessárias
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Permite apenas uma execução de deploy por vez
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -20,109 +24,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-      
-      # Instalar PNPM globalmente
-      - name: Install PNPM
+        
+      - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 8
-          run_install: false
-      
-      # Habilitar o cache do PNPM
-      - name: Setup PNPM cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.pnpm-store
-            **/node_modules
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-      
-      # Verificar conteúdo do pnpm-workspace.yaml
-      - name: Debug workspace config
-        run: |
-          echo "Content of pnpm-workspace.yaml:"
-          cat pnpm-workspace.yaml
+          version: 8.x
           
-          echo "Structure of the project:"
-          ls -la
-          ls -la apps/
-          ls -la packages/
-      
-      # Definir a aplicação principal a ser implantada
-      - name: Set main app
-        run: echo "MAIN_APP=app-shell" >> $GITHUB_ENV
-      
-      # Instalar dependências do workspace
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
       - name: Install dependencies
         run: pnpm install
-      
-      # Build dos pacotes de laboratório (se tiverem scripts de build)
-      - name: Build lab packages
+        
+      - name: Build app-shell with custom domain
         run: |
-          echo "Checking if lab packages have build scripts..."
+          cd apps/app-shell
+          CUSTOM_DOMAIN=codewithbeer.com pnpm build
+        
+      - name: Create CNAME file
+        run: |
+          echo "codewithbeer.com" > apps/app-shell/dist/CNAME
           
-          if grep -q "\"build\"" "packages/lab-react/package.json"; then
-            echo "Building lab-react package"
-            pnpm --filter "lab-react" build
-          else
-            echo "No build script found for lab-react"
-          fi
-          
-          if grep -q "\"build\"" "packages/lab-vue/package.json"; then
-            echo "Building lab-vue package"
-            pnpm --filter "lab-vue" build
-          else
-            echo "No build script found for lab-vue"
-          fi
-      
-      # Build da aplicação principal
-      - name: Build app-shell
-        run: |
-          echo "Building app-shell..."
-          pnpm --filter "app-shell" build
-      
-      # Verificar se o diretório dist existe antes de continuar
-      - name: Check if dist directory exists
-        run: |
-          if [ -d "apps/$MAIN_APP/dist" ]; then
-            echo "Build output directory exists"
-            echo "Contents of dist directory:"
-            ls -la apps/$MAIN_APP/dist/
-          else
-            echo "Error: Build output directory does not exist"
-            echo "Contents of apps/$MAIN_APP:"
-            ls -la apps/$MAIN_APP
-            exit 1
-          fi
-      
-      # Usar o CNAME da raiz (se existir) ou criar um novo
-      - name: Handle CNAME
-        run: |
-          if [ -f "CNAME" ]; then
-            echo "Using existing CNAME file"
-            cp CNAME apps/$MAIN_APP/dist/
-          else
-            echo "Creating CNAME file"
-            echo "codewithbeer.com" > apps/$MAIN_APP/dist/CNAME
-          fi
-      
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/${{ env.MAIN_APP }}/dist
-
+          path: "./apps/app-shell/dist"
+  
   deploy:
-    needs: build
+    needs: build  # Garante que o build seja executado antes
     runs-on: ubuntu-latest
     environment:
       name: github-pages
