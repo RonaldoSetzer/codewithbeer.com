@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const REPO_NAME = '';
+const REPO_NAME = 'codewithbeer.com';
 
 export default defineConfig({
   site: process.env.CUSTOM_DOMAIN || `https://RonaldoSetzer.github.io`,
