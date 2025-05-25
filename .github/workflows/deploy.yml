@@ -1,4 +1,4 @@
-name: Deploy Astro to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -24,15 +24,95 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
-      - name: Install, build, and upload
-        uses: withastro/action@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: .
-          node-version: 18
-          package-manager: npm
+          node-version: "18"
+          cache: 'npm'
       
-      - name: Create CNAME file
-        run: echo "codewithbeer.com" > ./dist/CNAME
+      # Verificar a estrutura do repositório
+      - name: Debug repository structure
+        run: |
+          echo "Repository structure:"
+          find . -type f -name "package.json" | sort
+      
+      # Definir a aplicação principal a ser implantada
+      - name: Set main app
+        run: echo "MAIN_APP=app-shell" >> $GITHUB_ENV
+      
+      # Instalar dependências na raiz se houver package.json
+      - name: Install root dependencies
+        run: |
+          if [ -f "package.json" ]; then
+            echo "Installing root dependencies..."
+            npm ci
+          else
+            echo "No root package.json found, skipping."
+          fi
+      
+      # Encontrar e construir automaticamente todos os pacotes
+      - name: Build all packages
+        run: |
+          if [ -d "packages" ]; then
+            echo "Packages directory found, building all packages..."
+            for PKG_DIR in packages/*; do
+              if [ -f "$PKG_DIR/package.json" ]; then
+                PACKAGE_NAME=$(basename $PKG_DIR)
+                echo "Building package: $PACKAGE_NAME"
+                cd $PKG_DIR
+                npm ci
+                if grep -q "\"build\"" package.json; then
+                  echo "Running build script for $PACKAGE_NAME"
+                  npm run build
+                else
+                  echo "No build script found for $PACKAGE_NAME"
+                fi
+                cd ../..
+              fi
+            done
+          else
+            echo "No packages directory found, skipping package builds."
+          fi
+      
+      # Encontrar e construir automaticamente todos os apps
+      - name: Build all apps
+        run: |
+          if [ -d "apps" ]; then
+            echo "Apps directory found, building all apps..."
+            for APP_DIR in apps/*; do
+              if [ -f "$APP_DIR/package.json" ]; then
+                APP_NAME=$(basename $APP_DIR)
+                echo "Building app: $APP_NAME"
+                cd $APP_DIR
+                npm ci
+                if grep -q "\"build\"" package.json; then
+                  echo "Running build script for $APP_NAME"
+                  npm run build
+                else
+                  echo "No build script found for $APP_NAME"
+                fi
+                cd ../..
+              fi
+            done
+          else
+            echo "No apps directory found."
+          fi
+      
+      # Usar o CNAME da raiz (se existir) ou criar um novo
+      - name: Handle CNAME
+        run: |
+          if [ -f "CNAME" ]; then
+            echo "Using existing CNAME file"
+            cp CNAME apps/$MAIN_APP/dist/
+          else
+            echo "Creating CNAME file"
+            echo "codewithbeer.com" > apps/$MAIN_APP/dist/CNAME
+          fi
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/${{ env.MAIN_APP }}/dist
 
   deploy:
     needs: build
@@ -41,6 +121,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
