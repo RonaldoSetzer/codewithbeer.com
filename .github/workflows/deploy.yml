@@ -28,74 +28,81 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache: 'npm'
       
-      # Verificar a estrutura do repositório
-      - name: Debug repository structure
+      # Instalar PNPM globalmente
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: false
+      
+      # Habilitar o cache do PNPM
+      - name: Setup PNPM cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pnpm-store
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+      
+      # Verificar conteúdo do pnpm-workspace.yaml
+      - name: Debug workspace config
         run: |
-          echo "Repository structure:"
-          find . -type f -name "package.json" | sort
+          echo "Content of pnpm-workspace.yaml:"
+          cat pnpm-workspace.yaml
+          
+          echo "Structure of the project:"
+          ls -la
+          ls -la apps/
+          ls -la packages/
       
       # Definir a aplicação principal a ser implantada
       - name: Set main app
         run: echo "MAIN_APP=app-shell" >> $GITHUB_ENV
       
-      # Instalar dependências na raiz se houver package.json
-      - name: Install root dependencies
+      # Instalar dependências do workspace
+      - name: Install dependencies
+        run: pnpm install
+      
+      # Build dos pacotes de laboratório (se tiverem scripts de build)
+      - name: Build lab packages
         run: |
-          if [ -f "package.json" ]; then
-            echo "Installing root dependencies..."
-            npm ci
+          echo "Checking if lab packages have build scripts..."
+          
+          if grep -q "\"build\"" "packages/lab-react/package.json"; then
+            echo "Building lab-react package"
+            pnpm --filter "lab-react" build
           else
-            echo "No root package.json found, skipping."
+            echo "No build script found for lab-react"
+          fi
+          
+          if grep -q "\"build\"" "packages/lab-vue/package.json"; then
+            echo "Building lab-vue package"
+            pnpm --filter "lab-vue" build
+          else
+            echo "No build script found for lab-vue"
           fi
       
-      # Encontrar e construir automaticamente todos os pacotes
-      - name: Build all packages
+      # Build da aplicação principal
+      - name: Build app-shell
         run: |
-          if [ -d "packages" ]; then
-            echo "Packages directory found, building all packages..."
-            for PKG_DIR in packages/*; do
-              if [ -f "$PKG_DIR/package.json" ]; then
-                PACKAGE_NAME=$(basename $PKG_DIR)
-                echo "Building package: $PACKAGE_NAME"
-                cd $PKG_DIR
-                npm ci
-                if grep -q "\"build\"" package.json; then
-                  echo "Running build script for $PACKAGE_NAME"
-                  npm run build
-                else
-                  echo "No build script found for $PACKAGE_NAME"
-                fi
-                cd ../..
-              fi
-            done
-          else
-            echo "No packages directory found, skipping package builds."
-          fi
+          echo "Building app-shell..."
+          pnpm --filter "app-shell" build
       
-      # Encontrar e construir automaticamente todos os apps
-      - name: Build all apps
+      # Verificar se o diretório dist existe antes de continuar
+      - name: Check if dist directory exists
         run: |
-          if [ -d "apps" ]; then
-            echo "Apps directory found, building all apps..."
-            for APP_DIR in apps/*; do
-              if [ -f "$APP_DIR/package.json" ]; then
-                APP_NAME=$(basename $APP_DIR)
-                echo "Building app: $APP_NAME"
-                cd $APP_DIR
-                npm ci
-                if grep -q "\"build\"" package.json; then
-                  echo "Running build script for $APP_NAME"
-                  npm run build
-                else
-                  echo "No build script found for $APP_NAME"
-                fi
-                cd ../..
-              fi
-            done
+          if [ -d "apps/$MAIN_APP/dist" ]; then
+            echo "Build output directory exists"
+            echo "Contents of dist directory:"
+            ls -la apps/$MAIN_APP/dist/
           else
-            echo "No apps directory found."
+            echo "Error: Build output directory does not exist"
+            echo "Contents of apps/$MAIN_APP:"
+            ls -la apps/$MAIN_APP
+            exit 1
           fi
       
       # Usar o CNAME da raiz (se existir) ou criar um novo
