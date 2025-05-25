@@ -30,7 +30,7 @@ env:
   CUSTOM_DOMAIN: ${{ github.event.inputs.domain || 'codewithbeer.com' }}
 
 jobs:
-  discover-and-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
