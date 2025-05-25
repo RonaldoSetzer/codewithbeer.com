@@ -8,8 +8,19 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const REPO_NAME = '';
+
 export default defineConfig({
-  integrations: [react(), vue()],
+  site: process.env.CUSTOM_DOMAIN || `https://RonaldoSetzer.github.io`,
+  base: process.env.CUSTOM_DOMAIN ? '/' : `/${REPO_NAME}/`,
+  outDir: 'dist',
+  build: {
+    assets: 'assets',
+  },
+  integrations: [
+    react(), 
+    vue()
+  ],
   vite: {
     resolve: {
       alias: {
