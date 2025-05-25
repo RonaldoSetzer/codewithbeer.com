@@ -223,7 +223,7 @@ jobs:
           path: ${{ steps.check_build.outputs.build_dir }}
   
   deploy:
-    needs: discover-and-build
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -231,4 +231,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v1
