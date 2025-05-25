@@ -1,25 +1,36 @@
 name: Deploy Website
 
 on:
-  # Executa em pushes para main
   push:
     branches: [main]
-  # Permite execução manual
   workflow_dispatch:
+    inputs:
+      app_path:
+        description: 'Path to the app to deploy (relative to the root)'
+        required: false
+        default: 'apps/app-shell'
+      domain:
+        description: 'Custom domain to use (leave empty for GitHub Pages default)'
+        required: false
+        default: 'codewithbeer.com'
 
-# Define permissões necessárias
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permite apenas uma execução de deploy por vez
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  # Default app path can be overridden by workflow_dispatch input
+  APP_PATH: ${{ github.event.inputs.app_path || 'apps/app-shell' }}
+  # Default domain can be overridden by workflow_dispatch input
+  CUSTOM_DOMAIN: ${{ github.event.inputs.domain || 'codewithbeer.com' }}
+
 jobs:
-  build:
+  discover-and-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,26 +46,184 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+
+      - name: Detect project structure
+        id: detect_project
+        run: |
+          # Check if the APP_PATH exists
+          if [ ! -d "${{ env.APP_PATH }}" ]; then
+            echo "⚠️ Specified app path does not exist: ${{ env.APP_PATH }}"
+            echo "Attempting to discover available apps..."
+            
+            # Try to find apps directory
+            if [ -d "apps" ]; then
+              FIRST_APP=$(find apps -maxdepth 1 -type d | grep -v "^apps$" | head -n 1)
+              if [ -n "$FIRST_APP" ]; then
+                echo "📂 Found app: $FIRST_APP"
+                echo "app_path=$FIRST_APP" >> $GITHUB_OUTPUT
+              else
+                echo "❌ No apps found in apps directory"
+                exit 1
+              fi
+            else
+              # Try to find any package with build script in package.json
+              BUILDABLE_PKG=$(find . -name "package.json" -not -path "*/node_modules/*" -exec grep -l "\"build\":" {} \; | head -n 1)
+              if [ -n "$BUILDABLE_PKG" ]; then
+                PKG_DIR=$(dirname "$BUILDABLE_PKG")
+                echo "📂 Found package with build script: $PKG_DIR"
+                echo "app_path=$PKG_DIR" >> $GITHUB_OUTPUT
+              else
+                echo "❌ No buildable packages found"
+                exit 1
+              fi
+            fi
+          else
+            echo "📂 Using specified app path: ${{ env.APP_PATH }}"
+            echo "app_path=${{ env.APP_PATH }}" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check if the app's package.json exists and has a build script
+          APP_PATH="${{ env.APP_PATH }}"
+          if [ ! -f "$APP_PATH/package.json" ]; then
+            echo "❌ package.json not found in $APP_PATH"
+            exit 1
+          fi
+          
+          if ! grep -q "\"build\":" "$APP_PATH/package.json"; then
+            echo "❌ No build script found in $APP_PATH/package.json"
+            exit 1
+          fi
+          
+          # Check if astro.config.mjs exists
+          if [ -f "$APP_PATH/astro.config.mjs" ]; then
+            echo "✅ Found Astro config"
+            echo "is_astro=true" >> $GITHUB_OUTPUT
+            
+            # Try to detect output directory from astro config
+            if grep -q "outDir:" "$APP_PATH/astro.config.mjs"; then
+              OUT_DIR=$(grep "outDir:" "$APP_PATH/astro.config.mjs" | sed -e "s/.*outDir: *[\'\"]\(.*\)[\'\"]\(,\)\?/\1/")
+              echo "⚙️ Detected output directory from config: $OUT_DIR"
+              echo "out_dir=$OUT_DIR" >> $GITHUB_OUTPUT
+            else
+              echo "⚙️ Using default output directory: dist"
+              echo "out_dir=dist" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "⚠️ No Astro config found, assuming Next.js or other framework"
+            echo "is_astro=false" >> $GITHUB_OUTPUT
+            echo "out_dir=dist" >> $GITHUB_OUTPUT # default fallback
+            
+            # Check if next.config.js exists and try to get output directory
+            if [ -f "$APP_PATH/next.config.js" ]; then
+              if grep -q "distDir:" "$APP_PATH/next.config.js"; then
+                OUT_DIR=$(grep "distDir:" "$APP_PATH/next.config.js" | sed -e "s/.*distDir: *[\'\"]\(.*\)[\'\"]\(,\)\?/\1/")
+                echo "⚙️ Detected Next.js output directory: $OUT_DIR"
+                echo "out_dir=$OUT_DIR" >> $GITHUB_OUTPUT
+              else
+                echo "⚙️ Using default Next.js output directory: .next"
+                echo "out_dir=.next" >> $GITHUB_OUTPUT
+              fi
+            fi
+          fi
+          
+      - name: Display Project Information
+        run: |
+          echo "📋 Project Information:"
+          echo "- App Path: ${{ steps.detect_project.outputs.app_path || env.APP_PATH }}"
+          echo "- Is Astro: ${{ steps.detect_project.outputs.is_astro || 'false' }}"
+          echo "- Output Directory: ${{ steps.detect_project.outputs.out_dir || 'dist' }}"
+          echo "- Custom Domain: ${{ env.CUSTOM_DOMAIN }}"
           
       - name: Install dependencies
         run: pnpm install
-        
-      - name: Build app-shell with custom domain
+      
+      - name: Fix Astro Config (if applicable)
+        if: steps.detect_project.outputs.is_astro == 'true'
         run: |
-          cd apps/app-shell
-          CUSTOM_DOMAIN=codewithbeer.com pnpm build
-        
-      - name: Create CNAME file
-        run: |
-          echo "codewithbeer.com" > apps/app-shell/dist/CNAME
+          APP_PATH="${{ steps.detect_project.outputs.app_path || env.APP_PATH }}"
+          CONFIG_FILE="$APP_PATH/astro.config.mjs"
           
+          # Make sure URL format is correct for CUSTOM_DOMAIN
+          if [ -f "$CONFIG_FILE" ]; then
+            echo "📝 Adding dynamic URL handling to Astro config"
+            
+            # Create temporary file
+            TMP_FILE=$(mktemp)
+            
+            # Add URL format handling to the beginning of the file
+            cat > "$TMP_FILE" << 'EOL'
+          // URL format helper
+          const formatUrl = (url) => {
+            if (!url) return '';
+            return url.startsWith('http') ? url : `https://${url}`;
+          };
+
+          EOL
+
+            # Append the original file
+            cat "$CONFIG_FILE" >> "$TMP_FILE"
+            
+            # Replace site: reference if exists
+            sed -i 's/site: *process\.env\.CUSTOM_DOMAIN/site: formatUrl(process.env.CUSTOM_DOMAIN)/g' "$TMP_FILE"
+            
+            # Check if there's any change
+            if ! diff -q "$TMP_FILE" "$CONFIG_FILE" > /dev/null; then
+              cp "$TMP_FILE" "$CONFIG_FILE"
+              echo "✅ Updated Astro config with URL format handling"
+            else
+              echo "ℹ️ No changes needed to Astro config"
+            fi
+          fi
+        
+      - name: Build app
+        id: build_step
+        run: |
+          APP_PATH="${{ steps.detect_project.outputs.app_path || env.APP_PATH }}"
+          cd "$APP_PATH"
+          
+          # If it's an Astro project, set the CUSTOM_DOMAIN env var
+          if [[ "${{ steps.detect_project.outputs.is_astro }}" == "true" ]]; then
+            CUSTOM_DOMAIN="${{ env.CUSTOM_DOMAIN }}" pnpm build
+          else
+            # For other projects, just run the build script
+            pnpm build
+          fi
+      
+      - name: Check build output
+        id: check_build
+        run: |
+          APP_PATH="${{ steps.detect_project.outputs.app_path || env.APP_PATH }}"
+          OUT_DIR="${{ steps.detect_project.outputs.out_dir || 'dist' }}"
+          BUILD_DIR="$APP_PATH/$OUT_DIR"
+          
+          if [ ! -d "$BUILD_DIR" ]; then
+            echo "❌ Build failed - output directory $OUT_DIR not created"
+            exit 1
+          fi
+          
+          if [ -z "$(ls -A "$BUILD_DIR")" ]; then
+            echo "❌ Build failed - output directory $OUT_DIR is empty"
+            exit 1
+          fi
+          
+          echo "✅ Build successful - output directory contains files"
+          echo "build_dir=$BUILD_DIR" >> $GITHUB_OUTPUT
+
+      - name: Create CNAME file if custom domain specified
+        if: env.CUSTOM_DOMAIN != ''
+        run: |
+          BUILD_DIR="${{ steps.check_build.outputs.build_dir }}"
+          echo "${{ env.CUSTOM_DOMAIN }}" > "$BUILD_DIR/CNAME"
+          echo "📄 Created CNAME file with domain: ${{ env.CUSTOM_DOMAIN }}"
+          cat "$BUILD_DIR/CNAME"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./apps/app-shell/dist"
+          path: ${{ steps.check_build.outputs.build_dir }}
   
   deploy:
-    needs: build  # Garante que o build seja executado antes
+    needs: discover-and-build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
