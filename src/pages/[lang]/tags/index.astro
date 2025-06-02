@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/base-layout.astro';
+
+type SupportedLanguage = 'en' | 'pt';
+export async function getStaticPaths() {
+  const languages: SupportedLanguage[] = ['en', 'pt'];
+  return languages.map(lang => {
+    return {
+      params: { lang },
+      props: { lang }
+    };
+  });
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const posts = await getCollection('blog', ({ id }) => {
+  return id.startsWith(`${lang}/`);
+});
+
+const allTags = posts.flatMap(post => post.data.tags || []);
+const uniqueTags = [...new Set(allTags)];
+
+const sortedTags = uniqueTags.sort();
+
+interface TagCount {
+  [key: string]: number;
+}
+
+const tagCounts = allTags.reduce<TagCount>((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {});
+
+interface LanguageText {
+  [key: string]: string;
+}
+
+const titles: LanguageText = {
+  en: "All Tags",
+  pt: "Todas as Tags",
+};
+
+const descriptions: LanguageText = {
+  en: "Browse all topics on our blog",
+  pt: "Navegue por todos os tópicos do nosso blog",
+};
+
+const title = titles[lang] || titles.en;
+const description = descriptions[lang] || descriptions.en;
+---
+
+<BaseLayout 
+  title={title} 
+  description={description}
+  lang={lang}
+>
+  <header class="tags-header">
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </header>
+
+  <div class="tags-container">
+    <ul class="tag-list">
+      {sortedTags.map(tag => (
+        <li class="tag-item">
+          <a href={`/${lang}/tags/${tag}`} class="tag-link">
+            <span class="tag-name">#{tag}</span>
+            <span class="tag-count">{tagCounts[tag]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .tags-header {
+    margin-bottom: 2rem;
+  }
+  
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tag-item {
+    margin: 0;
+  }
+  
+  .tag-link {
+    display: inline-flex;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .tag-link:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+  }
+  
+  .tag-count {
+    background: #333;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+</style>

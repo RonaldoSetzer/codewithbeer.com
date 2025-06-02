@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/base-layout.astro";
+// import ListLayout from '../../layouts/ListLayout.astro';
+
+export async function getStaticPaths() {
+  return ['en', 'pt'].map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+const posts = await getCollection('blog', ({ id }) => {
+  return id.startsWith(`${lang}/`); 
+});
+
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = extractDateFromId(a.id);
+  const dateB = extractDateFromId(b.id);
+  return dateB.getTime() - dateA.getTime();
+});
+
+const POSTS_PER_PAGE = 10;
+const paginatedPosts = sortedPosts.slice(0, POSTS_PER_PAGE);
+console.log(`Paginated posts for ${lang}:`, paginatedPosts);
+
+function extractDateFromId(id:string){
+  const fileName = id.split('/')[1];
+  const match = fileName.match(/^(\d{4})(\d{2})(\d{2})/);
+  return match ? new Date(`${match[1]}-${match[2]}-${match[3]}`) : new Date(0);
+}
+---
+<BaseLayout lang={lang} title="Code With Beer" description="Latest articles">
+  <ul>{paginatedPosts.map( item => <li>{item.id}</li>)}</ul>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../../layouts/base-layout.astro";
+// import ListLayout from '../../../layouts/ListLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const uniqueTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))];
+  
+  return ['en', 'pt', 'de'].flatMap(lang => 
+    uniqueTags.map(tag => ({
+      params: { lang, tag }
+    }))
+  );
+}
+
+const { lang, tag } = Astro.params;
+
+const posts = await getCollection('blog', ({ data, id }) => {
+  return id.startsWith(`${lang}/`) && (data.tags || []).includes(tag);
+});
+---
+
+<BaseLayout lang={lang} title="Code With Beer" description="Latest articles">
+  <ul>{posts.map( item => <li>{item.id}</li>)}</ul>
+</BaseLayout>

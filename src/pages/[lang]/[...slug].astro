@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/base-layout.astro';
+
+export async function getStaticPaths() {
+  const paths = [];
+  const pages = await getCollection('pages');
+  
+  for (const page of pages) {
+    const [lang, slug] = page.slug.split('/');
+    paths.push({
+      params: { lang, slug },
+      props: { type: 'page', content: page, lang}
+    });
+  }
+  
+  const posts = await getCollection('blog');
+  
+  for (const post of posts) {
+    const [lang, fileName] = post.slug.split('/');
+    const match = fileName.match(/^(\d{4})(\d{2})\d{2}-(.+)$/);
+    
+    if (match) {
+      const [_, year, month, postSlug] = match;
+      const slug = `${year}/${month}/${postSlug}`;
+      paths.push({
+        params: { lang, slug },
+        props: { type: 'post', content: post, lang }
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { content } = Astro.props;
+const { lang } = Astro.params;
+const { Content } = await content.render();
+---
+<BaseLayout title={content.data.title} lang={lang}>.
+  <Content />
+</BaseLayout>

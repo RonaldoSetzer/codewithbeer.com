@@ -1,11 +1,3 @@
 ---
-import HelloReact from "labs/react/hello-react";
-import HelloVue from "labs/vue/hello-vue.vue";
-import BaseLayout from "../layouts/base-layout.astro";
-const pageTitle = "Code With Beer"
+return Astro.redirect('/en/');
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <h2>Bytes and Hops</h2>
-  <HelloReact />
-  <HelloVue />
-</BaseLayout>
