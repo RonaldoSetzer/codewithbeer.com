@@ -1,17 +1,100 @@
 ---
-import Social from "./social.astro"
+const { readingTime } = Astro.props;
+const path = Astro.url.pathname
 ---
-
-<footer>
-  <Social platform="twitter" username="RonaldoSetzer" />
-  <Social platform="github" username="RonaldoSetzer" />
-  <Social platform="youtube" username="codewithbeer" />
+<footer class="post-footer">
+  <div class="statusline">
+    <ul>
+      <li class="mode">
+        <img 
+          src="https://api.iconify.design/pajamas:star.svg?color=%231d2021"
+          alt="star" 
+        />
+      </li>
+      <li>
+        <a 
+          href="https://github.com/RonaldoSetzer/codewithbeer.com/tree/main"
+          class="git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img 
+            src="https://api.iconify.design/pajamas:branch.svg?color=%23ffaf01"
+            alt="Git Branch"
+          />
+          main 
+        </a>
+      </li>
+      <li class="file-type">
+        [markdown] 
+        <img 
+          src="https://api.iconify.design/pajamas:markdown-mark-solid.svg?color=%23FFFFFF" 
+          alt="Markdown" 
+        />
+      </li>
+      <li>
+        {`./codewithbeer.com${path}.md`}
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <img 
+          src="https://api.iconify.design/pajamas:book.svg?color=%23d7d7af" 
+          alt="Reading" 
+        />
+        {readingTime ? `: ${readingTime}` : ''}
+      </li>
+    </ul>
+  </div>
 </footer>
 
 <style>
-  footer {
+  .statusline {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: 2px;
+    padding-right: 1rem;
+    background-color: var(--bg-secondary);
+  }
+  .statusline ul {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    list-style: none;
+    height: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .statusline li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #d7d7af;
+  }
+
+  .statusline li img {
+    width: 1rem;
+    height: 1rem;
+  }
+  .mode {
+    justify-content: center;
+    align-items: center;
+    background-color: #a9b665;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .git {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: #ffaf01;
+    text-decoration: none;
+    border: none;
+    font-size: 0.875rem;
+  }
+  .file-type {
+    color: #FFFFFF !important;
   }
 </style>
