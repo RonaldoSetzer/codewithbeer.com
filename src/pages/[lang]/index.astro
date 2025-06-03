@@ -21,7 +21,6 @@ const sortedPosts = posts.sort((a, b) => {
 
 const POSTS_PER_PAGE = 10;
 const paginatedPosts = sortedPosts.slice(0, POSTS_PER_PAGE);
-console.log(`Paginated posts for ${lang}:`, paginatedPosts);
 
 function extractDateFromId(id:string){
   const fileName = id.split('/')[1];
