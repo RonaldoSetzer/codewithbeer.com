@@ -8,7 +8,7 @@ const CUSTOM_DOMAIN = process.env.CUSTOM_DOMAIN;
 
 export default defineConfig({
   site: CUSTOM_DOMAIN ? `https://${CUSTOM_DOMAIN}`: `https://RonaldoSetzer.github.io`,
-  base: CUSTOM_DOMAIN || '/',
+  base: '/',
   outDir: 'dist',
   build: {
     assets: 'assets',
@@ -22,4 +22,7 @@ export default defineConfig({
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
   },
+  build: {
+    assets: '_assets'
+  }
 });

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/images/logo.svg';
 import Footer from '../components/footer.astro';
 import '../styles/global.css';
 const { title, lang, readingTime } = Astro.props;
@@ -14,7 +16,7 @@ const { title, lang, readingTime } = Astro.props;
   <body>
     <div class="layout-grid">
       <header class="brand-header">
-        <img src="/images/logo.svg" alt="Code with Beer Logo" width="75" height="75">
+        <Image src={logoImage} alt="Code with Beer Logo" width={75} height={75}>
         <span>
           CODE WITH BEER
         </span>
