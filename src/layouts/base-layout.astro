@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import logoImage from '../assets/images/logo.svg';
 import Footer from '../components/footer.astro';
+import Menu from '../components/menu.astro';
 import '../styles/global.css';
 const { title, lang, readingTime } = Astro.props;
 ---
@@ -16,15 +17,13 @@ const { title, lang, readingTime } = Astro.props;
   <body>
     <div class="layout-grid">
       <header class="brand-header">
-        <Image src={logoImage} alt="Code with Beer Logo" width={75} height={75}>
+        <Image src={logoImage} alt="Code with Beer Logo" width={75} height={75} />
         <span>
           CODE WITH BEER
         </span>
       </header>
 
-      <nav class="main-menu">
-        MENU
-      </nav>
+      <Menu />
 
       <main class="post-main">
         <header class="post-header">

@@ -1,0 +1,229 @@
+---
+const { lang } = Astro.params;
+---
+<nav class="main-menu">
+  <ul>
+    <li class="section-toggle">
+      <i class="icon-folder icon" />codewithbeer.com
+    </li>
+    <li class="section-content">
+      <ul>
+        <li>
+          <ul>
+            <li class="section-toggle">
+              <span>├─</span><i class="icon-folder icon" />posts
+            </li>
+            <li class="section-content">
+              <ul>
+                <li>
+                  <span>│</span><span>&nbsp;├─</span
+                  ><i class="icon-folder-closed icon" />recents
+                </li>
+                <li>
+                  <span>│</span><span>&nbsp;└─</span
+                  ><i class="icon-folder-closed icon" />all
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li class="section-toggle">
+              <span>├─</span><i class="icon-folder icon" />pages
+            </li>
+            <li class="section-content">
+              <ul>
+                <li>
+                  <span>│</span><span>&nbsp;├─</span
+                  ><i class="fa-brands--markdown icon" />
+                  <a href="/en/about">about.md</a>
+                </li>
+                <li>
+                  <span>│</span>
+                  <span>&nbsp;└─</span>
+                  <i class="fa-brands--markdown icon" />
+                  <a href="/en/tags">tags.md</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li class="section-toggle">
+              <span>├─</span><i class="icon-folder icon" />languages
+            </li>
+            <li class="section-content">
+              <ul>
+                <li class="selected">
+                  <span>│</span>
+                  <span>&nbsp;├─</span>
+                  <i class="emojione-v1--flag-for-united-states icon" />
+                  <a href="/en">english</a>
+                </li>
+                <li>
+                  <span>│</span>
+                  <span>&nbsp;├─</span>
+                  <i class="emojione-v1--flag-for-germany icon" />
+                  <a href="/de"> german </a>
+                </li>
+                <li>
+                  <span>│</span><span>&nbsp;└─</span>
+                  <i class="emojione-v1--flag-for-brazil icon" />
+                  <a href="/pt"> portuguese </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li class="section-toggle">
+              <span>├─</span><i class="icon-folder icon" />social
+            </li>
+            <li class="section-content">
+              <ul>
+                <li>
+                  <span>│</span><span>&nbsp;├─</span
+                  ><i class="icon-social-github icon" />
+                  <a
+                    href="https://github.com/RonaldoSetzer/"
+                    class="git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github
+                  </a>
+                </li>
+                <li>
+                  <span>│</span><span>&nbsp;├─</span
+                  ><i class="icon-social-linkedin icon" />
+                  <a
+                    href="https://www.linkedin.com/in/ronaldo-santiago/"
+                    class="git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    linked-in
+                  </a>
+                </li>
+                <li>
+                  <span>│</span>
+                  <span>&nbsp;└─</span>
+                  <i class="icon-social-instagram icon" />
+                  <s>instagram</s>
+                </li>
+                <li>
+                  <span>│</span>
+                  <span>&nbsp;└─</span>
+                  <i class="icon-social-youtube icon" />
+                  <s>youtube</s>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><span>└─</span><i class="icon-json icon" />package.json</li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<style>
+  nav ul {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    color: var(--text-color);
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      span {
+        color: var(--border-color);
+      }
+    }
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      border: none;
+      font-weight: 500;
+      flex: 1;
+    }
+  }
+  .selected::after {
+    content: "*";
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 8C119 8 8 119 8 256s111 248 248 248s248-111 248-248S393 8 256 8'/%3E%3C/svg%3E");
+    width: .5rem;
+    height: .5rem;
+    background-color: #d8a657;
+    mask-image: var(--svg);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  nav .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .section-toggle {
+    cursor: pointer;
+    position: relative;
+    color: #d8a657;
+  }
+
+  .section-toggle.collapsed .icon-folder {
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M4.616 19q-.691 0-1.153-.462T3 17.384V6.616q0-.691.463-1.153T4.615 5h4.31q.323 0 .628.13q.305.132.522.349L11.596 7h7.789q.69 0 1.153.463T21 8.616v8.769q0 .69-.462 1.153T19.385 19z'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    mask-image: var(--svg);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .icon-folder {
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h5.175q.4 0 .763.15t.637.425L12 6h9q.425 0 .713.288T22 7t-.288.713T21 8H7.85q-1.55 0-2.7.975T4 11.45V18l1.975-6.575q.2-.65.738-1.037T7.9 10h12.9q1.025 0 1.613.813t.312 1.762l-1.8 6q-.2.65-.737 1.038T19 20z'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    mask-image: var(--svg);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+  }
+  
+  .section-content {
+    max-height: 1000px;
+    overflow: hidden;
+  }
+
+  .section-content ul li {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .section-content.collapsed {
+    max-height: 0;
+  }
+</style>
+<script>
+  document.querySelectorAll('.section-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('collapsed');
+      const content = toggle.nextElementSibling;
+      content?.classList.toggle('collapsed');
+    });
+  });
+</script>
+

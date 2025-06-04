@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from "../../layouts/base-layout.astro";
-// import ListLayout from '../../layouts/ListLayout.astro';
 
 export async function getStaticPaths() {
   return ['en', 'pt'].map(lang => ({ params: { lang } }));
