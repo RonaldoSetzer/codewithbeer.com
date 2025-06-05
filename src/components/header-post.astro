@@ -1,0 +1,72 @@
+---
+const { data, type, title, readingTime } = Astro.props;
+const { lang } = Astro.params;
+
+function slugify(tag:string): string {
+  return tag.toLowerCase().replace(/\s+/g, '-');
+}
+function formatDate(date:Date, lang?:string) {
+  const dateObj = date instanceof Date ? date : new Date(date);
+  
+  return new Intl.DateTimeFormat(lang || 'en', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(dateObj);
+}
+---
+<header class="post-header">
+  <h1>{data?.title || title}</h1>
+  { type === "post" &&
+    <dl class="frontmatter">
+      <span class="separator">---</span>
+      <div>
+        <dt>author:</dt><dd>{data.author}</dd>
+      </div>
+      <div>
+      <dt>date:</dt><dd>{formatDate(data.published_at, lang)}</dd>
+      </div>
+      <div>
+        <dt>reading:</dt><dd>{readingTime}</dd>
+      </div>
+      <div>
+        <dt>tags:</dt>
+        [<dd>
+          {data.tags && data.tags.length > 0 &&
+          data.tags.map((tag:string, index:number) => (
+            <>
+              <a href={`/${lang}/tags/${slugify(tag)}`}>{tag}</a>
+              {index < data.tags.length - 1 && " • "}
+            </>
+          ))
+          }
+          </dd>]
+      </div>
+      <span class="separator">---</span>
+    </dl>
+  }
+</header>
+<style>
+.post-header {
+  padding-bottom: 2rem;
+}
+
+.separator {
+  color: var(--inline-code-color);
+}
+
+.post-header .frontmatter {
+  padding: 0;
+  font-style: italic;
+  color: var(--frontmatter-value-color);
+}
+
+.post-header .frontmatter dt {
+  color: var(--frontmatter-property-color);
+}
+
+.post-header .frontmatter div {
+  display: flex;
+  gap: 0.5rem;
+}
+</style>

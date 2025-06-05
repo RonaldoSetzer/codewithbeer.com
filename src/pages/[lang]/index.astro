@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from "../../layouts/base-layout.astro";
+import { getSlugByPostSlug } from 'utils/common';
 
 export async function getStaticPaths() {
-  return ['en', 'pt'].map(lang => ({ params: { lang } }));
+  return ['en', 'pt', 'de'].map(lang => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params;
@@ -26,7 +27,13 @@ function extractDateFromId(id:string){
   const match = fileName.match(/^(\d{4})(\d{2})(\d{2})/);
   return match ? new Date(`${match[1]}-${match[2]}-${match[3]}`) : new Date(0);
 }
+
 ---
 <BaseLayout lang={lang} title="Code With Beer" description="Latest articles">
-  <ul>{paginatedPosts.map( item => <li>{item.id}</li>)}</ul>
+  <ul>
+    {paginatedPosts.map( item => 
+    <li>
+      <a href=`${getSlugByPostSlug(item.slug)}`>{item.data.title}</a>
+    </li>)}
+  </ul>
 </BaseLayout>

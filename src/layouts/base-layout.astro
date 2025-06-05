@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
-import logoImage from '../assets/images/logo.svg';
 import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
+import HeaderPost from '../components/header-post.astro';
+import HeaderBrand from '../components/header-brand.astro';
 import '../styles/global.css';
-const { title, lang, readingTime } = Astro.props;
+const { title, lang, readingTime, data, type } = Astro.props;
 ---
 <html lang={lang}>
   <head>
@@ -16,20 +16,11 @@ const { title, lang, readingTime } = Astro.props;
   </head>
   <body>
     <div class="layout-grid">
-      <header class="brand-header">
-        <Image src={logoImage} alt="Code with Beer Logo" width={75} height={75} />
-        <span>
-          CODE WITH BEER
-        </span>
-      </header>
-
+      <HeaderBrand />
       <Menu />
 
       <main class="post-main">
-        <header class="post-header">
-          <h1>{title}</h1>
-        </header>
-
+        <HeaderPost data={data} type={type} title={title} readingTime={readingTime}/>
         <div class="post-content">
           <slot />
         </div>

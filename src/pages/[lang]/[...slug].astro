@@ -33,11 +33,10 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { content } = Astro.props;
-const { lang } = Astro.params;
+const { content, type, lang } = Astro.props;
 const { Content } = await content.render();
 const readingTime = getReadingTime( content.body )
 ---
-<BaseLayout title={content.data.title} lang={lang} readingTime={readingTime}>
+<BaseLayout title={content.data.title} type={type} lang={lang} readingTime={readingTime} data={content.data}>
   <Content />
 </BaseLayout>

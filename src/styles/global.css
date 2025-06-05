@@ -20,12 +20,15 @@
   --heading-3-color: #a9b665; /* Yellow-green */
   --heading-4-color: #89b482; /* Lime-ish */
   --heading-5-color: #7daea3; /* Blue-ish */
+
+  --frontmatter-property-color: #7daea3;
+  --frontmatter-value-color: #89b482;
   
   --inline-code-bg: #2a2a2a;
   --inline-code-color: #ce9178;
   --blockquote-color: #76aef1;
   --blockquote-border: #4a6b8c;
-  --link-color: #7fbcff;
+  --link-color: #d8a03c;
   --link-error-color: #f14c4c;
   --task-checkbox-bg: #333333;
   --task-checkbox-checked-bg: #3d7551;
@@ -276,17 +279,6 @@ hr {
     "menu"
     "post-main"
     "post-footer";
-}
-
-.brand-header {
-  display: flex;
-  grid-area: header;
-  padding: 0 1rem;
-  align-items: center;
-  color: #FFFFFF;
-  font-size: 1.5rem;
-  font-weight: 600;
-  border-bottom: 2px solid var(--border-color);
 }
 
 .main-menu {

@@ -13,6 +13,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     author: z.string(),
     lang: z.enum(['en', 'pt']),
+    published_at: z.date(),
     lastUpdated: z.date().optional(),
     tags: z.array(z.string()).optional(),
   })

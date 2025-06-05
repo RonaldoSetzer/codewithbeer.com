@@ -1,7 +1,7 @@
 ---
 title: My First Blog Post
 author: Ronaldo
-lang: en
+lang: de
 description: This is the first post of my new Astro blog.
 image:
     url: 'https://docs.astro.build/assets/rose.webp'

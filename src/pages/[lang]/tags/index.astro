@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/base-layout.astro';
 
-type SupportedLanguage = 'en' | 'pt';
+type SupportedLanguage = 'en' | 'pt' | 'de';
 export async function getStaticPaths() {
-  const languages: SupportedLanguage[] = ['en', 'pt'];
+  const languages: SupportedLanguage[] = ['en', 'pt', 'de'];
   return languages.map(lang => {
     return {
       params: { lang },
@@ -38,11 +38,13 @@ interface LanguageText {
 
 const titles: LanguageText = {
   en: "All Tags",
+  de: "All Tags",
   pt: "Todas as Tags",
 };
 
 const descriptions: LanguageText = {
   en: "Browse all topics on our blog",
+  de: "Browse all topics on our blog",
   pt: "Navegue por todos os tópicos do nosso blog",
 };
 
