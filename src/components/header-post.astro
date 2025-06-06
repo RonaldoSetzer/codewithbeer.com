@@ -1,6 +1,8 @@
 ---
 const { data, type, title, readingTime } = Astro.props;
 const { lang } = Astro.params;
+import { useTranslations } from '../utils/common'
+const t = useTranslations(lang!);
 
 function slugify(tag:string): string {
   return tag.toLowerCase().replace(/\s+/g, '-');
@@ -21,13 +23,13 @@ function formatDate(date:Date, lang?:string) {
     <dl class="frontmatter">
       <span class="separator">---</span>
       <div>
-        <dt>author:</dt><dd>{data.author}</dd>
+        <dt>{t('post.author')}:</dt><dd>{data.author}</dd>
       </div>
       <div>
-      <dt>date:</dt><dd>{formatDate(data.published_at, lang)}</dd>
+      <dt>{t('post.date')}:</dt><dd>{formatDate(data.published_at, lang)}</dd>
       </div>
       <div>
-        <dt>reading:</dt><dd>{readingTime}</dd>
+        <dt>{t('post.reading')}:</dt><dd>{readingTime}</dd>
       </div>
       <div>
         <dt>tags:</dt>

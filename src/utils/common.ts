@@ -1,3 +1,5 @@
+import { defaultLanguage, ui } from '../i18n/ui';
+
 export function getReadingTime(text: string): string {
   const cleanText = text.replace(/<\/?[^>]+(>|$)/g, '');
   const words = cleanText.split(/\s+/).length;
@@ -15,4 +17,11 @@ export function getSlugByPostSlug(slug: string): string {
     return `/${lang}/${year}/${month}/${postSlug}`;
   }
   return ''
+}
+
+export function useTranslations(lang: string) {
+  const language = lang as keyof typeof ui;
+  return function t(key: keyof typeof ui[typeof defaultLanguage]) {
+    return ui[language][key] || ui[defaultLanguage][key];
+  }
 }
