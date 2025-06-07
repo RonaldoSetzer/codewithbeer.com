@@ -36,4 +36,3 @@ export interface PageData {
   slug: string
   frontmatter?: Frontmatter
 }
-

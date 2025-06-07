@@ -1,32 +1,38 @@
 ---
-import { getCollection } from 'astro:content';
-import PagesSlugLayout from '../../layouts/pages-slug-layout.astro';
-import { createPageDataByPost, createPageDataByPage, generateRouteMap } from '../../utils';
+import { getCollection } from "astro:content"
+import PagesSlugLayout from "../../layouts/pages-slug-layout.astro"
+import {
+  createPageDataByPost,
+  createPageDataByPage,
+  generateRouteMap,
+} from "../../utils"
 
 export async function getStaticPaths() {
-  const paths = [];
-  const pages = await getCollection('pages');
-  const posts = await getCollection('blog');
-  const routes = generateRouteMap([...posts, ...pages]);
+  const paths = []
+  const pages = await getCollection("pages")
+  const posts = await getCollection("blog")
+  const routes = generateRouteMap([...posts, ...pages])
 
   for (const item of [...pages, ...posts]) {
-    const pageData = item.collection === 'blog' 
-      ? createPageDataByPost(item) 
-      : createPageDataByPage(item);
+    const pageData =
+      item.collection === "blog"
+        ? createPageDataByPost(item)
+        : createPageDataByPage(item)
     const languages = routes[pageData.slugMaster]
-    pageData.paths = languages;
+    pageData.paths = languages
     const { lang, slug } = pageData
     paths.push({
       params: { lang, slug },
-      props: { page: pageData, content: item }
-    });
+      props: { page: pageData, content: item },
+    })
   }
-  return paths;
+  return paths
 }
 
-const { content, page } = Astro.props;
-const { Content } = await content.render();
+const { content, page } = Astro.props
+const { Content } = await content.render()
 ---
+
 <PagesSlugLayout page={page}>
   <Content />
 </PagesSlugLayout>

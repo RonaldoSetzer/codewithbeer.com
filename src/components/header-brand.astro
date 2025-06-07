@@ -1,26 +1,25 @@
 ---
-import { Image } from 'astro:assets';
-import logoImage from '../assets/images/logo.svg';
-const { lang } = Astro.params;
+import { Image } from "astro:assets"
+import logoImage from "../assets/images/logo.svg"
+const { lang } = Astro.params
 ---
+
 <header class="brand-header">
   <a href={`/${lang}/`} class="brand-link">
     <Image src={logoImage} alt="Code with Beer Logo" width={75} height={75} />
-    <span>
-      CODE WITH BEER
-    </span>
+    <span> CODE WITH BEER </span>
   </a>
 </header>
 
 <style>
-.brand-header a {
-  display: flex;
-  grid-area: header;
-  padding: 0 1rem;
-  align-items: center;
-  color: #FFFFFF;
-  font-size: 1.5rem;
-  font-weight: 600;
-  border-bottom: 2px solid var(--border-color);
-}
+  .brand-header a {
+    display: flex;
+    grid-area: header;
+    padding: 0 1rem;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+  }
 </style>

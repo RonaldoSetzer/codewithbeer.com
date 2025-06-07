@@ -1,12 +1,18 @@
 ---
-import HeaderPost from '../components/header-post.astro';
-import BaseLayout from '../layouts/base-layout.astro';
-import '../styles/global.css';
-const { page } = Astro.props;
-const { frontmatter, type, title, reading, paths } = page;
+import HeaderPost from "../components/header-post.astro"
+import BaseLayout from "../layouts/base-layout.astro"
+import "../styles/global.css"
+const { page } = Astro.props
+const { frontmatter, type, title, reading, paths } = page
 ---
+
 <BaseLayout title={title} paths={paths}>
-  <HeaderPost frontmatter={frontmatter} type={type} title={title} reading={reading} />
+  <HeaderPost
+    frontmatter={frontmatter}
+    type={type}
+    title={title}
+    reading={reading}
+  />
   <div class="post-content">
     <slot />
   </div>

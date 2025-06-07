@@ -1,11 +1,12 @@
 ---
-import Footer from '../components/footer.astro';
-import HeaderBrand from '../components/header-brand.astro';
-import Menu from '../components/menu.astro';
-import '../styles/global.css';
-const { title, paths, reading } = Astro.props;
-const { lang } = Astro.params;
+import Footer from "../components/footer.astro"
+import HeaderBrand from "../components/header-brand.astro"
+import Menu from "../components/menu.astro"
+import "../styles/global.css"
+const { title, paths, reading } = Astro.props
+const { lang } = Astro.params
 ---
+
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
@@ -17,7 +18,7 @@ const { lang } = Astro.params;
   <body>
     <div class="layout-grid">
       <HeaderBrand />
-      <Menu paths={paths}/>
+      <Menu paths={paths} />
       <main class="post-main">
         <slot />
       </main>
@@ -25,5 +26,3 @@ const { lang } = Astro.params;
     </div>
   </body>
 </html>
-
-

@@ -6,9 +6,13 @@ lastUpdated: 2023-11-15
 ---
 
 ## About Code With Beer
+
 ### About Code With Beer
+
 #### About Code With Beer
+
 ##### About Code With Beer
+
 ---
 
 This is **the** `English` _version_ of the <a>about page</a>.
@@ -16,6 +20,7 @@ This is **the** `English` _version_ of the <a>about page</a>.
 - aaaa
 - aaaa
 - aaaa
+
 1. aaaa
 2. aaaa
 3. aaaaa
@@ -26,5 +31,6 @@ const b = "20"
 ```
 
 > I'm Ronaldo bla bla bla bla
-- [ ] Task1 
+
+- [ ] Task1
 - [x] Task2

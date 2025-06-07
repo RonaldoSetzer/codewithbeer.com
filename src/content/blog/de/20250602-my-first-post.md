@@ -6,10 +6,10 @@ slugMaster: my-first-blog-post
 publishedAt: 2022-07-01
 description: This is the first post of my new Astro blog.
 image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "The Astro logo on a dark background with a pink glow."
 lastUpdated: 2025-05-02
-tags: ["obsidian","astro", "blogging", "learning in public"]
+tags: ["obsidian", "astro", "blogging", "learning in public"]
 ---
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -26,6 +26,4 @@ Integer nunc justo, sagittis eu sapien eget, ornare euismod dui. Aenean tristiqu
 
 Generated 5 paragraphs, 416 words, 2840 bytes of Lorem Ipsum
 help@lipsum.com
-Privacy Policy · 
-
-
+Privacy Policy ·

@@ -1,62 +1,75 @@
 ---
-import type { Tag } from 'types';
-import { useTranslations } from '../utils/common'
-const { frontmatter, type, title, reading } = Astro.props;
-const { lang } = Astro.params;
-const t = useTranslations(lang!);
+import type { Tag } from "types"
+import { useTranslations } from "../utils/common"
+const { frontmatter, type, title, reading } = Astro.props
+const { lang } = Astro.params
+const t = useTranslations(lang!)
 ---
+
 <header class="post-header">
   <h1>{frontmatter?.title || title}</h1>
-  { type === "blog" &&
-    <dl class="frontmatter">
-      <span class="separator">---</span>
-      <div>
-        <dt>{t('post.author')}:</dt><dd>{frontmatter.author}</dd>
-      </div>
-      <div>
-      <dt>{t('post.date')}:</dt><dd>{frontmatter.publishedAt}</dd>
-      </div>
-      <div>
-        <dt>{t('post.reading')}:</dt><dd>{reading}</dd>
-      </div>
-      <div>
-        <dt>tags:</dt>
-        [<dd>
-          {frontmatter.tags && frontmatter.tags.length > 0 &&
-          frontmatter.tags.map((tag:Tag, index:number) => (
-            <>
-              <a href={`/${lang}/tags/${tag.slug}`}>{tag.label}</a>
-              {index < frontmatter.tags.length - 1 && " • "}
-            </>
-          ))
-          }
-          </dd>]
-      </div>
-      <span class="separator">---</span>
-    </dl>
+  {
+    type === "blog" && (
+      <dl class="frontmatter">
+        <span class="separator">---</span>
+        <div>
+          <>
+            <dt>{t("post.author")}:</dt>
+            <dd>{frontmatter.author}</dd>
+          </>
+        </div>
+        <div>
+          <>
+            <dt>{t("post.date")}:</dt>
+            <dd>{frontmatter.publishedAt}</dd>
+          </>
+        </div>
+        <div>
+          <>
+            <dt>{t("post.reading")}:</dt>
+            <dd>{reading}</dd>
+          </>
+        </div>
+        <div>
+          <dt>tags:</dt>[
+          <dd>
+            {frontmatter.tags &&
+              frontmatter.tags.length > 0 &&
+              frontmatter.tags.map((tag: Tag, index: number) => (
+                <>
+                  <a href={`/${lang}/tags/${tag.slug}`}>{tag.label}</a>
+                  {index < frontmatter.tags.length - 1 && " • "}
+                </>
+              ))}
+          </dd>
+          ]
+        </div>
+        <span class="separator">---</span>
+      </dl>
+    )
   }
 </header>
 <style>
-.post-header {
-  padding-bottom: 2rem;
-}
+  .post-header {
+    padding-bottom: 2rem;
+  }
 
-.separator {
-  color: var(--inline-code-color);
-}
+  .separator {
+    color: var(--inline-code-color);
+  }
 
-.post-header .frontmatter {
-  padding: 0;
-  font-style: italic;
-  color: var(--frontmatter-value-color);
-}
+  .post-header .frontmatter {
+    padding: 0;
+    font-style: italic;
+    color: var(--frontmatter-value-color);
+  }
 
-.post-header .frontmatter dt {
-  color: var(--frontmatter-property-color);
-}
+  .post-header .frontmatter dt {
+    color: var(--frontmatter-property-color);
+  }
 
-.post-header .frontmatter div {
-  display: flex;
-  gap: 0.5rem;
-}
+  .post-header .frontmatter div {
+    display: flex;
+    gap: 0.5rem;
+  }
 </style>

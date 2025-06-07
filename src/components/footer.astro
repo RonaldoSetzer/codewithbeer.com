@@ -1,35 +1,36 @@
 ---
-const { reading } = Astro.props;
+const { reading } = Astro.props
 const path = Astro.url.pathname
 ---
+
 <footer class="post-footer">
   <div class="statusline">
     <ul>
       <li class="mode">
-        <img 
+        <img
           src="https://api.iconify.design/pajamas:star.svg?color=%231d2021"
-          alt="star" 
+          alt="star"
         />
       </li>
       <li>
-        <a 
+        <a
           href="https://github.com/RonaldoSetzer/codewithbeer.com/tree/main"
           class="git"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img 
+          <img
             src="https://api.iconify.design/pajamas:branch.svg?color=%23ffaf01"
             alt="Git Branch"
           />
-          main 
+          main
         </a>
       </li>
       <li class="file-type">
-        [markdown] 
-        <img 
-          src="https://api.iconify.design/pajamas:markdown-mark-solid.svg?color=%23FFFFFF" 
-          alt="Markdown" 
+        [markdown]
+        <img
+          src="https://api.iconify.design/pajamas:markdown-mark-solid.svg?color=%23FFFFFF"
+          alt="Markdown"
         />
       </li>
       <li>
@@ -38,11 +39,11 @@ const path = Astro.url.pathname
     </ul>
     <ul>
       <li>
-        <img 
-          src="https://api.iconify.design/pajamas:book.svg?color=%23d7d7af" 
-          alt="Reading" 
+        <img
+          src="https://api.iconify.design/pajamas:book.svg?color=%23d7d7af"
+          alt="Reading"
         />
-        {reading ? `: ${reading}` : ''}
+        {reading ? `: ${reading}` : ""}
       </li>
     </ul>
   </div>
@@ -52,7 +53,7 @@ const path = Astro.url.pathname
   .statusline {
     display: flex;
     justify-content: space-between;
-    gap: .5rem;
+    gap: 0.5rem;
     padding: 2px;
     padding-right: 1rem;
     background-color: var(--bg-secondary);
@@ -95,6 +96,6 @@ const path = Astro.url.pathname
     font-size: 0.875rem;
   }
   .file-type {
-    color: #FFFFFF !important;
+    color: #ffffff !important;
   }
 </style>

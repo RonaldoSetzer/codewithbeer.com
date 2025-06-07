@@ -1,4 +1,6 @@
 ---
+
+import { generateBasicPaths } from '../../utils';
 import { getCollection } from 'astro:content';
 import BaseLayout from "../../layouts/base-layout.astro";
 import { getSlugByPostSlug } from 'utils/common';
@@ -27,15 +29,17 @@ function extractDateFromId(id:string){
   const match = fileName.match(/^(\d{4})(\d{2})(\d{2})/);
   return match ? new Date(`${match[1]}-${match[2]}-${match[3]}`) : new Date(0);
 }
+
+const paths = generateBasicPaths('tags');
 ---
-<BaseLayout lang={lang} title="Code With Beer" description="Latest articles">
+<BaseLayout lang={lang} title="Code With Beer" description="Latest articles" paths={paths}>
   <ul>
     {paginatedPosts.map( item => 
     <li>
       <div>
         <h2><a href=`${getSlugByPostSlug(item.slug)}`>{item.data.title}</a></h2><br/>
         {item.data["author"]}<br />
-        {item.data["published_at"]}<br />
+        {item.data["publishedAt"]}<br />
         {item.data["description"]}<br />
         tags: [{item.data["tags"]?.join(" • ")}]<br />
       </div>

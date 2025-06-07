@@ -61,14 +61,14 @@ export function generateTags(tags: string[]): Tag[] {
   })
 }
 
-function formatDate(date:Date, lang?:string) {
-  const dateObj = date instanceof Date ? date : new Date(date);
-  
-  return new Intl.DateTimeFormat(lang || 'en', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }).format(dateObj);
+function formatDate(date: Date, lang?: string) {
+  const dateObj = date instanceof Date ? date : new Date(date)
+
+  return new Intl.DateTimeFormat(lang || "en", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(dateObj)
 }
 
 export function createPageDataByPost<T extends string>(
@@ -102,7 +102,6 @@ export function createPageDataByPost<T extends string>(
   return post
 }
 
-
 export function createPageDataByPage<T extends string>(
   item: CollectionEntry<"pages">
 ): PageData {
@@ -128,31 +127,26 @@ export function createPageDataByPage<T extends string>(
 export function generateRouteMap<T extends string>(
   collectionItems: CollectionEntry<"blog" | "pages">[]
 ): Record<string, LocationPaths> {
-  console.log('collectionItems', collectionItems)
-  const routeMap = collectionItems.reduce(
-    (map, item) => {
-      const path =
-        item.collection === "blog"
-          ? extractPostPath(item.id)
-          : extractPagePath(item.id)
-      const slugMaster = item.data.slugMaster
+  const routeMap = collectionItems.reduce((map, item) => {
+    const path =
+      item.collection === "blog"
+        ? extractPostPath(item.id)
+        : extractPagePath(item.id)
+    const slugMaster = item.data.slugMaster
 
-      if (!slugMaster || !path.lang) return map
-      if (!map[slugMaster]) {
-        map[slugMaster] = {
-          en: undefined,
-          de: undefined,
-          pt: undefined,
-        }
+    if (!slugMaster || !path.lang) return map
+    if (!map[slugMaster]) {
+      map[slugMaster] = {
+        en: undefined,
+        de: undefined,
+        pt: undefined,
       }
+    }
 
-      map[slugMaster][path.lang] = path
+    map[slugMaster][path.lang] = path
 
-      return map
-    },
-    {} as Record<string, LocationPaths>
-  )
-  console.log('routeMap', routeMap)
+    return map
+  }, {} as Record<string, LocationPaths>)
 
   return routeMap
 }

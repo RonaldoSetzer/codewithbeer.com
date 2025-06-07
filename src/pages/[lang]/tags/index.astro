@@ -1,57 +1,57 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/base-layout.astro';
-import { generateBasicPaths } from '../../../utils';
+import { getCollection } from "astro:content"
+import BaseLayout from "../../../layouts/base-layout.astro"
+import { generateBasicPaths } from "../../../utils"
 
-type SupportedLanguage = 'en' | 'pt' | 'de';
+type SupportedLanguage = "en" | "pt" | "de"
 export async function getStaticPaths() {
-  const languages: SupportedLanguage[] = ['en', 'pt', 'de'];
-  return languages.map(lang => {
+  const languages: SupportedLanguage[] = ["en", "pt", "de"]
+  return languages.map((lang) => {
     return {
       params: { lang },
-      props: { lang }
-    };
-  });
+      props: { lang },
+    }
+  })
 }
 
 const { lang } = Astro.params
-const posts = await getCollection('blog', ({ id }) => {
-  return id.startsWith(`${lang}/`);
-});
+const posts = await getCollection("blog", ({ id }) => {
+  return id.startsWith(`${lang}/`)
+})
 
-const allTags = posts.flatMap(post => post.data.tags || []);
-const uniqueTags = [...new Set(allTags)];
+const allTags = posts.flatMap((post) => post.data.tags || [])
+const uniqueTags = [...new Set(allTags)]
 
-const sortedTags = uniqueTags.sort();
+const sortedTags = uniqueTags.sort()
 
 interface TagCount {
-  [key: string]: number;
+  [key: string]: number
 }
 
 const tagCounts = allTags.reduce<TagCount>((acc, tag) => {
-  acc[tag] = (acc[tag] || 0) + 1;
-  return acc;
-}, {});
+  acc[tag] = (acc[tag] || 0) + 1
+  return acc
+}, {})
 
 interface LanguageText {
-  [key: string]: string;
+  [key: string]: string
 }
 
 const titles: LanguageText = {
   en: "All Tags",
   de: "All Tags",
   pt: "Todas as Tags",
-};
+}
 
 const descriptions: LanguageText = {
   en: "Browse all topics on our blog",
   de: "Browse all topics on our blog",
   pt: "Navegue por todos os tópicos do nosso blog",
-};
+}
 
-const title = titles[lang] || titles.en;
-const description = descriptions[lang] || descriptions.en;
-const paths = generateBasicPaths('tags');
+const title = titles[lang] || titles.en
+const description = descriptions[lang] || descriptions.en
+const paths = generateBasicPaths("tags")
 ---
 
 <BaseLayout title={title} paths={paths}>
@@ -62,14 +62,16 @@ const paths = generateBasicPaths('tags');
 
   <div class="tags-container">
     <ul class="tag-list">
-      {sortedTags.map(tag => (
-        <li class="tag-item">
-          <a href={`/${lang}/tags/${tag}`} class="tag-link">
-            <span class="tag-name">#{tag}</span>
-            <span class="tag-count">{tagCounts[tag]}</span>
-          </a>
-        </li>
-      ))}
+      {
+        sortedTags.map((tag) => (
+          <li class="tag-item">
+            <a href={`/${lang}/tags/${tag}`} class="tag-link">
+              <span class="tag-name">#{tag}</span>
+              <span class="tag-count">{tagCounts[tag]}</span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </BaseLayout>
@@ -78,7 +80,7 @@ const paths = generateBasicPaths('tags');
   .tags-header {
     margin-bottom: 2rem;
   }
-  
+
   .tag-list {
     display: flex;
     flex-wrap: wrap;
@@ -86,11 +88,11 @@ const paths = generateBasicPaths('tags');
     list-style: none;
     padding: 0;
   }
-  
+
   .tag-item {
     margin: 0;
   }
-  
+
   .tag-link {
     display: inline-flex;
     align-items: center;
@@ -100,14 +102,16 @@ const paths = generateBasicPaths('tags');
     text-decoration: none;
     color: #333;
     font-size: 0.9rem;
-    transition: background-color 0.2s, transform 0.2s;
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
   }
-  
+
   .tag-link:hover {
     background: #e0e0e0;
     transform: translateY(-2px);
   }
-  
+
   .tag-count {
     background: #333;
     color: white;
