@@ -27,13 +27,18 @@ function extractDateFromId(id:string){
   const match = fileName.match(/^(\d{4})(\d{2})(\d{2})/);
   return match ? new Date(`${match[1]}-${match[2]}-${match[3]}`) : new Date(0);
 }
-
 ---
 <BaseLayout lang={lang} title="Code With Beer" description="Latest articles">
   <ul>
     {paginatedPosts.map( item => 
     <li>
-      <a href=`${getSlugByPostSlug(item.slug)}`>{item.data.title}</a>
+      <div>
+        <h2><a href=`${getSlugByPostSlug(item.slug)}`>{item.data.title}</a></h2><br/>
+        {item.data["author"]}<br />
+        {item.data["published_at"]}<br />
+        {item.data["description"]}<br />
+        tags: [{item.data["tags"]?.join(" • ")}]<br />
+      </div>
     </li>)}
   </ul>
 </BaseLayout>

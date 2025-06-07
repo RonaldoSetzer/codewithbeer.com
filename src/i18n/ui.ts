@@ -6,6 +6,19 @@ export const languages = {
 
 export const defaultLanguage = "en"
 
+export const pagesPaths = {
+  "about": {
+    en: { lang: 'en', slug: 'about', fullpath: '/en/about' },
+    de: { lang: 'de', slug: 'uber-uns', fullpath: '/de/uber-uns' },
+    pt: { lang: 'pt', slug: 'sobre', fullpath: '/pt/sobre' }
+  },
+  "tags": {
+    en: { lang: 'en', slug: 'tags', fullpath: '/en/tags' },
+    de: { lang: 'de', slug: 'tags', fullpath: '/de/tags' },
+    pt: { lang: 'pt', slug: 'tags', fullpath: '/pt/tags' }
+  }
+}
+
 export const ui = {
   en: {
     "nav.posts": "posts",

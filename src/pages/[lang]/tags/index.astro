@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/base-layout.astro';
+import { generateBasicPaths } from '../../../utils';
 
 type SupportedLanguage = 'en' | 'pt' | 'de';
 export async function getStaticPaths() {
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { lang } = Astro.params as { lang: SupportedLanguage };
+const { lang } = Astro.params
 const posts = await getCollection('blog', ({ id }) => {
   return id.startsWith(`${lang}/`);
 });
@@ -50,13 +51,10 @@ const descriptions: LanguageText = {
 
 const title = titles[lang] || titles.en;
 const description = descriptions[lang] || descriptions.en;
+const paths = generateBasicPaths('tags');
 ---
 
-<BaseLayout 
-  title={title} 
-  description={description}
-  lang={lang}
->
+<BaseLayout title={title} paths={paths}>
   <header class="tags-header">
     <h1>{title}</h1>
     <p>{description}</p>

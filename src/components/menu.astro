@@ -1,7 +1,11 @@
 ---
 import { useTranslations } from '../utils/common'
+import { pagesPaths } from '../i18n/ui'
 const { lang } = Astro.params;
+const { paths } = Astro.props;
 const t = useTranslations(lang!);
+const aboutPath = pagesPaths['about'][lang].fullpath;
+const tagsPath = pagesPaths['tags'][lang].fullpath;
 ---
 <nav class="main-menu">
   <ul>
@@ -39,13 +43,13 @@ const t = useTranslations(lang!);
                 <li>
                   <span>│</span><span>&nbsp;├─</span
                   ><i class="fa-brands--markdown icon" />
-                  <a href="/en/about">{`${t('nav.about')}.md`}</a>
+                  <a href={aboutPath}>{`${t('nav.about')}.md`}</a>
                 </li>
                 <li>
                   <span>│</span>
                   <span>&nbsp;└─</span>
                   <i class="fa-brands--markdown icon" />
-                  <a href="/en/tags">{`${t('nav.tags')}.md`}</a>
+                  <a href={tagsPath}>{`${t('nav.tags')}.md`}</a>
                 </li>
               </ul>
             </li>
@@ -58,22 +62,22 @@ const t = useTranslations(lang!);
             </li>
             <li class="section-content">
               <ul>
-                <li class="selected">
+                <li class={ lang==="en" ? "selected": ""}>
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-united-states icon" />
-                  <a href="/en">{t('nav.en')}</a>
+                  <a href={paths['en'].fullpath}>{t('nav.en')}</a>
                 </li>
-                <li>
+                <li class={ lang==="de" ? "selected": ""}>
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-germany icon" />
-                  <a href="/de">{t('nav.de')}</a>
+                  <a href={paths['de'].fullpath}>{t('nav.de')}</a>
                 </li>
-                <li>
+                <li class={ lang==="pt" ? "selected": ""}>
                   <span>│</span><span>&nbsp;└─</span>
                   <i class="emojione-v1--flag-for-brazil icon" />
-                  <a href="/pt">{t('nav.pt')}</a>
+                  <a href={paths['pt'].fullpath}>{t('nav.pt')}</a>
                 </li>
               </ul>
             </li>
@@ -160,12 +164,19 @@ const t = useTranslations(lang!);
       flex: 1;
     }
   }
+  .selected {
+    background-color: var(--bg-secondary);
+  }
+  .selected a {
+    color: var(--heading-3-color);
+    font-weight: 600;
+  }
   .selected::after {
     content: "*";
     --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 8C119 8 8 119 8 256s111 248 248 248s248-111 248-248S393 8 256 8'/%3E%3C/svg%3E");
     width: .5rem;
     height: .5rem;
-    background-color: #d8a657;
+    background-color: var(--heading-3-color);
     mask-image: var(--svg);
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -182,7 +193,8 @@ const t = useTranslations(lang!);
   .section-toggle {
     cursor: pointer;
     position: relative;
-    color: #d8a657;
+    /* color: #d8a657; */
+    color: var(--heading-2-color);
   }
 
   .section-toggle.collapsed .icon-folder {

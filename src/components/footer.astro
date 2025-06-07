@@ -1,5 +1,5 @@
 ---
-const { readingTime } = Astro.props;
+const { reading } = Astro.props;
 const path = Astro.url.pathname
 ---
 <footer class="post-footer">
@@ -42,7 +42,7 @@ const path = Astro.url.pathname
           src="https://api.iconify.design/pajamas:book.svg?color=%23d7d7af" 
           alt="Reading" 
         />
-        {readingTime ? `: ${readingTime}` : ''}
+        {reading ? `: ${reading}` : ''}
       </li>
     </ul>
   </div>

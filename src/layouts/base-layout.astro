@@ -1,10 +1,10 @@
 ---
 import Footer from '../components/footer.astro';
-import Menu from '../components/menu.astro';
-import HeaderPost from '../components/header-post.astro';
 import HeaderBrand from '../components/header-brand.astro';
+import Menu from '../components/menu.astro';
 import '../styles/global.css';
-const { title, lang, readingTime, data, type } = Astro.props;
+const { title, paths, reading } = Astro.props;
+const { lang } = Astro.params;
 ---
 <html lang={lang}>
   <head>
@@ -17,17 +17,13 @@ const { title, lang, readingTime, data, type } = Astro.props;
   <body>
     <div class="layout-grid">
       <HeaderBrand />
-      <Menu />
-
+      <Menu paths={paths}/>
       <main class="post-main">
-        <HeaderPost data={data} type={type} title={title} readingTime={readingTime}/>
-        <div class="post-content">
-          <slot />
-        </div>
+        <slot />
       </main>
-
-      <Footer readingTime={readingTime} />
+      <Footer reading={reading || "--"} />
     </div>
   </body>
 </html>
+
 

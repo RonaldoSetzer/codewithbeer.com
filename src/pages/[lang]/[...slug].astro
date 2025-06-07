@@ -1,42 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/base-layout.astro';
-import { getReadingTime } from 'utils/common';
+import PagesSlugLayout from '../../layouts/pages-slug-layout.astro';
+import { createPageDataByPost, createPageDataByPage, generateRouteMap } from '../../utils';
 
 export async function getStaticPaths() {
   const paths = [];
   const pages = await getCollection('pages');
-  
-  for (const page of pages) {
-    const [lang, slug] = page.slug.split('/');
+  const posts = await getCollection('blog');
+  const routes = generateRouteMap([...posts, ...pages]);
+
+  for (const item of [...pages, ...posts]) {
+    const pageData = item.collection === 'blog' 
+      ? createPageDataByPost(item) 
+      : createPageDataByPage(item);
+    const languages = routes[pageData.slugMaster]
+    pageData.paths = languages;
+    const { lang, slug } = pageData
     paths.push({
       params: { lang, slug },
-      props: { type: 'page', content: page, lang}
+      props: { page: pageData, content: item }
     });
-  }
-  
-  const posts = await getCollection('blog');
-  
-  for (const post of posts) {
-    const [lang, fileName] = post.slug.split('/');
-    const match = fileName.match(/^(\d{4})(\d{2})\d{2}-(.+)$/);
-    
-    if (match) {
-      const [_, year, month, postSlug] = match;
-      const slug = `${year}/${month}/${postSlug}`;
-      paths.push({
-        params: { lang, slug },
-        props: { type: 'post', content: post, lang }
-      });
-    }
   }
   return paths;
 }
 
-const { content, type, lang } = Astro.props;
+const { content, page } = Astro.props;
 const { Content } = await content.render();
-const readingTime = getReadingTime( content.body )
 ---
-<BaseLayout title={content.data.title} type={type} lang={lang} readingTime={readingTime} data={content.data}>
+<PagesSlugLayout page={page}>
   <Content />
-</BaseLayout>
+</PagesSlugLayout>
