@@ -1,6 +1,6 @@
 ---
-title: "About"
-lang: "en"
+title: "Über uns"
+lang: "de"
 slugMaster: about
 lastUpdated: 2023-11-15
 ---

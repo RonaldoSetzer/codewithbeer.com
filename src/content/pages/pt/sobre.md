@@ -1,6 +1,7 @@
 ---
 title: "Sobre"
 lang: "pt"
+slugMaster: about
 lastUpdated: 2023-11-15
 ---
 
