@@ -1,0 +1,40 @@
+---
+import type { Language, PageData } from "types"
+import { useTranslations } from "i18n"
+import Frontmatter from "components/frontmatter.astro"
+import Section from "components/section.astro"
+
+const { lang } = Astro.params
+const language = lang as Language
+const { pages, title } = Astro.props
+const t = useTranslations(language)
+---
+
+<Section title={title}>
+  <ul>
+    {
+      pages.map((item: PageData) => (
+        <li>
+          <h2>
+            <a href={`/${lang}/${item.slug}`}>
+              {item.frontmatter?.title || title}
+            </a>
+          </h2>
+          <Frontmatter
+            fullpath={item.paths[language]?.fullpath}
+            frontmatter={item.frontmatter}
+            title={item.title}
+            reading={item.reading}
+          />
+          {item.frontmatter!.description && (
+            <p>{item.frontmatter!.description}</p>
+          )}
+          <a href={`/${lang}/${item.slug}`} class="read-more">
+            [[{t("nav.read-more")}]]
+          </a>
+          <hr class="separator" />
+        </li>
+      ))
+    }
+  </ul>
+</Section>

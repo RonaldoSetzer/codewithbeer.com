@@ -1,0 +1,12 @@
+---
+import type { Language } from "types"
+import { useTranslations } from "i18n"
+import Section from "components/section.astro"
+
+const { lang } = Astro.params
+const t = useTranslations(lang as Language)
+---
+
+<Section title={t("section.back.title")}>
+  <a onclick="history.back()">[[{t("nav.back")}]]</a>
+</Section>

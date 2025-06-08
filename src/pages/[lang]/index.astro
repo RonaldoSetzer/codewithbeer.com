@@ -1,48 +1,31 @@
 ---
-
-import { generateBasicPaths } from '../../utils';
-import { getCollection } from 'astro:content';
-import BaseLayout from "../../layouts/base-layout.astro";
-import { getSlugByPostSlug } from 'utils/common';
+import { getCollection } from "astro:content"
+import {
+  createPageDataByPost,
+  generateBasicPaths,
+  sortByRecent,
+  generateRouteMap,
+} from "utils"
+import BaseLayout from "layouts/base.layout.astro"
+import PostSection from "components/posts.section.astro"
+import AboutMeSection from "components/about-me.section.astro"
 
 export async function getStaticPaths() {
-  return ['en', 'pt', 'de'].map(lang => ({ params: { lang } }));
+  return ["en", "pt", "de"].map((lang) => ({ params: { lang } }))
 }
 
-const { lang } = Astro.params;
+const { lang } = Astro.params
 
-const posts = await getCollection('blog', ({ id }) => {
-  return id.startsWith(`${lang}/`); 
-});
+const posts = await getCollection("blog", ({ id }) => {
+  return id.startsWith(`${lang}/`)
+})
+const routes = generateRouteMap(posts)
 
-const sortedPosts = posts.sort((a, b) => {
-  const dateA = extractDateFromId(a.id);
-  const dateB = extractDateFromId(b.id);
-  return dateB.getTime() - dateA.getTime();
-});
-
-const POSTS_PER_PAGE = 10;
-const paginatedPosts = sortedPosts.slice(0, POSTS_PER_PAGE);
-
-function extractDateFromId(id:string){
-  const fileName = id.split('/')[1];
-  const match = fileName.match(/^(\d{4})(\d{2})(\d{2})/);
-  return match ? new Date(`${match[1]}-${match[2]}-${match[3]}`) : new Date(0);
-}
-
-const paths = generateBasicPaths('tags');
+const sortedPosts = posts.map(createPageDataByPost).sort(sortByRecent)
+const paths = generateBasicPaths("")
 ---
-<BaseLayout lang={lang} title="Code With Beer" description="Latest articles" paths={paths}>
-  <ul>
-    {paginatedPosts.map( item => 
-    <li>
-      <div>
-        <h2><a href=`${getSlugByPostSlug(item.slug)}`>{item.data.title}</a></h2><br/>
-        {item.data["author"]}<br />
-        {item.data["publishedAt"]}<br />
-        {item.data["description"]}<br />
-        tags: [{item.data["tags"]?.join(" • ")}]<br />
-      </div>
-    </li>)}
-  </ul>
+
+<BaseLayout lang={lang} title="Code With Beer" paths={paths}>
+  <AboutMeSection />
+  <PostSection pages={sortedPosts} title="Blog" />
 </BaseLayout>

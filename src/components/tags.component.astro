@@ -1,0 +1,22 @@
+---
+import type { Tag } from "types"
+
+const { lang } = Astro.params
+const { tags } = Astro.props
+---
+
+<div>
+  <dt>tags:</dt>
+  <dd>
+    [
+    {
+      tags.map(({ slug, label }: Tag, index: number) => (
+        <>
+          <a href={`/${lang}/tags/${slug}`}>{label}</a>
+          {index < tags.length - 1 && " • "}
+        </>
+      ))
+    }
+    ]
+  </dd>
+</div>

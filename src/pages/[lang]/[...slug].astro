@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content"
-import PagesSlugLayout from "../../layouts/pages-slug-layout.astro"
+import PagesSlugLayout from "layouts/pages-slug.layout.astro"
+import BackSection from "components/back.section.astro"
 import {
   createPageDataByPost,
   createPageDataByPage,
   generateRouteMap,
-} from "../../utils"
+} from "utils"
 
 export async function getStaticPaths() {
   const paths = []
@@ -35,4 +36,6 @@ const { Content } = await content.render()
 
 <PagesSlugLayout page={page}>
   <Content />
+  <hr />
+  <BackSection />
 </PagesSlugLayout>

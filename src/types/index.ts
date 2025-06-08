@@ -1,4 +1,4 @@
-export type Language = "en" | "de" | "pt"
+export type Language = 'en' | 'de' | 'pt';
 export type ContentType = "post" | "page"
 
 export interface Tag {
@@ -14,7 +14,7 @@ export interface Path {
 
 export interface Frontmatter {
   title: string
-  publishedAt: string
+  publishedAt: Date
   description: string
   tags: Tag[]
   image?: string
@@ -23,7 +23,9 @@ export interface Frontmatter {
 }
 
 export interface LocationPaths {
-  [key: string]: Path | undefined
+  en: Path 
+  de: Path
+  pt: Path
 }
 
 export interface PageData {

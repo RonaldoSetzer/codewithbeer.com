@@ -1,11 +1,18 @@
 ---
-import { useTranslations } from "../utils/common"
-import { pagesPaths } from "../i18n/ui"
+import type { Language } from "types"
+import { useTranslations, getPagePaths } from "i18n"
+
 const { lang } = Astro.params
-const { paths } = Astro.props
-const t = useTranslations(lang!)
-const aboutPath = pagesPaths["about"][lang].fullpath
-const tagsPath = pagesPaths["tags"][lang].fullpath
+const language = lang as Language
+
+const { currentPaths } = Astro.props
+const path = Astro.url.pathname
+
+const t = useTranslations(language)
+const aboutPath = getPagePaths("about", language)
+const tagsPath = getPagePaths("tags", language)
+const homePath = getPagePaths("home", language)
+const contactPath = getPagePaths("contact", language)
 ---
 
 <nav class="main-menu">
@@ -18,39 +25,31 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
         <li>
           <ul>
             <li class="section-toggle">
-              <span>├─</span><i class="icon-folder icon"></i>{t("nav.posts")}
-            </li>
-            <li class="section-content">
-              <ul>
-                <li>
-                  <span>│</span><span>&nbsp;├─</span><i
-                    class="icon-folder-closed icon"></i>{t("nav.recent")}
-                </li>
-                <li>
-                  <span>│</span><span>&nbsp;└─</span><i
-                    class="icon-folder-closed icon"></i>{t("nav.all")}
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li class="section-toggle">
               <span>├─</span><i class="icon-folder icon"></i>{t("nav.pages")}
             </li>
             <li class="section-content">
               <ul>
-                <li>
+                <li class={path === homePath.fullpath ? "selected" : ""}>
+                  <span>│</span><span>&nbsp;├─</span><i
+                    class="icon-file-html icon"></i>
+                  <a href={homePath.fullpath}>{`${t("pages.home")}.html`}</a>
+                </li>
+                <li class={path === tagsPath.fullpath ? "selected" : ""}>
+                  <span>│</span>
+                  <span>&nbsp;├─</span>
+                  <i class="icon-file-html icon"></i>
+                  <a href={tagsPath.fullpath}>{`${t("pages.tags")}.html`}</a>
+                </li>
+                <li class={path === aboutPath.fullpath ? "selected" : ""}>
                   <span>│</span><span>&nbsp;├─</span><i
                     class="fa-brands--markdown icon"></i>
-                  <a href={aboutPath}>{`${t("nav.about")}.md`}</a>
+                  <a href={aboutPath.fullpath}>{`${t("pages.about")}.md`}</a>
                 </li>
-                <li>
-                  <span>│</span>
-                  <span>&nbsp;└─</span>
-                  <i class="fa-brands--markdown icon"></i>
-                  <a href={tagsPath}>{`${t("nav.tags")}.md`}</a>
+                <li class={path === contactPath.fullpath ? "selected" : ""}>
+                  <span>│</span><span>&nbsp;└─</span><i class="icon-json icon"
+                  ></i>
+                  <a href={contactPath.fullpath}>{`${t("pages.contact")}.js`}</a
+                  >
                 </li>
               </ul>
             </li>
@@ -69,18 +68,18 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-united-states icon"></i>
-                  <a href={paths["en"].fullpath}>{t("nav.en")}</a>
+                  <a href={currentPaths["en"].fullpath}>{t("nav.en")}</a>
                 </li>
                 <li class={lang === "de" ? "selected" : ""}>
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-germany icon"></i>
-                  <a href={paths["de"].fullpath}>{t("nav.de")}</a>
+                  <a href={currentPaths["de"].fullpath}>{t("nav.de")}</a>
                 </li>
                 <li class={lang === "pt" ? "selected" : ""}>
                   <span>│</span><span>&nbsp;└─</span>
                   <i class="emojione-v1--flag-for-brazil icon"></i>
-                  <a href={paths["pt"].fullpath}>{t("nav.pt")}</a>
+                  <a href={currentPaths["pt"].fullpath}>{t("nav.pt")}</a>
                 </li>
               </ul>
             </li>
@@ -119,7 +118,7 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
                 </li>
                 <li>
                   <span>│</span>
-                  <span>&nbsp;└─</span>
+                  <span>&nbsp;├─</span>
                   <i class="icon-social-instagram icon"></i>
                   <s>instagram</s>
                 </li>
@@ -140,19 +139,12 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
 </nav>
 <style>
   nav ul {
-    padding: 0;
-    margin: 0;
     width: 100%;
-    list-style: none;
-    color: var(--text-color);
-
     li {
-      margin: 0;
       padding: 0;
       display: flex;
       align-items: center;
       gap: 0.2rem;
-      border: none;
       span {
         line-height: 19px;
         font-size: 19px;
@@ -163,17 +155,24 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
       color: var(--text-color);
       text-decoration: none;
       border: none;
-      font-weight: 500;
       flex: 1;
     }
   }
+
+  nav .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
   .selected {
     background-color: var(--bg-secondary);
   }
+
   .selected a {
     color: var(--heading-3-color);
     font-weight: 600;
   }
+
   .selected::after {
     content: "*";
     --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M256 8C119 8 8 119 8 256s111 248 248 248s248-111 248-248S393 8 256 8'/%3E%3C/svg%3E");
@@ -188,15 +187,8 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
     -webkit-mask-size: 100% 100%;
   }
 
-  nav .icon {
-    width: 1rem;
-    height: 1rem;
-  }
-
   .section-toggle {
     cursor: pointer;
-    position: relative;
-    /* color: #d8a657; */
     color: var(--heading-2-color);
   }
 
@@ -225,11 +217,6 @@ const tagsPath = pagesPaths["tags"][lang].fullpath
   .section-content {
     max-height: 1000px;
     overflow: hidden;
-  }
-
-  .section-content ul li {
-    margin: 0;
-    line-height: 1.5;
   }
 
   .section-content.collapsed {

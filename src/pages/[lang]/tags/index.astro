@@ -1,7 +1,10 @@
 ---
+import { createPageDataByPost, generateBasicPaths, slugify } from "utils"
 import { getCollection } from "astro:content"
-import BaseLayout from "../../../layouts/base-layout.astro"
-import { generateBasicPaths } from "../../../utils"
+import BaseLayout from "layouts/base.layout.astro"
+import BackSection from "components/back.section.astro"
+import Section from "components/section.astro"
+import type { PageData } from "types"
 
 type SupportedLanguage = "en" | "pt" | "de"
 export async function getStaticPaths() {
@@ -18,106 +21,69 @@ const { lang } = Astro.params
 const posts = await getCollection("blog", ({ id }) => {
   return id.startsWith(`${lang}/`)
 })
-
-const allTags = posts.flatMap((post) => post.data.tags || [])
-const uniqueTags = [...new Set(allTags)]
-
-const sortedTags = uniqueTags.sort()
+const pages = posts.map(createPageDataByPost)
 
 interface TagCount {
-  [key: string]: number
+  [key: string]: PageData[]
 }
+const groupTags = pages.reduce<TagCount>((acc, page) => {
+  if (!page.frontmatter!.tags) return acc
 
-const tagCounts = allTags.reduce<TagCount>((acc, tag) => {
-  acc[tag] = (acc[tag] || 0) + 1
+  const tags = page.frontmatter!.tags
+  for (const tag of tags) {
+    const group = acc[tag.label] || []
+    group.push(page)
+    acc[tag.label] = group
+  }
+
   return acc
 }, {})
 
-interface LanguageText {
-  [key: string]: string
-}
-
-const titles: LanguageText = {
-  en: "All Tags",
-  de: "All Tags",
-  pt: "Todas as Tags",
-}
-
-const descriptions: LanguageText = {
-  en: "Browse all topics on our blog",
-  de: "Browse all topics on our blog",
-  pt: "Navegue por todos os tópicos do nosso blog",
-}
-
-const title = titles[lang] || titles.en
-const description = descriptions[lang] || descriptions.en
 const paths = generateBasicPaths("tags")
 ---
 
-<BaseLayout title={title} paths={paths}>
-  <header class="tags-header">
-    <h1>{title}</h1>
-    <p>{description}</p>
-  </header>
-
-  <div class="tags-container">
-    <ul class="tag-list">
-      {
-        sortedTags.map((tag) => (
-          <li class="tag-item">
-            <a href={`/${lang}/tags/${tag}`} class="tag-link">
-              <span class="tag-name">#{tag}</span>
-              <span class="tag-count">{tagCounts[tag]}</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+<BaseLayout title={"all Tags"} paths={paths}>
+  <BackSection lang={lang} />
+  <Section title={"all tags"}>
+    <div class="tags-container">
+      <div class="tag-list">
+        {
+          Object.keys(groupTags).map((tag) => (
+            <div class="tag-item">
+              <h2>
+                <a href={`/${lang}/tags/${slugify(tag)}`} class="tag-link">
+                  <span class="tag-name">{tag}</span>
+                  <sup class="tag-count">{groupTags[tag].length}</sup>
+                </a>
+              </h2>
+              <ul>
+                {groupTags[tag].map((page) => (
+                  <li>
+                    <a href={`/${lang}/${page.slug}`} class="tag-post-link">
+                      {page.frontmatter!.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <hr />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
 </BaseLayout>
 
 <style>
-  .tags-header {
-    margin-bottom: 2rem;
-  }
-
   .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
     list-style: none;
     padding: 0;
-  }
-
-  .tag-item {
     margin: 0;
+    gap: 10px;
   }
 
-  .tag-link {
-    display: inline-flex;
-    align-items: center;
-    background: #f0f0f0;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9rem;
-    transition:
-      background-color 0.2s,
-      transform 0.2s;
-  }
-
-  .tag-link:hover {
-    background: #e0e0e0;
-    transform: translateY(-2px);
-  }
-
-  .tag-count {
-    background: #333;
-    color: white;
-    border-radius: 9999px;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.75rem;
-    margin-left: 0.5rem;
+  .tag-item ul {
+    list-style-type: square;
+    padding-left: 20px;
   }
 </style>

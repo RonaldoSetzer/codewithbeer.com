@@ -1,4 +1,4 @@
-import { defaultLanguage, ui } from "../i18n/ui"
+import { ui } from "i18n/ui"
 
 export function getReadingTime(text: string): string {
   const cleanText = text.replace(/<\/?[^>]+(>|$)/g, "")
@@ -21,7 +21,7 @@ export function getSlugByPostSlug(slug: string): string {
 
 export function useTranslations(lang: string) {
   const language = lang as keyof typeof ui
-  return function t(key: keyof (typeof ui)[typeof defaultLanguage]) {
-    return ui[language][key] || ui[defaultLanguage][key]
+  return function t(key: keyof (typeof ui)['en']) {
+    return ui[language][key] || ui['en'][key]
   }
 }

@@ -1,0 +1,47 @@
+---
+import type { Tag, Language } from "types"
+import { useTranslations } from "i18n"
+import { formatDate } from "utils"
+
+const { frontmatter, type, title, reading } = Astro.props
+const { lang } = Astro.params
+const t = useTranslations(lang as Language)
+---
+
+<header>
+  <h1>{frontmatter?.title || title}</h1>
+  {
+    type === "blog" && (
+      <dl class="frontmatter">
+        <span class="separator">---</span>
+        <div>
+          <dt>{t("post.author")}:</dt>
+          <dd>{frontmatter.author}</dd>
+        </div>
+        <div>
+          <dt>{t("post.date")}:</dt>
+          <dd>{formatDate(frontmatter.publishedAt, lang)}</dd>
+        </div>
+        <div>
+          <dt>{t("post.reading")}:</dt>
+          <dd>{reading}</dd>
+        </div>
+        <div>
+          <dt>tags:</dt>[
+          <dd>
+            {frontmatter.tags &&
+              frontmatter.tags.length > 0 &&
+              frontmatter.tags.map((tag: Tag, index: number) => (
+                <>
+                  <a href={`/${lang}/tags/${tag.slug}`}>{tag.label}</a>
+                  {index < frontmatter.tags.length - 1 && " • "}
+                </>
+              ))}
+          </dd>
+          ]
+        </div>
+        <span class="separator">---</span>
+      </dl>
+    )
+  }
+</header>

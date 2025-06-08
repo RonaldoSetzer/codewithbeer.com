@@ -1,4 +1,4 @@
-import type { Path, LocationPaths, PageData, ContentType, Tag } from "../types"
+import type { Path, LocationPaths, PageData, ContentType, Tag } from "types"
 import type { CollectionEntry } from "astro:content"
 
 export function slugify(str: string): string {
@@ -61,7 +61,7 @@ export function generateTags(tags: string[]): Tag[] {
   })
 }
 
-function formatDate(date: Date, lang?: string) {
+export function formatDate(date: Date, lang?: string) {
   const dateObj = date instanceof Date ? date : new Date(date)
 
   return new Intl.DateTimeFormat(lang || "en", {
@@ -78,7 +78,7 @@ export function createPageDataByPost<T extends string>(
   const slugMaster = item.data.slugMaster
   const frontmatter = {
     title: item.data.title,
-    publishedAt: formatDate(item.data.publishedAt, path.lang),
+    publishedAt: item.data.publishedAt,
     description: item.data.description,
     tags: generateTags(item.data.tags || []),
     author: item.data.author,
@@ -150,3 +150,10 @@ export function generateRouteMap<T extends string>(
 
   return routeMap
 }
+
+export function sortByRecent(a: PageData, b:PageData): number {
+  const dateA = new Date(a.frontmatter!.publishedAt).getTime();
+  const dateB = new Date(b.frontmatter!.publishedAt).getTime();
+  return dateB - dateA; 
+};
+
