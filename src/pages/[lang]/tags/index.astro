@@ -1,5 +1,5 @@
 ---
-import { createPageDataByPost, generateBasicPaths, slugify } from "utils"
+import { createPageData, generateBasicPaths, slugify, fullpath } from "utils"
 import { getCollection } from "astro:content"
 import BaseLayout from "layouts/base.layout.astro"
 import BackSection from "components/back.section.astro"
@@ -21,7 +21,7 @@ const { lang } = Astro.params
 const posts = await getCollection("blog", ({ id }) => {
   return id.startsWith(`${lang}/`)
 })
-const pages = posts.map(createPageDataByPost)
+const pages = posts.map(createPageData)
 
 interface TagCount {
   [key: string]: PageData[]
@@ -43,35 +43,37 @@ const paths = generateBasicPaths("tags")
 ---
 
 <BaseLayout title={"all Tags"} paths={paths}>
-  <BackSection lang={lang} />
   <Section title={"all tags"}>
     <div class="tags-container">
       <div class="tag-list">
         {
-          Object.keys(groupTags).map((tag) => (
-            <div class="tag-item">
-              <h2>
-                <a href={`/${lang}/tags/${slugify(tag)}`} class="tag-link">
-                  <span class="tag-name">{tag}</span>
-                  <sup class="tag-count">{groupTags[tag].length}</sup>
-                </a>
-              </h2>
-              <ul>
-                {groupTags[tag].map((page) => (
-                  <li>
-                    <a href={`/${lang}/${page.slug}`} class="tag-post-link">
-                      {page.frontmatter!.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <hr />
-            </div>
-          ))
+          Object.keys(groupTags)
+            .sort()
+            .map((tag) => (
+              <div class="tag-item">
+                <h2>
+                  <a href={`/${lang}/tags/${slugify(tag)}`} class="tag-link">
+                    <span class="tag-name">{tag}</span>
+                    <sup class="tag-count">{groupTags[tag].length}</sup>
+                  </a>
+                </h2>
+                <ul>
+                  {groupTags[tag].map((page) => (
+                    <li>
+                      <a href={fullpath(page.slug)} class="tag-post-link">
+                        {page.frontmatter!.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <hr />
+              </div>
+            ))
         }
       </div>
     </div>
   </Section>
+  <BackSection lang={lang} />
 </BaseLayout>
 
 <style>

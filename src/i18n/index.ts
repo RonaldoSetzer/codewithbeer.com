@@ -1,4 +1,4 @@
-import type { Path, Language } from "types"
+import type { Slug, Language } from "types"
 import { pagesPaths, ui } from "./ui"
 
 export function useTranslations(lang: Language) {
@@ -7,7 +7,7 @@ export function useTranslations(lang: Language) {
   }
 }
 
-export function getPagePaths(slugMaster: string, lang: Language): Path {
-  const locationPaths = pagesPaths[slugMaster]
+export function getPagePaths(mslug: string, lang: Language): Slug {
+  const locationPaths = pagesPaths[mslug]
   return locationPaths[lang]
 }

@@ -2,11 +2,7 @@
 import { getCollection } from "astro:content"
 import PagesSlugLayout from "layouts/pages-slug.layout.astro"
 import BackSection from "components/back.section.astro"
-import {
-  createPageDataByPost,
-  createPageDataByPage,
-  generateRouteMap,
-} from "utils"
+import { createPageData, generateRouteMap } from "utils"
 
 export async function getStaticPaths() {
   const paths = []
@@ -15,26 +11,22 @@ export async function getStaticPaths() {
   const routes = generateRouteMap([...posts, ...pages])
 
   for (const item of [...pages, ...posts]) {
-    const pageData =
-      item.collection === "blog"
-        ? createPageDataByPost(item)
-        : createPageDataByPage(item)
-    const languages = routes[pageData.slugMaster]
-    pageData.paths = languages
-    const { lang, slug } = pageData
+    const pageData = createPageData(item)
+    const languages = routes[pageData.slug.mslug]
+    const { lang, slug } = pageData.slug
     paths.push({
       params: { lang, slug },
-      props: { page: pageData, content: item },
+      props: { page: pageData, content: item, paths: languages },
     })
   }
   return paths
 }
 
-const { content, page } = Astro.props
+const { content, page, paths } = Astro.props
 const { Content } = await content.render()
 ---
 
-<PagesSlugLayout page={page}>
+<PagesSlugLayout page={page} currentPaths={paths}>
   <Content />
   <hr />
   <BackSection />

@@ -1,6 +1,7 @@
 ---
 import type { Language } from "types"
 import { useTranslations, getPagePaths } from "i18n"
+import { fullpath } from "utils"
 
 const { lang } = Astro.params
 const language = lang as Language
@@ -9,9 +10,9 @@ const { currentPaths } = Astro.props
 const path = Astro.url.pathname
 
 const t = useTranslations(language)
-const aboutPath = getPagePaths("about", language)
-const tagsPath = getPagePaths("tags", language)
-const homePath = getPagePaths("home", language)
+const aboutPath = fullpath(getPagePaths("about", language))
+const tagsPath = fullpath(getPagePaths("tags", language))
+const homePath = fullpath(getPagePaths("home", language))
 // const contactPath = getPagePaths("contact", language)
 ---
 
@@ -29,21 +30,21 @@ const homePath = getPagePaths("home", language)
             </li>
             <li class="section-content">
               <ul>
-                <li class={path === homePath.fullpath ? "selected" : ""}>
+                <li class={path === homePath ? "selected" : ""}>
                   <span>│</span><span>&nbsp;├─</span><i
                     class="icon-file-html icon"></i>
-                  <a href={homePath.fullpath}>{`${t("pages.home")}.html`}</a>
+                  <a href={homePath}>{`${t("pages.home")}.html`}</a>
                 </li>
-                <li class={path === tagsPath.fullpath ? "selected" : ""}>
+                <li class={path === tagsPath ? "selected" : ""}>
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="icon-file-html icon"></i>
-                  <a href={tagsPath.fullpath}>{`${t("pages.tags")}.html`}</a>
+                  <a href={tagsPath}>{`${t("pages.tags")}.html`}</a>
                 </li>
-                <li class={path === aboutPath.fullpath ? "selected" : ""}>
+                <li class={path === aboutPath ? "selected" : ""}>
                   <span>│</span><span>&nbsp;├─</span><i
                     class="fa-brands--markdown icon"></i>
-                  <a href={aboutPath.fullpath}>{`${t("pages.about")}.md`}</a>
+                  <a href={aboutPath}>{`${t("pages.about")}.md`}</a>
                 </li>
                 <!-- <li class={path === contactPath.fullpath ? "selected" : ""}> -->
                 <!--   <span>│</span><span>&nbsp;└─</span><i class="icon-json icon" -->
@@ -68,18 +69,18 @@ const homePath = getPagePaths("home", language)
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-united-states icon"></i>
-                  <a href={currentPaths["en"].fullpath}>{t("nav.en")}</a>
+                  <a href={fullpath(currentPaths["en"])}>{t("nav.en")}</a>
                 </li>
                 <li class={lang === "de" ? "selected" : ""}>
                   <span>│</span>
                   <span>&nbsp;├─</span>
                   <i class="emojione-v1--flag-for-germany icon"></i>
-                  <a href={currentPaths["de"].fullpath}>{t("nav.de")}</a>
+                  <a href={fullpath(currentPaths["de"])}>{t("nav.de")}</a>
                 </li>
                 <li class={lang === "pt" ? "selected" : ""}>
                   <span>│</span><span>&nbsp;└─</span>
                   <i class="emojione-v1--flag-for-brazil icon"></i>
-                  <a href={currentPaths["pt"].fullpath}>{t("nav.pt")}</a>
+                  <a href={fullpath(currentPaths["pt"])}>{t("nav.pt")}</a>
                 </li>
               </ul>
             </li>

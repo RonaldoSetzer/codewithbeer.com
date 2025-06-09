@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content"
 import {
+  createPageData,
   generateBasicPaths,
-  createPageDataByPost,
   slugify,
   sortByRecent,
 } from "utils"
@@ -29,11 +29,11 @@ const posts = await getCollection("blog", ({ data, id }) => {
   return id.startsWith(`${lang}/`) && (data.tags || []).includes(slugify(tag))
 })
 
-const items = posts.map(createPageDataByPost).sort(sortByRecent)
+const items = posts.map(createPageData).sort(sortByRecent)
 const paths = generateBasicPaths(`tags/${tag}`)
 ---
 
 <BaseLayout title={`Posts tagged with "${tag}"`} paths={paths}>
-  <BackSection />
   <PostSection pages={items} title={tag} />
+  <BackSection />
 </BaseLayout>

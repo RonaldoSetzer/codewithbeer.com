@@ -1,8 +1,4 @@
-import type { LocationPaths } from "types"
-
-export interface PagesPaths {
-  [slugMaster: string]: LocationPaths
-}
+import type { LanguageSlugs } from "types"
 
 export interface UITranslations {
   en: Record<string, string>
@@ -10,26 +6,26 @@ export interface UITranslations {
   pt: Record<string, string>
 }
 
-export const pagesPaths: PagesPaths = {
+export const pagesPaths: Record<string, LanguageSlugs> = {
   about: {
-    en: { lang: "en", slug: "about", fullpath: "/en/about" },
-    de: { lang: "de", slug: "uber-uns", fullpath: "/de/uber-uns" },
-    pt: { lang: "pt", slug: "sobre", fullpath: "/pt/sobre" },
+    en: { lang: "en", slug: "about", mslug: "about" },
+    de: { lang: "de", slug: "uber-uns", mslug: "about" },
+    pt: { lang: "pt", slug: "sobre", mslug: "about" },
   },
   tags: {
-    en: { lang: "en", slug: "tags", fullpath: "/en/tags" },
-    de: { lang: "de", slug: "tags", fullpath: "/de/tags" },
-    pt: { lang: "pt", slug: "tags", fullpath: "/pt/tags" },
+    en: { lang: "en", slug: "tags", mslug: "tags" },
+    de: { lang: "de", slug: "tags", mslug: "tags" },
+    pt: { lang: "pt", slug: "tags", mslug: "tags" },
   },
   home: {
-    en: { lang: "en", slug: "", fullpath: "/en/" },
-    de: { lang: "de", slug: "", fullpath: "/de/" },
-    pt: { lang: "pt", slug: "", fullpath: "/pt/" },
+    en: { lang: "en", slug: "", mslug: "" },
+    de: { lang: "de", slug: "", mslug: "" },
+    pt: { lang: "pt", slug: "", mslug: "" },
   },
   contact: {
-    en: { lang: "en", slug: "contact", fullpath: "/en/contact" },
-    de: { lang: "de", slug: "contact", fullpath: "/de/contact" },
-    pt: { lang: "pt", slug: "contact", fullpath: "/pt/contact" },
+    en: { lang: "en", slug: "contact", mslug: "contact" },
+    de: { lang: "de", slug: "contact", mslug: "contact" },
+    pt: { lang: "pt", slug: "contact", mslug: "contact" },
   },
 }
 
@@ -60,7 +56,7 @@ export const ui: UITranslations = {
     "about-short.title": "Who am I?",
     "about-short.": "About me",
     "about-short.description":
-      "Hello everybody, my name is Ronaldo and I'm just an ordinary developer who wants to write something bla bla bla",
+      "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
   },
   de: {
     "pages.about": "über-uns",
@@ -88,7 +84,7 @@ export const ui: UITranslations = {
 
     "about-short.": "About me",
     "about-short.description":
-      "Hello everybody, my name is Ronaldo and I'm just an ordinary developer who wants to write something bla bla bla",
+      "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
   },
   pt: {
     "pages.about": "sobre",
@@ -116,6 +112,6 @@ export const ui: UITranslations = {
 
     "about-short.": "About me",
     "about-short.description":
-      "Hello everybody, my name is Ronaldo and I'm just an ordinary developer who wants to write something bla bla bla",
+      "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
   },
 } as const

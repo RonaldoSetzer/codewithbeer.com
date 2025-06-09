@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content"
-import { createPageDataByPost, generateBasicPaths, sortByRecent } from "utils"
+import { createPageData, generateBasicPaths, sortByRecent } from "utils"
 import BaseLayout from "layouts/base.layout.astro"
 import PostSection from "components/posts.section.astro"
 import AboutMeSection from "components/about-me.section.astro"
@@ -14,7 +14,7 @@ const posts = await getCollection("blog", ({ id }) => {
   return id.startsWith(`${lang}/`)
 })
 
-const items = posts.map(createPageDataByPost).sort(sortByRecent)
+const items = posts.map(createPageData).sort(sortByRecent)
 const paths = generateBasicPaths("")
 ---
 

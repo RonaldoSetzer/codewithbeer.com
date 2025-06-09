@@ -3,16 +3,16 @@ import PostHeader from "components/post.header.astro"
 import BaseLayout from "layouts/base.layout.astro"
 import "styles/global.css"
 
-const { page } = Astro.props
-const { frontmatter, type, title, reading, paths } = page
+const { page, currentPaths } = Astro.props
+const { frontmatter, type, title } = page
 ---
 
-<BaseLayout title={title} paths={paths} reading={reading}>
+<BaseLayout title={title} paths={currentPaths} reading={frontmatter?.reading}>
   <PostHeader
     frontmatter={frontmatter}
     type={type}
     title={title}
-    reading={reading}
+    reading={frontmatter?.reading}
   />
   <div class="post-content">
     <slot />

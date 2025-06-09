@@ -7,7 +7,7 @@ export interface Tag {
 }
 
 export interface Path {
-  lang: string
+  lang: Language
   slug: string
   fullpath: string
 }
@@ -17,24 +17,25 @@ export interface Frontmatter {
   publishedAt: Date
   description: string
   tags: Tag[]
+  reading: string
   image?: string
   author?: string
   featured?: boolean
 }
 
-export interface LocationPaths {
-  en: Path
-  de: Path
-  pt: Path
-}
-
 export interface PageData {
   title: string
-  slugMaster: string
   type: ContentType
-  reading: string
-  paths?: LocationPaths
-  lang: string
-  slug: string
+  slug: Slug
   frontmatter?: Frontmatter
+}
+
+export type LanguageSlugs  = {
+  [key in Language]: Slug
+}
+
+export interface Slug {
+  mslug: string
+  slug: string
+  lang: string
 }
