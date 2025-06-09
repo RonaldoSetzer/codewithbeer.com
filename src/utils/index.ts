@@ -11,9 +11,12 @@ import type { CollectionEntry } from "astro:content"
 export function slugify(str: string): string {
   return str
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 100)
+    .normalize('NFD')
+    .replace(/ß/g, 'ss')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 50);
 }
 
 export function generateBasicPaths(slug: string): LocationPaths {
