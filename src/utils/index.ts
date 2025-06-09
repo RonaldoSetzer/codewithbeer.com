@@ -1,4 +1,11 @@
-import type { Path, LocationPaths, PageData, ContentType, Tag } from "types"
+import type {
+  Path,
+  LocationPaths,
+  PageData,
+  ContentType,
+  Tag,
+  Language,
+} from "types"
 import type { CollectionEntry } from "astro:content"
 
 export function slugify(str: string): string {
@@ -33,7 +40,7 @@ export function extractPostPath(id: string): Path {
   const [lang, slugParts] = id.split("/")
   const regex = /^(\d{4})(\d{2})\d{2}-(.+)\.md$/
   const [_, year, month, slug] = slugParts.match(regex) || []
-  const fullslug = `/${year}/${month}/${slug}`
+  const fullslug = `${year}/${month}/${slug}`
   const fullpath = `/${lang}/${year}/${month}/${slug}`
 
   return {
@@ -93,11 +100,6 @@ export function createPageDataByPost<T extends string>(
     lang: path.lang,
     slug: path.slug,
     frontmatter,
-    paths: {
-      en: undefined,
-      de: undefined,
-      pt: undefined,
-    },
   }
   return post
 }
@@ -114,11 +116,6 @@ export function createPageDataByPage<T extends string>(
     reading: getReadingTime(item.body),
     lang: path.lang,
     slug: path.slug,
-    paths: {
-      en: undefined,
-      de: undefined,
-      pt: undefined,
-    },
   }
 
   return page
@@ -128,22 +125,19 @@ export function generateRouteMap<T extends string>(
   collectionItems: CollectionEntry<"blog" | "pages">[]
 ): Record<string, LocationPaths> {
   const routeMap = collectionItems.reduce((map, item) => {
-    const path =
+    const currentPath =
       item.collection === "blog"
         ? extractPostPath(item.id)
         : extractPagePath(item.id)
     const slugMaster = item.data.slugMaster
+    const lang = (currentPath?.lang || "en") as Language
 
-    if (!slugMaster || !path.lang) return map
+    if (!slugMaster || !lang) return map
     if (!map[slugMaster]) {
-      map[slugMaster] = {
-        en: undefined,
-        de: undefined,
-        pt: undefined,
-      }
+      map[slugMaster] = {} as LocationPaths
     }
 
-    map[slugMaster][path.lang] = path
+    map[slugMaster][lang] = currentPath
 
     return map
   }, {} as Record<string, LocationPaths>)
@@ -151,9 +145,8 @@ export function generateRouteMap<T extends string>(
   return routeMap
 }
 
-export function sortByRecent(a: PageData, b:PageData): number {
-  const dateA = new Date(a.frontmatter!.publishedAt).getTime();
-  const dateB = new Date(b.frontmatter!.publishedAt).getTime();
-  return dateB - dateA; 
-};
-
+export function sortByRecent(a: PageData, b: PageData): number {
+  const dateA = new Date(a.frontmatter!.publishedAt).getTime()
+  const dateB = new Date(b.frontmatter!.publishedAt).getTime()
+  return dateB - dateA
+}

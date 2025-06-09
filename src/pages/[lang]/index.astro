@@ -1,11 +1,6 @@
 ---
 import { getCollection } from "astro:content"
-import {
-  createPageDataByPost,
-  generateBasicPaths,
-  sortByRecent,
-  generateRouteMap,
-} from "utils"
+import { createPageDataByPost, generateBasicPaths, sortByRecent } from "utils"
 import BaseLayout from "layouts/base.layout.astro"
 import PostSection from "components/posts.section.astro"
 import AboutMeSection from "components/about-me.section.astro"
@@ -15,17 +10,15 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params
-
 const posts = await getCollection("blog", ({ id }) => {
   return id.startsWith(`${lang}/`)
 })
-const routes = generateRouteMap(posts)
 
-const sortedPosts = posts.map(createPageDataByPost).sort(sortByRecent)
+const items = posts.map(createPageDataByPost).sort(sortByRecent)
 const paths = generateBasicPaths("")
 ---
 
 <BaseLayout lang={lang} title="Code With Beer" paths={paths}>
   <AboutMeSection />
-  <PostSection pages={sortedPosts} title="Blog" />
+  <PostSection pages={items} title="Blog" />
 </BaseLayout>

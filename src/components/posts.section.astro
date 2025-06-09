@@ -21,7 +21,7 @@ const t = useTranslations(language)
             </a>
           </h2>
           <Frontmatter
-            fullpath={item.paths[language]?.fullpath}
+            fullpath={item.paths && item.paths[language]?.fullpath}
             frontmatter={item.frontmatter}
             title={item.title}
             reading={item.reading}

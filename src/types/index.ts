@@ -1,4 +1,4 @@
-export type Language = 'en' | 'de' | 'pt';
+export type Language = "en" | "de" | "pt"
 export type ContentType = "post" | "page"
 
 export interface Tag {
@@ -23,7 +23,7 @@ export interface Frontmatter {
 }
 
 export interface LocationPaths {
-  en: Path 
+  en: Path
   de: Path
   pt: Path
 }
@@ -33,7 +33,7 @@ export interface PageData {
   slugMaster: string
   type: ContentType
   reading: string
-  paths: LocationPaths
+  paths?: LocationPaths
   lang: string
   slug: string
   frontmatter?: Frontmatter

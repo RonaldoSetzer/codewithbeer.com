@@ -12,7 +12,7 @@ const t = useTranslations(language)
 const aboutPath = getPagePaths("about", language)
 const tagsPath = getPagePaths("tags", language)
 const homePath = getPagePaths("home", language)
-const contactPath = getPagePaths("contact", language)
+// const contactPath = getPagePaths("contact", language)
 ---
 
 <nav class="main-menu">
@@ -45,12 +45,12 @@ const contactPath = getPagePaths("contact", language)
                     class="fa-brands--markdown icon"></i>
                   <a href={aboutPath.fullpath}>{`${t("pages.about")}.md`}</a>
                 </li>
-                <li class={path === contactPath.fullpath ? "selected" : ""}>
-                  <span>│</span><span>&nbsp;└─</span><i class="icon-json icon"
-                  ></i>
-                  <a href={contactPath.fullpath}>{`${t("pages.contact")}.js`}</a
-                  >
-                </li>
+                <!-- <li class={path === contactPath.fullpath ? "selected" : ""}> -->
+                <!--   <span>│</span><span>&nbsp;└─</span><i class="icon-json icon" -->
+                <!--   ></i> -->
+                <!--   <a href={contactPath.fullpath}>{`${t("pages.contact")}.js`}</a -->
+                <!--   > -->
+                <!-- </li> -->
               </ul>
             </li>
           </ul>

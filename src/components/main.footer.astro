@@ -1,6 +1,12 @@
 ---
 const { reading } = Astro.props
-const path = Astro.url.pathname
+const { lang } = Astro.params
+const [_, language, typeKey] = Astro.url.pathname.split("/")
+const path =
+  language === lang && typeKey.length === 0
+    ? `/${lang}/home`
+    : Astro.url.pathname
+const fileType = typeKey === "" || typeKey === "tags" ? "html" : "markdown"
 ---
 
 <footer class="post-footer">
@@ -26,15 +32,14 @@ const path = Astro.url.pathname
           main
         </a>
       </li>
-      <li class="file-type">
-        [markdown]
-        <img
-          src="https://api.iconify.design/pajamas:markdown-mark-solid.svg?color=%23FFFFFF"
-          alt="Markdown"
-        />
+      <li class={fileType} }>
+        {`[${fileType}]`}
+        <i
+          class={`${fileType === "markdown" ? "fa-brands--markdown" : "icon-file-html"} icon`}
+        ></i>
       </li>
       <li>
-        {`./codewithbeer.com${path}.md`}
+        {`./codewithbeer.com${path}.${fileType === "markdown" ? "md" : "html"}`}
       </li>
     </ul>
     <ul>
@@ -95,7 +100,10 @@ const path = Astro.url.pathname
     border: none;
     font-size: 0.875rem;
   }
-  .file-type {
+  .html {
+    color: #e78a4e !important;
+  }
+  .markdown {
     color: #ffffff !important;
   }
 </style>
