@@ -322,7 +322,7 @@ hr {
 
 .post-main {
   grid-area: post-main;
-  padding: 0 0 4rem 4rem;
+  padding: 0 1rem;
 }
 
 .post-footer {

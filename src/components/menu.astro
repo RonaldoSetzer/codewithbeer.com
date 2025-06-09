@@ -17,7 +17,7 @@ const homePath = getPagePaths("home", language)
 
 <nav class="main-menu">
   <ul>
-    <li class="section-toggle">
+    <li class="section-toggle home">
       <i class="icon-folder icon"></i>codewithbeer.com
     </li>
     <li class="section-content">
@@ -151,19 +151,21 @@ const homePath = getPagePaths("home", language)
         color: var(--border-color);
       }
     }
-    a {
-      color: var(--text-color);
-      text-decoration: none;
-      border: none;
-      flex: 1;
-    }
   }
 
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    border: none;
+    flex: 1;
+  }
   nav .icon {
     width: 1rem;
     height: 1rem;
   }
-
+  .home {
+    font-weight: 600;
+  }
   .selected {
     background-color: var(--bg-secondary);
   }
@@ -224,11 +226,44 @@ const homePath = getPagePaths("home", language)
   }
 </style>
 <script>
-  document.querySelectorAll(".section-toggle").forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      toggle.classList.toggle("collapsed")
-      const content = toggle.nextElementSibling
-      content?.classList.toggle("collapsed")
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggles = document.querySelectorAll(".section-toggle")
+    const isMobile = () => window.innerWidth < 768
+
+    function setupInitialState() {
+      toggles.forEach((toggle) => {
+        const content = toggle.nextElementSibling
+        const isHome =
+          toggle.classList.contains("home") ||
+          (content && content.classList.contains("home"))
+
+        if (isMobile() && !isHome) {
+          toggle.classList.add("collapsed")
+          if (content) content.classList.add("collapsed")
+        } else {
+          toggle.classList.remove("collapsed")
+          if (content) content.classList.remove("collapsed")
+        }
+      })
+    }
+
+    setupInitialState()
+
+    toggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        toggle.classList.toggle("collapsed")
+        const content = toggle.nextElementSibling
+        content?.classList.toggle("collapsed")
+      })
+    })
+
+    let resizeTimeout: ReturnType<typeof setTimeout> | undefined
+
+    window.addEventListener("resize", () => {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout)
+      }
+      resizeTimeout = setTimeout(setupInitialState, 200)
     })
   })
 </script>
