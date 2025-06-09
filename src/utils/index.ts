@@ -26,7 +26,7 @@ export function generateBasicPaths(slug: string): LocationPaths {
 
 export function extractPagePath(id: string): Path {
   const [lang, slugParts] = id.split("/")
-  const slug = slugParts.replace(/\.md$/, "")
+  const slug = slugParts.replace(/\.mdx$/, "")
   const fullpath = `/${lang}/${slug}`
 
   return {
@@ -38,7 +38,7 @@ export function extractPagePath(id: string): Path {
 
 export function extractPostPath(id: string): Path {
   const [lang, slugParts] = id.split("/")
-  const regex = /^(\d{4})(\d{2})\d{2}-(.+)\.md$/
+  const regex = /^(\d{4})(\d{2})\d{2}-(.+)\.mdx$/
   const [_, year, month, slug] = slugParts.match(regex) || []
   const fullslug = `${year}/${month}/${slug}`
   const fullpath = `/${lang}/${year}/${month}/${slug}`

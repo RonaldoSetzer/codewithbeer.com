@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import vue from '@astrojs/vue';
+import mdx from '@astrojs/mdx';
 
 // const REPO_NAME = 'codewithbeer.com';
 const CUSTOM_DOMAIN = process.env.CUSTOM_DOMAIN;
@@ -15,7 +16,8 @@ export default defineConfig({
   },
   integrations: [
     react(), 
-    vue()
+    vue(),
+    mdx()
   ],
   vite: {
     resolve: {
