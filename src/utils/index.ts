@@ -31,7 +31,6 @@ export function generateRouteMap<T extends string>(
   return routeMap
 }
 
-// AFTER REFACTORING
 export function createPageSlugs( id: string, title: string): Slug {
   const [lang, fileSlug] = id.split("/")
   const mslug = fileSlug.replace(/\.mdx$/, "")

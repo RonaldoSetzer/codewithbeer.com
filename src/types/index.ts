@@ -6,12 +6,6 @@ export interface Tag {
   slug: string
 }
 
-export interface Path {
-  lang: Language
-  slug: string
-  fullpath: string
-}
-
 export interface Frontmatter {
   title: string
   publishedAt: Date
