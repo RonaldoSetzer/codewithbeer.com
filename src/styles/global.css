@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: calc(16px + 0.25vw);
+}
+
 :root {
   --bg-color: #1d2021;
   --bg-secondary: #282828;
@@ -41,6 +45,7 @@
 
   --line-height: 1.6;
   --paragraph-spacing: 1.2em;
+  
 
   font-family: "JetBrains Mono", monospace;
   background-color: var(--bg-color);
@@ -53,7 +58,7 @@
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: "JetBrains Mono", monospace;
-  font-size: 14px;
+  /* font-size: 14px; */
   line-height: var(--line-height);
   /* padding: 2rem; */
   /* position: relative; */
@@ -82,7 +87,7 @@ h1 {
 h1::before {
   content: "# ";
   color: var(--heading-1-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 h2 {
@@ -93,7 +98,7 @@ h2 {
 h2::before {
   content: "## ";
   color: var(--heading-2-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 h3 {
@@ -104,7 +109,7 @@ h3 {
 h3::before {
   content: "### ";
   color: var(--heading-3-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 h4 {
@@ -115,7 +120,7 @@ h4 {
 h4::before {
   content: "#### ";
   color: var(--heading-4-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 h5 {
@@ -126,7 +131,7 @@ h5 {
 h5::before {
   content: "##### ";
   color: var(--heading-5-color);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 p {
@@ -141,16 +146,7 @@ a {
 }
 
 a:hover {
-  opacity: 0.8;
-}
-
-code:not(pre code) {
-  background-color: var(--inline-code-bg);
-  color: var(--inline-code-color);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-size: 0.9em;
-  font-family: "JetBrains Mono", monospace;
+  opacity: 0.9;
 }
 
 blockquote {
@@ -251,23 +247,6 @@ li {
 /* ul:not(:has(input[type="checkbox"])) li, */
 /* ol li { */
 /*   margin-bottom: 0.5em; */
-/* } */
-
-pre {
-  background-color: var(--inline-code-bg);
-  padding: 1rem;
-  border-radius: 4px;
-  overflow-x: auto;
-  margin-bottom: var(--paragraph-spacing);
-}
-
-pre code {
-  background-color: transparent !important;
-  padding: 0;
-  color: var(--text-color);
-  font-family: "JetBrains Mono", monospace;
-}
-
 em {
   color: #c586c0;
   font-style: italic;
@@ -303,7 +282,6 @@ hr {
   display: grid;
   width: 100%;
   min-height: 100vh;
-  border: 1px solid var(--border-color);
 }
 
 .layout-grid {
@@ -566,6 +544,7 @@ hr {
 
 .frontmatter dl {
   font-style: italic;
+  padding-bottom: 0.5rem;
 }
 
 .frontmatter dt {
@@ -578,8 +557,120 @@ hr {
   color: var(--frontmatter-value-color);
 }
 
-
 .frontmatter div {
   display: flex;
   gap: 0.5rem;
 }
+
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--cover-background-color);
+}
+/* Estilos base para blocos de código */
+pre {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.2rem;
+  overflow: auto;
+}
+
+pre code[data-line-numbers] {
+  counter-reset: line;
+  padding-left: 3rem !important; 
+  position: relative;
+}
+
+pre code[data-line-numbers] [data-line] {
+  counter-increment: line;
+  position: relative;
+  display: block;
+  min-height: 1rem;
+}
+
+pre code[data-line-numbers] [data-line]::before {
+  content: counter(line);
+  position: absolute;
+  left: -3rem;
+  top: 0;
+  width: 2rem;
+  text-align: right;
+  color: #928374; 
+  opacity: 0.5;
+  user-select: none;
+  border-right: 1px solid #3c3836; 
+}
+
+pre code [data-highlighted-line] {
+  background-color: rgba(251, 73, 52, 0.15);
+  display: block;
+}
+
+pre code [data-highlighted-line]::after {
+  content: "";
+  position: absolute;
+  left: -0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #fb4934;
+}
+
+.code-title+pre {
+  padding-top: 2rem;
+}
+
+.code-title {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #3c3836;
+  margin-bottom: -2rem;
+}
+
+button[data-copy-state] {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #3c3836; 
+  color: #ebdbb2; 
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+button[data-copy-state="copied"] {
+  background-color: #b8bb26; /* Gruvbox green */
+  color: #1d2021; /* Gruvbox background */
+}
+
+  pre {
+    position: relative;
+  }
+  
+  .copy-icon {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    background-color: rgba(60, 56, 54, 0.6);
+    color: #ebdbb2; 
+    border: none;
+    border-radius: 0.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .copy-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  

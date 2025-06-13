@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
+import rehypePrettyCode from "rehype-pretty-code";
 
-// const REPO_NAME = 'codewithbeer.com';
 const CUSTOM_DOMAIN = process.env.CUSTOM_DOMAIN;
 
 export default defineConfig({
@@ -17,14 +17,31 @@ export default defineConfig({
   integrations: [
     react(), 
     vue(),
-    mdx()
+    mdx({
+      syntaxHighlight: false,
+      rehypePlugins: [
+        [rehypePrettyCode, {
+          theme: 'gruvbox-dark-hard',
+          keepBackground: false,
+          copyButton: true,
+          copyButtonText: "📋", 
+          copyButtonSuccessText: "✓", 
+          
+          onVisitHighlightedLine(node) {
+            node.properties.className = node.properties.className || [];
+            node.properties.className.push('highlighted');
+          },
+          onVisitTitle(node) {
+            node.properties.className = node.properties.className || [];
+            node.properties.className.push('code-title');
+          }
+        }]
+      ]
+    })
   ],
   vite: {
     resolve: {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     },
   },
-  build: {
-    assets: '_assets'
-  }
 });
