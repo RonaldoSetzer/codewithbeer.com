@@ -7,7 +7,13 @@ const { page, currentPaths } = Astro.props
 const { frontmatter, type, title } = page
 ---
 
-<BaseLayout title={title} paths={currentPaths} reading={frontmatter?.reading}>
+<BaseLayout 
+  title={title} 
+  paths={currentPaths} 
+  reading={frontmatter?.reading}
+  description={frontmatter?.description}
+  image={frontmatter?.image?.url}
+>
   <PostHeader
     frontmatter={frontmatter}
     type={type}

@@ -57,6 +57,7 @@ export const ui: UITranslations = {
     "about-short.": "About me",
     "about-short.description":
       "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
+    "meta.description": "Code with Beer - A blog about software development, technology and programming. Sharing knowledge and experiences in the world of software development.",
   },
   de: {
     "pages.about": "über-uns",
@@ -81,10 +82,10 @@ export const ui: UITranslations = {
     "post.reading": "lesezeit",
     "post.date": "datum",
     "section.back.title": "",
-
     "about-short.": "About me",
     "about-short.description":
       "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
+    "meta.description": "Code with Beer - Ein Blog über Softwareentwicklung, Technologie und Programmierung. Teilen von Wissen und Erfahrungen in der Welt der Softwareentwicklung.",
   },
   pt: {
     "pages.about": "sobre",
@@ -109,10 +110,10 @@ export const ui: UITranslations = {
     "post.reading": "tempo de leitura",
     "post.date": "data",
     "section.back.title": "",
-
     "about-short.": "About me",
     "about-short.description":
       "Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, creating bugs, sometimes playing games, sometimes coding some games, like anyone else. This is me, so welcome to my blog.",
+    "meta.description": "Code with Beer - Um blog sobre desenvolvimento de software, tecnologia e programação. Compartilhando conhecimento e experiências no mundo do desenvolvimento de software.",
   },
 } as const
 
