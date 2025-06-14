@@ -31,7 +31,7 @@ export function generateRouteMap<T extends string>(
   return routeMap
 }
 
-export function createPageSlugs( id: string, title: string): Slug {
+export function createPageSlugs(id: string, title: string): Slug {
   const [lang, fileSlug] = id.split("/")
   const mslug = fileSlug.replace(/\.mdx$/, "")
 
@@ -42,15 +42,15 @@ export function createPageSlugs( id: string, title: string): Slug {
   }
 }
 
-export function createPostSlugs( id: string, title: string): Slug {
+export function createPostSlugs(id: string, title: string): Slug {
   const regex = /^(\d{4})(\d{2})\d{2}-(.+)\.mdx$/
   const [lang, fileSlug] = id.split("/")
   const [_, year, month, mslug] = fileSlug.match(regex) || []
 
   return {
     lang,
-    mslug : `${year}/${month}/${mslug}`,
-    slug : `${year}/${month}/${slugify(title)}`,
+    mslug: `${year}/${month}/${mslug}`,
+    slug: `${year}/${month}/${slugify(title)}`,
   }
 }
 
@@ -58,15 +58,17 @@ export function createPageData<T extends string>(
   item: CollectionEntry<"blog" | "pages">
 ): PageData {
   const title = item.data.title
-  const slug = item.collection === "blog" 
-    ? createPostSlugs(item.id, title) 
-    : createPageSlugs(item.id, title)
+  const slug =
+    item.collection === "blog"
+      ? createPostSlugs(item.id, title)
+      : createPageSlugs(item.id, title)
 
   return {
     title,
     slug,
     type: item.collection as ContentType,
-    frontmatter: item.collection === "blog" ? createFrontmatter(item) : undefined,
+    frontmatter:
+      item.collection === "blog" ? createFrontmatter(item) : undefined,
   }
 }
 
@@ -83,7 +85,7 @@ export function generateTags(tags: string[]): Tag[] {
 export function createFrontmatter<T extends string>(
   item: CollectionEntry<"blog">
 ): Frontmatter {
-  const { title, publishedAt, description, tags, author } = item.data
+  const { title, publishedAt, description, tags, author, image } = item.data
   const reading = getReadingTime(item.body)
 
   return {
@@ -92,6 +94,12 @@ export function createFrontmatter<T extends string>(
     description,
     author,
     reading,
+    image: image
+      ? {
+          url: image.url,
+          alt: image.alt || title,
+        }
+      : undefined,
     tags: generateTags(tags || []),
   }
 }
@@ -139,6 +147,6 @@ export function generateBasicPaths(slug: string): LanguageSlugs {
   }
 }
 
-export function fullpath(slug:Slug): string {
+export function fullpath(slug: Slug): string {
   return `/${slug.lang}/${slug.slug}`
 }

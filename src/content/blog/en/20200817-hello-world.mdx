@@ -6,26 +6,24 @@ description: Hello World!! and welcome to Code with Beer, My name is Ronaldo
   Santiago, just an ordinary software engineer who loves to stay hours in front
   of a computer, writing several lines of code, killing bugs, ...
 image:
-  url: "https://docs.astro.build/assets/arc.webp"
-  alt: "The Astro logo on a dark background with a purple gradient arc."
+  url: "assets/images/hello-world-cover.png"
+  alt: "thumb"
 tags: ["random"]
 ---
 
 import { Image } from 'astro:assets';
 import thumb from 'assets/images/hello-world-cover.png';
 
-# Meu Título
-
 <Image 
   src={thumb} 
-  alt="Imagem principal" 
+  class="cover"
   width={600} 
   format="webp" 
 />
 
 Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer ho loves spending hours in front of a computer writing lines of code, fixing bugs (and sometimes creating them ^^), playing games, and occasionally even coding some. Like many others out there. This is me, so welcome to my blog!
 
-```javascript
+```javascript showLineNumbers title="me"
 
 const me = {
   name: "Ronaldo",
@@ -43,7 +41,7 @@ const me = {
 Because some of the best ideas (and bugs) are born during those moments when you’re relaxed, sipping a cold beer, and staring at the terminal like it’s a puzzle to be solved.
 It’s not really about drinking - it’s about enjoying the process, celebrating small wins, and embracing the chaos of coding.
 
-One random day, while drinking a beer and seizing the triumph of a long session spent reconfiguring my Vim (a terminal-based text editor === my current IDE), I had an uncontrollable urge to share my experiences. How I built my Vim setup, which plugins I use, the keymaps I’ve created... and suddenly, I couldn’t stop thinking about it. That little spark started to burn and answered a question no one asked:
+One random day, while drinking a beer and seizing the triumph of a long session spent reconfiguring my Vim (`a terminal-based text editor === my current IDE`), I had an uncontrollable urge to share my experiences. How I built my Vim setup, which plugins I use, the keymaps I’ve created... and suddenly, I couldn’t stop thinking about it. That little spark started to burn and answered a question no one asked:
 
 > *I should start writing about this. I’m going to create a tech blog.*
 

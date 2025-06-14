@@ -2,25 +2,65 @@
 title: Hallo Welt !!!
 author: Ronaldo
 publishedAt: 2022-07-01
-description: This is the first post of my new Astro blog.
+description: Hello Welt!! Name ist Ronaldo Santiago. Ich bin einfach ein ganz normaler Softwareentwickler, der es liebt, stundenlang vor dem Computer zu sitzen – Code zu schreiben, Bugs zu beheben, ...
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
-tags: ["obsidian", "astro", "blogging", "learning in public"]
+  url: "assets/images/hello-world-cover.png"
+  alt: "thumb"
+tags: ["random"]
 ---
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+import { Image } from 'astro:assets';
+import thumb from 'assets/images/hello-world-cover.png';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam risus lectus, dapibus nec ante at, varius luctus nunc. Nunc arcu nulla, mollis id metus rutrum, bibendum iaculis libero. Quisque sagittis urna dolor, in tristique metus varius ullamcorper. Morbi eget diam augue. Cras dolor dui, blandit in eros ut, egestas imperdiet massa. Suspendisse eleifend urna at magna placerat, eu vulputate elit mollis. Proin vestibulum diam bibendum augue pretium porta. Etiam a ante eu dui tempor blandit. Curabitur tincidunt posuere risus auctor ultrices. Nulla purus metus, lobortis ac velit et, scelerisque sagittis nisl. Sed accumsan ullamcorper tortor, scelerisque varius tellus volutpat id. Etiam tempor at augue non lobortis. Fusce eu consequat turpis. Nunc gravida risus vitae finibus tempus.
+<Image 
+  src={thumb} 
+  class="cover"
+  width={600} 
+  format="webp" 
+/>
 
-Duis volutpat nisl nec nulla pharetra auctor. Duis varius, justo non mattis egestas, risus purus aliquet ex, eu porttitor eros neque nec ante. Donec viverra dui ac justo suscipit imperdiet. Ut consequat sagittis nisi, a blandit lorem bibendum quis. Aenean eu lacus euismod, tempus odio vel, lobortis risus. Phasellus malesuada facilisis tristique. Morbi vestibulum mi at ipsum pellentesque maximus. Nullam ultrices eu libero nec rutrum. Aliquam nunc dui, accumsan et vulputate et, venenatis vel eros. Phasellus vulputate ante tristique purus efficitur, vel tempus nulla facilisis. Curabitur lacinia dolor felis, eu lacinia metus semper eu. Nam eu rutrum tellus.
+Hello Welt!! Name ist Ronaldo Santiago. Ich bin einfach ein ganz normaler Softwareentwickler, der es liebt, stundenlang vor dem Computer zu sitzen – Code zu schreiben, Bugs zu beheben (und manchmal auch welche zu verursachen ^^), ein bisschen zu spielen und ab und zu sogar kleine Spiele zu programmieren. So wie viele andere Entwickler auch. Also, herzlich willkommen auf meinem Blog!
 
-Aliquam pharetra erat felis, quis posuere sem commodo et. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin et quam lacus. Nulla facilisi. Vestibulum quis sodales nulla, eget posuere massa. Suspendisse maximus bibendum odio eu lacinia. Morbi commodo mauris at bibendum ullamcorper. Suspendisse enim orci, congue at mi ultricies, porta ornare arcu. Maecenas sit amet erat ornare purus auctor elementum. Nam vitae sagittis ipsum. Sed pulvinar at elit non bibendum. Sed scelerisque mauris risus, at elementum velit rutrum posuere.
 
-Donec sollicitudin dolor in nunc euismod, in vestibulum metus volutpat. Aliquam tristique risus in velit efficitur imperdiet. Proin rhoncus nunc a ultricies congue. Praesent in diam a dolor placerat tincidunt. Sed blandit ultricies purus. Curabitur pharetra hendrerit egestas. Curabitur venenatis felis ac laoreet aliquam. Maecenas hendrerit diam sit amet vulputate interdum. Quisque malesuada ac ipsum sed porta.
+```javascript showLineNumbers title="me"
+const me = {
+  name: "Ronaldo",
+  lastName: "Santiago",
+  nationality: "Brazilian",
+  address: {
+    country: "Brazil",
+    city: "Rio de Janeiro",
+  },
+};
+```
 
-Integer nunc justo, sagittis eu sapien eget, ornare euismod dui. Aenean tristique, ipsum sed dignissim tristique, neque sapien facilisis velit, ut efficitur nunc nibh et libero. Donec sed sodales augue, non lacinia magna. Duis sem ante, ultrices quis sagittis sed, pharetra quis neque. Vivamus at dignissim magna. Proin nec orci sapien. Fusce dignissim mauris a sapien tincidunt hendrerit sed ut nibh.
+## Warum „Code with Beer“?
 
-Generated 5 paragraphs, 416 words, 2840 bytes of Lorem Ipsum
-help@lipsum.com
-Privacy Policy ·
+Weil einige der besten Ideen (und Bugs) genau in den Momenten entstehen, in denen man entspannt ist, ein kaltes Bier trinkt und auf das Terminal schaut, als wäre es ein Rätsel.
+
+Es geht nicht wirklich ums Trinken – es geht darum, den Prozess zu genießen, kleine Erfolge zu feiern und das Chaos des Programmierens zu umarmen.
+
+An einem zufälligen Tag, während ich ein Bier trank und den Sieg nach vielen Stunden mit meinem Vim aufgebaut feierte (ein Texteditor im Terminal – also mein aktuelles IDE), kam plötzlich ein starker Wunsch in mir auf, meine Erfahrungen zu teilen. Wie ich mein Setup aufgebaut habe, welche Plugins ich benutze, welche Shortcuts ich konfiguriert habe… und plötzlich konnte ich an nichts anderes mehr denken. Dieser kleine Funke wurde zu einem Feuer – und beantwortete die Frage, die mir niemand gestellt hatte:
+
+> Ich muss darüber schreiben. Ich werde einen Tech-Blog starten.
+
+## Warum einen Blog schreiben und nicht einfach auf Medium oder LinkedIn?
+
+Die Antwort ist ganz einfach: Ich bin Entwickler. Ich liebe es zu programmieren und suche ständig nach Ausreden, um neue Projekte zu starten, neue Ideen zu erkunden oder etwas Neues zu lernen. Also – warum nicht einfach etwas Eigenes aufbauen?
+
+Ich habe bereits die nötigen Fähigkeiten dafür. Und außerdem kann ich in einem eigenen Blog ganz frei mit Architektur, Layout und Funktionen experimentieren. (Ich hoffe, dir gefällt’s – ich bin übrigens kein Designer ^^)
+
+## Warum diese Lust zu schreiben?
+
+Ganz am Anfang meiner Karriere (lange, lange her, 2007) hatte ich schon mal einen Blog. Er war wie ein kleines Labor, in dem ich alles geteilt habe, was ich über Spieleentwicklung gelernt habe. Diese Erfahrung war richtig stark. Ich habe gemerkt, dass ich mir viel mehr Wissen behalten konnte und schneller gelernt habe. Schreiben hat mir geholfen, besser zu erklären – und beim Erklären habe ich noch mehr gelernt.
+
+Schreiben ist fast wie Magie – es verbessert sowohl technische als auch zwischenmenschliche Fähigkeiten. Denk mal drüber nach: Du willst keinen Unsinn schreiben, also tauchst du tief ins Thema ein, bis du dich sicher fühlst. Gleichzeitig verbesserst du dein Schreiben und deine Kommunikation. Alle gewinnen dabei.
+
+## Und worum geht es in diesem Blog?
+
+Ehrlich gesagt? Ich weiß es noch nicht. Ich suche keine Konsistenz, sondern Begeisterung. Immer wenn ich etwas Cooles entdecke, eine neue Idee habe oder einfach über ein technisches Problem reden will – wird es hier landen.
+
+Für einen ersten Beitrag habe ich mehr geschrieben, als ich dachte. Aber das ist erst der Anfang. Ich verspreche, der nächste wird noch spannender.
+
+Also schnapp dir ein Bier, lehn dich zurück und genieß die Reise.
+

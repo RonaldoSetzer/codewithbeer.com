@@ -2,20 +2,27 @@
 title: Ola Mundo !!!
 author: Ronaldo Santiago
 publishedAt: 2020-08-17
-description: Hello World!! and welcome to Code with Beer, My name is Ronaldo
-  Santiago, just an ordinary software engineer who loves to stay hours in front
-  of a computer, writing several lines of code, killing bugs, ...
+description: Hello World!! and welcome to Code with Beer, My name is Ronaldo Santiago, just an ordinary software engineer who loves to stay hours in front of a computer, writing several lines of code, killing bugs, ...
 image:
-  url: "https://docs.astro.build/assets/arc.webp"
-  alt: "The Astro logo on a dark background with a purple gradient arc."
+  url: "assets/images/hello-world-cover.png"
+  alt: "thumb"
 tags: ["random"]
 ---
-# Hello World!! E bem-vindo ao **Code with Beer**
+
+import { Image } from 'astro:assets';
+import thumb from 'assets/images/hello-world-cover.png';
+
+<Image 
+  src={thumb} 
+  class="cover"
+  width={600} 
+  format="webp" 
+/>
+
 
 Hello World!! Meu nome é Ronaldo Santiago, sou apenas um desenvolvedor de software comum que adora passar horas em frente ao computador, escrevendo linhas de código, corrigindo bugs (e às vezes criando alguns ^^), jogando e, de vez em quando, até programando alguns joguinhos. Como podem ver assim como qualquer outro Dev. Well ... então, seja bem-vindo ao meu blog!
 
-```javascript
-
+```javascript showLineNumbers title="me"
 const me = {
   name: "Ronaldo",
   lastName: "Santiago",

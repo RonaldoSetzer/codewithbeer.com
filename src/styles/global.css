@@ -568,6 +568,7 @@ hr {
   justify-content: center;
   height: 100%;
   width: 100%;
+  margin-bottom: 2rem;
   background-color: var(--cover-background-color);
 }
 /* Estilos base para blocos de código */

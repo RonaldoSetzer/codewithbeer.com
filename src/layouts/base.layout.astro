@@ -8,7 +8,7 @@ const { title, paths, reading, description, image } = Astro.props
 const { lang } = Astro.params
 
 const siteUrl = import.meta.env.SITE || 'https://codewithbeer.com'
-const ogImage = image ? `${siteUrl}${image}` : `${siteUrl}/og-image.jpg`
+const ogImage = image ? `${siteUrl}${image.url}` : `${siteUrl}/og-image.jpg`
 
 const t = useTranslations(lang as any)
 const ogDescription = description || t("meta.description")

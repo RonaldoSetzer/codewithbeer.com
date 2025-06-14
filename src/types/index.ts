@@ -6,13 +6,18 @@ export interface Tag {
   slug: string
 }
 
+export interface Image {
+  url: string
+  alt: string
+}
+
 export interface Frontmatter {
   title: string
   publishedAt: Date
   description: string
   tags: Tag[]
   reading: string
-  image?: string
+  image?: Image
   author?: string
   featured?: boolean
 }
